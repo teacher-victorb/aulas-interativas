@@ -1,0 +1,467 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>B1.5 Aula 4 - If I Take the First Step | Send to Teacher</title>
+  <style>
+    :root{
+      --navy:#17324d;--ink:#203142;--teal:#2a9d8f;--teal-dark:#207b70;--gold:#e9a23b;
+      --coral:#e76f51;--sky:#ddeff5;--mint:#e7f5f1;--cream:#faf7f0;--paper:#fff;
+      --light:#f5f7f9;--line:#c9d4de;--muted:#637487;--success:#176f61;--danger:#b54732;
+      --shadow:0 18px 50px rgba(23,50,77,.10);--radius:22px
+    }
+    *{box-sizing:border-box}html{scroll-behavior:smooth}
+    body{margin:0;color:var(--ink);line-height:1.55;font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:radial-gradient(circle at 8% 0%,rgba(42,157,143,.12),transparent 28rem),radial-gradient(circle at 100% 20%,rgba(233,162,59,.12),transparent 30rem),#eef3f5}
+    button,input,textarea,select{font:inherit}a{color:var(--teal-dark)}
+    button:focus-visible,a:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:4px solid rgba(233,162,59,.45);outline-offset:2px}
+    .topbar{position:sticky;top:0;z-index:20;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.8rem clamp(1rem,4vw,3rem);background:rgba(255,255,255,.93);border-bottom:1px solid rgba(201,212,222,.9);backdrop-filter:blur(15px)}
+    .brand{display:flex;align-items:center;gap:.75rem;font-weight:850;color:var(--navy)}.brand-mark{display:grid;place-items:center;width:2.25rem;height:2.25rem;border-radius:50%;color:#fff;background:var(--teal)}
+    .progress-wrap{flex:1;max-width:28rem}.progress-label{display:flex;justify-content:space-between;margin-bottom:.25rem;color:var(--muted);font-size:.78rem;font-weight:700}
+    .progress{overflow:hidden;height:.55rem;border-radius:1rem;background:var(--sky)}.progress>span{display:block;width:0;height:100%;border-radius:inherit;background:linear-gradient(90deg,var(--teal),var(--gold),var(--coral));transition:width .35s ease}
+    .reset{border:1px solid var(--line);border-radius:999px;padding:.55rem .9rem;color:var(--muted);background:#fff;cursor:pointer;font-weight:800}
+    .topbar-actions{display:flex;align-items:center;gap:.6rem}
+    .teacher-jump{
+      display:inline-flex;align-items:center;justify-content:center;border:2px solid var(--navy);
+      border-radius:999px;padding:.55rem 1rem;color:#fff;background:var(--coral);
+      box-shadow:0 7px 18px rgba(231,111,81,.25);font-weight:900;text-decoration:none;white-space:nowrap
+    }
+    .teacher-jump:hover{background:#d85d40;transform:translateY(-1px)}
+    main{width:min(1120px,calc(100% - 2rem));margin:2rem auto 5rem}
+    .hero{overflow:hidden;position:relative;display:grid;grid-template-columns:1.02fr .98fr;gap:2rem;align-items:center;min-height:470px;padding:clamp(2rem,6vw,5rem);border-radius:34px;color:#fff;background:var(--navy);box-shadow:var(--shadow)}
+    .hero:before,.hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}.hero:before{width:26rem;height:26rem;top:-16rem;right:-6rem;background:rgba(42,157,143,.35)}.hero:after{width:20rem;height:20rem;bottom:-14rem;left:28%;background:rgba(233,162,59,.2)}
+    .hero-copy,.hero-art{position:relative;z-index:1}.eyebrow{margin:0 0 .7rem;color:#82d8cc;font-size:.82rem;font-weight:900;letter-spacing:.14em;text-transform:uppercase}
+    h1,h2,h3{line-height:1.12;color:var(--navy)}.hero h1{margin:0;color:#fff;font-size:clamp(3rem,7vw,5.6rem);letter-spacing:-.055em}.subtitle{max-width:39rem;margin:.65rem 0 1.4rem;color:#dce8ee;font-size:clamp(1.05rem,2.5vw,1.45rem)}
+    .pills{display:flex;flex-wrap:wrap;gap:.55rem}.pill{padding:.55rem .8rem;border:1px solid rgba(255,255,255,.2);border-radius:999px;background:rgba(255,255,255,.09);font-size:.9rem;font-weight:750}
+    .hero-art{display:grid;place-items:center}.hero-art svg{width:min(100%,470px);height:auto;filter:drop-shadow(0 18px 26px rgba(0,0,0,.2))}
+    .objectives{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem;margin:1.25rem 0 2.5rem}.objective{padding:1.15rem 1.2rem;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:0 8px 24px rgba(23,50,77,.05)}.objective b{display:block;margin-bottom:.25rem;color:var(--teal-dark)}
+    .lesson-nav{display:flex;flex-wrap:wrap;gap:.55rem;margin:0 0 1.25rem}.lesson-nav a{border:1px solid var(--line);border-radius:999px;padding:.55rem .85rem;text-decoration:none;color:var(--navy);background:#fff;font-size:.86rem;font-weight:800}.lesson-nav a:hover{border-color:var(--teal);color:var(--teal-dark)}
+    .lesson-nav a.homework-link{border-color:var(--navy);color:#fff;background:var(--navy)}
+    .lesson-nav a.homework-link:hover{border-color:var(--teal);color:#fff;background:var(--teal-dark)}
+    .panel{margin:1.25rem 0;padding:clamp(1.2rem,4vw,2.2rem);border:1px solid var(--line);border-radius:var(--radius);background:var(--paper);box-shadow:var(--shadow)}
+    .section-head{display:flex;align-items:flex-start;gap:1rem;margin-bottom:1.4rem}.step{flex:0 0 auto;display:grid;place-items:center;width:2.5rem;height:2.5rem;border-radius:13px;color:#fff;background:var(--teal);font-weight:900}.section-head h2{margin:0;font-size:clamp(1.5rem,4vw,2.2rem)}.section-head p{margin:.25rem 0 0;color:var(--muted)}.time{margin-left:auto;white-space:nowrap;border-radius:999px;padding:.4rem .7rem;color:var(--muted);background:var(--light);font-size:.8rem;font-weight:800}
+    .choice-grid,.match-grid,.focus-grid,.road-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+    .field-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+    .choice-card,.match-item,.focus-card,.road-card{border:1px solid var(--line);border-radius:15px;padding:.9rem;background:var(--light)}.choice-card strong,.match-item strong,.focus-card strong{display:block;color:var(--navy)}
+    .tri-buttons{display:grid;grid-template-columns:repeat(3,1fr);gap:.35rem;margin-top:.65rem}.tri-buttons button{border:1px solid var(--line);border-radius:9px;padding:.45rem;background:#fff;color:var(--muted);cursor:pointer;font-size:.75rem;font-weight:850}.tri-buttons button.active{color:#fff;background:var(--teal);border-color:var(--teal)}.tri-buttons button.active[data-value="S"]{color:var(--navy);background:var(--gold);border-color:var(--gold)}.tri-buttons button.active[data-value="N"]{background:var(--coral);border-color:var(--coral)}
+    .match-item{display:grid;grid-template-columns:minmax(0,1fr) 5rem;gap:.75rem;align-items:center}.match-item select{padding:.55rem}
+    input[type="text"],textarea,select{width:100%;border:1px solid var(--line);border-radius:12px;padding:.8rem .9rem;color:var(--ink);background:#fff}textarea{min-height:110px;resize:vertical}.text-label{display:grid;gap:.4rem;color:var(--navy);font-size:.84rem;font-weight:850}
+    .correct{border-color:var(--success)!important;background:var(--mint)!important}.incorrect{border-color:var(--danger)!important;background:#fff1ed!important}
+    .strategy{display:flex;align-items:flex-start;gap:.8rem;margin-top:1rem;border-left:5px solid var(--gold);border-radius:12px;padding:1rem;background:#fff6e3}.strategy b{color:#8a5b13}
+    .audio-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:1rem;margin-bottom:1.3rem;border-radius:18px;padding:1rem;background:var(--mint);border:1px solid #a7d8d0}.audio-icon{display:grid;place-items:center;width:3.2rem;height:3.2rem;border-radius:50%;color:#fff;background:var(--teal);font-size:1.2rem}.audio-card h3{margin:0}.audio-card p{margin:.2rem 0 0;color:var(--muted);font-size:.9rem}
+    .primary,.secondary,.ghost{display:inline-flex;align-items:center;justify-content:center;gap:.45rem;border:0;border-radius:999px;padding:.7rem 1rem;cursor:pointer;font-weight:850;text-decoration:none}.primary{color:#fff;background:var(--teal)}.primary:hover{background:var(--teal-dark)}.secondary{color:#fff;background:var(--navy)}.ghost{color:var(--navy);background:var(--light);border:1px solid var(--line)}
+    .question-card{margin:.8rem 0;border:1px solid var(--line);border-radius:16px;padding:1rem;background:#fff}.question-card>p{margin:0 0 .65rem;font-weight:780}.options{display:grid;gap:.55rem}.option{display:flex;align-items:flex-start;gap:.6rem;border-radius:10px;padding:.55rem;cursor:pointer}.option:hover{background:var(--light)}.option input{margin-top:.3rem}
+    .quiz-list{display:grid;gap:.65rem}.quiz-row{display:grid;grid-template-columns:2.2rem minmax(0,1fr) 9rem;align-items:center;gap:.7rem;border:1px solid var(--line);border-radius:13px;padding:.7rem}.quiz-row .number{display:grid;place-items:center;width:2rem;height:2rem;border-radius:50%;color:var(--teal-dark);background:var(--mint);font-weight:900}.quiz-row select{padding:.55rem}
+    .action-row{display:flex;flex-wrap:wrap;align-items:center;gap:.7rem;margin-top:1rem}.feedback{min-height:1.5rem;color:var(--muted);font-weight:750}.feedback.success{color:var(--success)}.feedback.warn{color:var(--danger)}
+    .focus-card{background:#fff;border-top:7px solid var(--teal)}.focus-card:nth-child(2){border-top-color:var(--gold)}.focus-card h3{margin:.2rem 0}.example{border-radius:10px;padding:.65rem;background:var(--light);font-style:italic}
+    .context-list{display:grid;gap:.75rem}.context-row{display:grid;grid-template-columns:minmax(0,1fr) 15rem;gap:.75rem;align-items:center;border:1px solid var(--line);border-radius:14px;padding:.8rem}
+    .sort-wrap{display:grid;grid-template-columns:9rem 1fr;gap:1rem}.markers{display:grid;align-content:start;gap:.6rem}.marker{border-radius:12px;padding:.7rem;text-align:center;color:var(--navy);background:var(--sky);font-weight:850}.sortable{display:grid;gap:.65rem;min-height:20rem}.sort-card{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:.7rem;border:2px solid var(--line);border-radius:14px;padding:.75rem;background:#fff;cursor:grab}.sort-card.dragging{opacity:.45}.handle{color:var(--muted);font-size:1.35rem}.move-buttons{display:flex;gap:.3rem}.move-buttons button{display:grid;place-items:center;width:2rem;height:2rem;border:1px solid var(--line);border-radius:8px;background:var(--light);cursor:pointer;font-weight:900}
+    .road-card{background:#fff;border-top:7px solid var(--teal)}.road-card:nth-child(2){border-top-color:var(--gold)}.road-card:nth-child(3){border-top-color:var(--coral)}.road-card:nth-child(4){border-top-color:#77aabd}.road-card textarea{min-height:105px}.road-card.wide{grid-column:1/-1}
+    .road-output{margin-top:1rem;min-height:140px;border-radius:18px;padding:1.2rem;color:#fff;background:var(--navy);white-space:pre-line}.road-output:empty:before{content:"Your connected If-Then Action Map will appear here.";color:#b9cbd6}
+    .self-check{display:grid;gap:.8rem}.scale-legend{margin:0 0 .35rem;border:1px solid #b9dce5;border-radius:14px;padding:.75rem;background:var(--sky)}.scale-legend>strong{display:block;margin-bottom:.2rem;color:var(--navy)}.scale-legend span{color:var(--muted);font-size:.78rem}.scale-numbers{display:grid;grid-template-columns:minmax(0,1fr) repeat(5,2.6rem);gap:.5rem;align-items:center;padding:.15rem 0 0}.scale-numbers b{color:var(--teal-dark);text-align:center}.scale-row{display:grid;grid-template-columns:minmax(0,1fr) repeat(5,2.6rem);gap:.5rem;align-items:center;border-bottom:1px solid var(--line);padding:.65rem 0}.scale-row label{font-weight:740}.scale-row input{width:1rem;height:1rem;justify-self:center}
+    .homework{border-left:7px solid var(--gold);border-radius:16px;padding:1rem 1.2rem;background:var(--cream)}
+    .homework-panel{scroll-margin-top:5.5rem;border:2px solid var(--teal);background:linear-gradient(180deg,var(--mint),#fff 13rem)}
+    .send-next{
+      display:flex;align-items:center;justify-content:space-between;gap:1rem;margin-top:1.2rem;
+      border:2px solid var(--navy);border-radius:16px;padding:1rem 1.1rem;color:#fff;
+      background:linear-gradient(110deg,var(--coral),#ef8a64);
+      box-shadow:0 10px 24px rgba(231,111,81,.22);text-decoration:none
+    }
+    .send-next span{font-size:.88rem;font-weight:750;opacity:.95}.send-next strong{font-size:1.05rem;text-align:right}
+    .send-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem;margin:1rem 0}
+    .send-step{border:1px solid rgba(42,157,143,.35);border-radius:13px;padding:.75rem;color:var(--navy);background:rgba(255,255,255,.9);font-weight:800;text-align:center}
+    .send-step b{display:block;color:var(--teal-dark);font-size:.76rem;letter-spacing:.05em;text-transform:uppercase}
+    .send-banner{display:flex;align-items:center;justify-content:space-between;gap:1rem;margin:1rem 0;border-radius:15px;padding:.9rem 1rem;color:#fff;background:var(--navy);font-weight:850}
+    .send-banner span:last-child{border-radius:999px;padding:.35rem .65rem;color:var(--navy);background:var(--gold);font-size:.78rem}
+    .connection-status{margin:.7rem 0 0;border-radius:11px;padding:.7rem .8rem;color:var(--muted);background:#fff;font-size:.86rem;font-weight:750}
+    .connection-status.connected{color:var(--success);background:var(--mint)}
+    .home-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}.home-grid .full{grid-column:1/-1}.word-meter{display:flex;justify-content:space-between;gap:1rem;color:var(--muted);font-weight:800}.word-meter.good{color:var(--success)}.checklist{display:grid;gap:.5rem;margin:.8rem 0}.checklist label{display:flex;gap:.6rem}.submission{display:none;margin-top:1rem;border-radius:15px;padding:1rem;background:#fff;border:1px solid var(--line);white-space:pre-wrap}.submission.show{display:block}
+    .source-note{margin-top:1.6rem;color:var(--muted);font-size:.82rem}.toast{position:fixed;right:1rem;bottom:1rem;z-index:50;transform:translateY(150%);border-radius:13px;padding:.8rem 1rem;color:#fff;background:var(--navy);box-shadow:var(--shadow);transition:transform .25s ease;font-weight:800}.toast.show{transform:translateY(0)}
+    @media(max-width:820px){.hero{grid-template-columns:1fr}.hero-art{order:-1}.hero-art svg{width:min(80%,390px)}.objectives{grid-template-columns:1fr 1fr}.choice-grid,.match-grid,.focus-grid,.road-grid,.field-grid,.home-grid{grid-template-columns:1fr}.field-grid .text-label,.road-card.wide,.home-grid .full{grid-column:auto!important}.audio-card{grid-template-columns:auto 1fr}.audio-card .primary{grid-column:1/-1}.progress-wrap{display:none}.send-steps{grid-template-columns:1fr}}
+    @media(max-width:600px){main{width:min(100% - 1rem,1120px);margin-top:.5rem}.hero{padding:1.5rem;border-radius:0 0 28px 28px}.hero h1{font-size:3.05rem}.objectives{grid-template-columns:1fr}.context-row{grid-template-columns:1fr}.quiz-row{grid-template-columns:2.2rem minmax(0,1fr)}.quiz-row select{grid-column:2}.sort-wrap{grid-template-columns:1fr}.markers{grid-template-columns:repeat(5,1fr)}.marker{padding:.5rem .2rem;font-size:.7rem}.scale-numbers,.scale-row{grid-template-columns:repeat(5,1fr)}.scale-numbers span{display:none}.scale-row label{grid-column:1/-1}.time{display:none}.brand span:last-child{display:none}.teacher-jump{padding:.5rem .75rem;font-size:.82rem}.reset{padding:.5rem .7rem}.send-next{align-items:flex-start;flex-direction:column}.send-next strong{text-align:left}}
+    @media print{.topbar,.lesson-nav,.action-row,.audio-card .primary,.send-next{display:none!important}body{background:#fff}main{width:100%;margin:0}.hero,.panel{break-inside:avoid;box-shadow:none}.panel{border-color:#aaa}}
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand"><span class="brand-mark">4</span><span>B1.5 - If I Take the First Step | Homework Edition</span></div>
+    <div class="progress-wrap"><div class="progress-label"><span>Your progress</span><span id="progressText">0%</span></div><div class="progress"><span id="progressBar"></span></div></div>
+    <div class="topbar-actions">
+      <a class="teacher-jump" href="#homework">Send to Teacher</a>
+      <button class="reset" id="resetAll" type="button">Reset</button>
+    </div>
+  </header>
+  <main>
+    <section class="hero">
+      <div class="hero-copy">
+        <p class="eyebrow">Rota da Travessia - B1.5 - Aula 4</p>
+        <h1>If I Take the First Step</h1>
+        <p class="subtitle">Connect a realistic action to a possible result and decide what you will do next.</p>
+        <div class="pills"><span class="pill">B1</span><span class="pill">45-60 min</span><span class="pill">Listening + first conditional</span></div>
+      </div>
+      <div class="hero-art" aria-hidden="true">
+        <svg viewBox="0 0 500 360">
+          <path d="M70 270 C160 270 160 175 250 175 S340 80 430 80" fill="none" stroke="#ddeff5" stroke-width="14" stroke-linecap="round"/>
+          <g transform="translate(30 220) rotate(-7 55 55)"><rect width="110" height="110" rx="18" fill="#e76f51"/><text x="55" y="48" text-anchor="middle" fill="#fff" font-size="20" font-weight="900">IF</text><text x="55" y="76" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">I START</text></g>
+          <g transform="translate(195 125) rotate(-7 55 55)"><rect width="110" height="110" rx="18" fill="#e9a23b"/><text x="55" y="48" text-anchor="middle" fill="#17324d" font-size="20" font-weight="900">I WILL</text><text x="55" y="76" text-anchor="middle" fill="#17324d" font-size="15" font-weight="800">PROGRESS</text></g>
+          <g transform="translate(360 30)"><rect width="110" height="110" rx="18" fill="#2a9d8f"/><path d="M31 58l16 16 33-42" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/><text x="55" y="101" text-anchor="middle" fill="#fff" font-size="15" font-weight="800">NEXT STEP</text></g>
+        </svg>
+      </div>
+    </section>
+    <section class="objectives">
+      <article class="objective"><b>Understand</b>Identify conditions and possible results in natural conversations.</article>
+      <article class="objective"><b>Choose</b>Use if + present simple and will + base verb accurately.</article>
+      <article class="objective"><b>Build</b>Create an If-Then Action Map for one real aspiration.</article>
+    </section>
+    <nav class="lesson-nav">
+      <a href="#warmup">1 Seven-day action</a><a href="#vocab">2 Vocabulary</a><a href="#listening">3 Listening</a><a href="#language">4 Language Lab</a><a href="#sequence">5 Domino effect</a><a href="#roadmap">6 Action map</a><a href="#exit">7 Exit ticket</a><a href="#homework" class="homework-link">8 Homework Mode</a>
+    </nav>
+
+    <section class="panel" id="warmup">
+      <div class="section-head"><span class="step">1</span><div><h2>Your next seven days</h2><p>Look back at your road map. How far has each first-step habit moved?</p></div><span class="time">5 min</span></div>
+      <div class="choice-grid">
+        <article class="choice-card" data-stage="w1"><strong>I compared two or three options.</strong><div class="tri-buttons"><button data-value="D">DONE</button><button data-value="S">STARTED</button><button data-value="N">NEXT</button></div></article>
+        <article class="choice-card" data-stage="w2"><strong>I asked someone for useful advice.</strong><div class="tri-buttons"><button data-value="D">DONE</button><button data-value="S">STARTED</button><button data-value="N">NEXT</button></div></article>
+        <article class="choice-card" data-stage="w3"><strong>I chose a date for my first step.</strong><div class="tri-buttons"><button data-value="D">DONE</button><button data-value="S">STARTED</button><button data-value="N">NEXT</button></div></article>
+        <article class="choice-card" data-stage="w4"><strong>I wrote a simple fallback option.</strong><div class="tri-buttons"><button data-value="D">DONE</button><button data-value="S">STARTED</button><button data-value="N">NEXT</button></div></article>
+      </div>
+      <label class="text-label" style="margin-top:1rem">Which action could create the biggest positive consequence?
+        <input type="text" data-save="warm-consequence" placeholder="If I..., I will probably...">
+      </label>
+    </section>
+
+    <section class="panel" id="vocab">
+      <div class="section-head"><span class="step">2</span><div><h2>Action and consequence vocabulary</h2><p>Match the expressions with their meanings.</p></div><span class="time">6 min</span></div>
+      <div class="match-grid" id="vocabQuiz">
+        <div class="match-item" data-answer="d"><strong>1. take the first step</strong><select data-save="v1"><option value="">-</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></div>
+        <div class="match-item" data-answer="f"><strong>2. make progress</strong><select data-save="v2"><option value="">-</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></div>
+        <div class="match-item" data-answer="b"><strong>3. stay on track</strong><select data-save="v3"><option value="">-</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></div>
+        <div class="match-item" data-answer="e"><strong>4. face a setback</strong><select data-save="v4"><option value="">-</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></div>
+        <div class="match-item" data-answer="a"><strong>5. ask for support</strong><select data-save="v5"><option value="">-</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></div>
+        <div class="match-item" data-answer="c"><strong>6. adjust the plan</strong><select data-save="v6"><option value="">-</option><option>a</option><option>b</option><option>c</option><option>d</option><option>e</option><option>f</option></select></div>
+      </div>
+      <div class="strategy"><span> a-f </span><div><b>Meanings</b><br>a get help or advice · b continue according to the plan · c change the route when necessary · d begin an action towards a goal · e experience a temporary problem · f move closer to a result</div></div>
+      <div class="action-row"><button class="primary" type="button" data-check="vocabQuiz">Check vocabulary</button><span class="feedback" id="vocabQuizFeedback" aria-live="polite"></span></div>
+    </section>
+
+    <section class="panel" id="listening">
+      <div class="section-head"><span class="step">3</span><div><h2>Listen: First Conditional</h2><p>Listen to four short conversations. Keep the script closed during the first two listenings.</p></div><span class="time">12 min</span></div>
+      <div class="audio-card"><span class="audio-icon">▶</span><div><h3>ELLLO B1-10 - First Conditional</h3><p>Four CEFR B1 conversations about changing plans, transport, free time and holidays.</p></div><a class="primary" href="https://www.elllo.org/class/B1/B1-10-First-Conditional.html" target="_blank" rel="noopener">Open audio</a></div>
+      <div id="gistQuiz">
+        <article class="question-card" data-answer="b"><p>1. What do the speakers mainly do?</p><div class="options">
+          <label class="option"><input type="radio" name="g1" value="a" data-save="g1"> Describe routines that never change.</label>
+          <label class="option"><input type="radio" name="g1" value="b" data-save="g1"> Explain what they will or can do when a situation changes.</label>
+          <label class="option"><input type="radio" name="g1" value="c" data-save="g1"> Tell stories about finished past events.</label>
+        </div></article>
+        <article class="question-card" data-answer="c"><p>2. Which pattern connects the conversations?</p><div class="options">
+          <label class="option"><input type="radio" name="g2" value="a" data-save="g2"> Dream + impossible fantasy.</label>
+          <label class="option"><input type="radio" name="g2" value="b" data-save="g2"> Problem + past regret.</label>
+          <label class="option"><input type="radio" name="g2" value="c" data-save="g2"> Possible condition + practical response.</label>
+        </div></article>
+      </div>
+      <div class="action-row"><button class="primary" type="button" data-check="gistQuiz">Check gist</button><span class="feedback" id="gistQuizFeedback" aria-live="polite"></span></div>
+      <h3 style="margin-top:2rem">Second listening - details</h3>
+      <div class="quiz-list" id="detailQuiz">
+        <div class="quiz-row" data-answer="T"><span class="number">1</span><span>If it rains, the football game will move to the gym.</span><select data-save="d1"><option value="">-</option><option>T</option><option>F</option></select></div>
+        <div class="quiz-row" data-answer="F"><span class="number">2</span><span>If fewer than eight players come, they will continue outside.</span><select data-save="d2"><option value="">-</option><option>T</option><option>F</option></select></div>
+        <div class="quiz-row" data-answer="T"><span class="number">3</span><span>The party host suggests the subway because parking may be difficult.</span><select data-save="d3"><option value="">-</option><option>T</option><option>F</option></select></div>
+        <div class="quiz-row" data-answer="F"><span class="number">4</span><span>If it rains, the woman will walk from the station.</span><select data-save="d4"><option value="">-</option><option>T</option><option>F</option></select></div>
+        <div class="quiz-row" data-answer="T"><span class="number">5</span><span>The man cannot go to the gym unless he finishes work on time.</span><select data-save="d5"><option value="">-</option><option>T</option><option>F</option></select></div>
+        <div class="quiz-row" data-answer="T"><span class="number">6</span><span>The spinning class starts at seven.</span><select data-save="d6"><option value="">-</option><option>T</option><option>F</option></select></div>
+        <div class="quiz-row" data-answer="F"><span class="number">7</span><span>The woman will ski even if there is not enough snow.</span><select data-save="d7"><option value="">-</option><option>T</option><option>F</option></select></div>
+        <div class="quiz-row" data-answer="T"><span class="number">8</span><span>The man says he is working on his third novel.</span><select data-save="d8"><option value="">-</option><option>T</option><option>F</option></select></div>
+      </div>
+      <div class="action-row"><button class="primary" type="button" data-check="detailQuiz">Check details</button><span class="feedback" id="detailQuizFeedback" aria-live="polite"></span></div>
+    </section>
+
+    <section class="panel" id="language">
+      <div class="section-head"><span class="step">4</span><div><h2>Language Lab: possible consequences</h2><p>Use the first conditional for a future situation that is real or possible.</p></div><span class="time">10 min</span></div>
+      <div class="focus-grid">
+        <article class="focus-card"><h3>IF + PRESENT SIMPLE</h3><p>Name the realistic condition. Do not use <i>will</i> here.</p><p class="example">If I take the first step, ...</p></article>
+        <article class="focus-card"><h3>WILL + BASE VERB</h3><p>Name the likely or possible future result.</p><p class="example">... I will feel more confident.</p></article>
+      </div>
+      <div class="strategy"><span>!</span><div><b>Word order</b><br><i>If I start today, I will make progress.</i> = <i>I will make progress if I start today.</i> Use a comma only when the if-clause comes first.</div></div>
+      <div class="context-list" id="languageQuiz" style="margin-top:1.2rem">
+        <div class="context-row" data-answer="take / will feel"><span>1. If I ___ the first step, I ___ more confident.</span><select data-save="l1"><option value="">Choose</option><option>will take / feel</option><option>take / will feel</option><option>take / feel</option></select></div>
+        <div class="context-row" data-answer="will apply / finishes"><span>2. She ___ if she ___ her portfolio.</span><select data-save="l2"><option value="">Choose</option><option>applies / will finish</option><option>will apply / will finish</option><option>will apply / finishes</option></select></div>
+        <div class="context-row" data-answer="don't set / won't start"><span>3. If we ___ a deadline, we ___ on time.</span><select data-save="l3"><option value="">Choose</option><option>won't set / don't start</option><option>don't set / won't start</option><option>don't set / don't start</option></select></div>
+        <div class="context-row" data-answer="will ask / need"><span>4. I ___ my mentor if I ___ help.</span><select data-save="l4"><option value="">Choose</option><option>ask / will need</option><option>will ask / will need</option><option>will ask / need</option></select></div>
+        <div class="context-row" data-answer="saves / won't take"><span>5. Unless he ___ enough, he ___ the course.</span><select data-save="l5"><option value="">Choose</option><option>will save / doesn't take</option><option>saves / won't take</option><option>doesn't save / will take</option></select></div>
+        <div class="context-row" data-answer="changes / will adjust"><span>6. If the plan ___, they ___ the timeline.</span><select data-save="l6"><option value="">Choose</option><option>will change / adjust</option><option>changes / adjust</option><option>changes / will adjust</option></select></div>
+      </div>
+      <div class="action-row"><button class="primary" type="button" data-check="languageQuiz">Check language</button><span class="feedback" id="languageQuizFeedback" aria-live="polite"></span></div>
+    </section>
+
+    <section class="panel" id="sequence">
+      <div class="section-head"><span class="step">5</span><div><h2>Create a domino effect</h2><p>Drag the cards or use the arrows. Each action should make the next one possible.</p></div><span class="time">7 min</span></div>
+      <div class="sort-wrap">
+        <div class="markers"><div class="marker">IF 1</div><div class="marker">THEN 2</div><div class="marker">THEN 3</div><div class="marker">THEN 4</div><div class="marker">RESULT</div></div>
+        <div class="sortable" id="sequenceList">
+          <article class="sort-card" draggable="true" data-id="enroll"><span class="handle">⋮⋮</span><span>If I choose the best option, I will enrol.</span><span class="move-buttons"><button type="button" data-move="-1" aria-label="Move up">↑</button><button type="button" data-move="1" aria-label="Move down">↓</button></span></article>
+          <article class="sort-card" draggable="true" data-id="apply"><span class="handle">⋮⋮</span><span>If I practise regularly, I will use the skill in a real project.</span><span class="move-buttons"><button type="button" data-move="-1" aria-label="Move up">↑</button><button type="button" data-move="1" aria-label="Move down">↓</button></span></article>
+          <article class="sort-card" draggable="true" data-id="compare"><span class="handle">⋮⋮</span><span>If I choose one skill, I will compare suitable courses.</span><span class="move-buttons"><button type="button" data-move="-1" aria-label="Move up">↑</button><button type="button" data-move="1" aria-label="Move down">↓</button></span></article>
+          <article class="sort-card" draggable="true" data-id="practice"><span class="handle">⋮⋮</span><span>If I enrol, I will practise twice a week.</span><span class="move-buttons"><button type="button" data-move="-1" aria-label="Move up">↑</button><button type="button" data-move="1" aria-label="Move down">↓</button></span></article>
+          <article class="sort-card" draggable="true" data-id="goal"><span class="handle">⋮⋮</span><span>Choose one professional skill to improve.</span><span class="move-buttons"><button type="button" data-move="-1" aria-label="Move up">↑</button><button type="button" data-move="1" aria-label="Move down">↓</button></span></article>
+        </div>
+      </div>
+      <div class="action-row"><button class="primary" id="checkSequence" type="button">Check sequence</button><span class="feedback" id="sequenceFeedback" aria-live="polite"></span></div>
+    </section>
+
+    <section class="panel" id="roadmap">
+      <div class="section-head"><span class="step">6</span><div><h2>Build your If-Then Action Map</h2><p>Create one positive route, one obstacle response and one support option.</p></div><span class="time">11 min</span></div>
+      <div class="road-grid">
+        <article class="road-card"><label class="text-label">1. Goal<textarea data-save="if-goal" placeholder="improve my English for interviews"></textarea></label></article>
+        <article class="road-card"><label class="text-label">2. First step<textarea data-save="if-step" placeholder="practise for 20 minutes three times a week"></textarea></label></article>
+        <article class="road-card"><label class="text-label">3. Positive result<textarea data-save="if-result" placeholder="feel more confident and answer faster"></textarea></label></article>
+        <article class="road-card"><label class="text-label">4. Possible obstacle<textarea data-save="if-obstacle" placeholder="I miss one practice session"></textarea></label></article>
+        <article class="road-card"><label class="text-label">5. Response<textarea data-save="if-response" placeholder="move it to the next day"></textarea></label></article>
+        <article class="road-card"><label class="text-label">6. Support or fallback<textarea data-save="if-support" placeholder="ask a friend to practise with me"></textarea></label></article>
+      </div>
+      <div class="action-row"><button class="secondary" id="buildRoad" type="button">Create my If-Then Action Map</button><button class="ghost" id="copyRoad" type="button">Copy</button></div>
+      <div class="road-output" id="roadOutput" aria-live="polite"></div>
+      <div class="strategy"><span>?</span><div><b>Coach questions</b><br>Is the condition realistic? · Is the result specific? · What will you do if the obstacle appears? · Who can support you?</div></div>
+    </section>
+
+    <section class="panel" id="exit">
+      <div class="section-head"><span class="step">7</span><div><h2>Exit ticket</h2><p>Make the next consequence clear.</p><div class="scale-legend" aria-label="Self-assessment scale"><strong>Self-assessment scale</strong><span>1 = Strongly disagree · 2 = Disagree · 3 = Not sure · 4 = Agree · 5 = Strongly agree</span></div></div><span class="time">4 min</span></div>
+      <div class="field-grid">
+        <label class="text-label">If I take my first step, I will...
+          <input type="text" data-save="exit-result" placeholder="make progress because...">
+        </label>
+        <label class="text-label">If I face a setback, I will...
+          <input type="text" data-save="exit-setback" placeholder="adjust the plan by...">
+        </label>
+        <label class="text-label" style="grid-column:1/-1">This week, I will...
+          <input type="text" data-save="exit-action" placeholder="take one small, specific action...">
+        </label>
+      </div>
+      <div class="self-check" style="margin-top:1.5rem">
+        <div class="scale-numbers" aria-hidden="true"><span></span><b>1</b><b>2</b><b>3</b><b>4</b><b>5</b></div>
+        <div class="scale-row"><label>I can identify conditions and possible results in a conversation.</label><input type="radio" name="s1" value="1" data-save="s1"><input type="radio" name="s1" value="2" data-save="s1"><input type="radio" name="s1" value="3" data-save="s1"><input type="radio" name="s1" value="4" data-save="s1"><input type="radio" name="s1" value="5" data-save="s1"></div>
+        <div class="scale-row"><label>I can use the first conditional accurately.</label><input type="radio" name="s2" value="1" data-save="s2"><input type="radio" name="s2" value="2" data-save="s2"><input type="radio" name="s2" value="3" data-save="s2"><input type="radio" name="s2" value="4" data-save="s2"><input type="radio" name="s2" value="5" data-save="s2"></div>
+        <div class="scale-row"><label>I can explain a realistic consequence and a fallback.</label><input type="radio" name="s3" value="1" data-save="s3"><input type="radio" name="s3" value="2" data-save="s3"><input type="radio" name="s3" value="3" data-save="s3"><input type="radio" name="s3" value="4" data-save="s3"><input type="radio" name="s3" value="5" data-save="s3"></div>
+      </div>
+      <a class="send-next" href="#homework">
+        <span>Homework ready?</span>
+        <strong>Continue to Homework &amp; Send to Teacher ↓</strong>
+      </a>
+    </section>
+
+    <section class="panel homework-panel" id="homework">
+      <div class="section-head"><span class="step">8</span><div><h2>Homework Mode · Send to Teacher</h2><p>Complete, check and prepare your submission. No GPT is used.</p></div><span class="time">after class</span></div>
+      <div class="homework">
+        <div class="send-steps" aria-label="Submission steps">
+          <div class="send-step"><b>Step 1</b>Complete</div>
+          <div class="send-step"><b>Step 2</b>Check</div>
+          <div class="send-step"><b>Step 3</b>Send to Teacher</div>
+        </div>
+        <h3>My 30-day If-Then Plan</h3>
+        <p>Write <b>90-120 words</b>. Include your goal and first step, three first conditional sentences, one negative condition or <i>unless</i>, a fallback and at least two connectors: <i>because, so, but</i>.</p>
+        <div class="home-grid">
+          <label class="text-label">Student ID<input type="text" data-save="student-id" id="studentId" placeholder="e.g. B15-004"></label>
+          <label class="text-label">Student name<input type="text" data-save="student-name" id="studentName" placeholder="Your name"></label>
+          <label class="text-label full">Homework text<textarea data-save="home-text" id="homeText" style="min-height:220px" placeholder="My goal is... If I take the first step,..."></textarea></label>
+        </div>
+        <div class="word-meter" id="wordMeter"><span>Target: 90-120 words</span><span id="wordCount">0 words</span></div>
+        <div class="checklist">
+          <label><input type="checkbox" data-save="hc1"> I included my goal and one clear first step.</label>
+          <label><input type="checkbox" data-save="hc2"> I used at least three first conditional sentences.</label>
+          <label><input type="checkbox" data-save="hc3"> I included one negative condition or unless.</label>
+          <label><input type="checkbox" data-save="hc4"> I included a fallback and at least two connectors.</label>
+        </div>
+        <div class="send-banner"><span>Teacher submission</span><span>NO GPT</span></div>
+        <p class="connection-status" id="connectionStatus"></p>
+        <div class="action-row"><button class="secondary" id="prepareSubmission" type="button">Prepare submission</button><button class="ghost" id="copySubmission" type="button">Copy</button><button class="ghost" id="downloadSubmission" type="button">Download JSON</button><button class="primary" id="sendSubmission" type="button">Send to Teacher</button></div>
+        <span class="feedback" id="submitFeedback" aria-live="polite"></span>
+        <div class="submission" id="submissionPreview"></div>
+      </div>
+      <p class="source-note">Core listening: <a href="https://www.elllo.org/class/B1/B1-10-First-Conditional.html" target="_blank" rel="noopener">ELLLO B1-10 - First Conditional</a>. Optional extension: <a href="https://www.elllo.org/english/course/L4-10-First-Conditional.htm" target="_blank" rel="noopener">ELLLO L4-10 - First Conditional</a>. Access checked on 23 July 2026. Activities are original and do not reproduce the source transcript.</p>
+    </section>
+  </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+    const STORE="b15-aula4-first-step-send-v1";
+    const SHEETS_ENDPOINT="";
+    const state=JSON.parse(localStorage.getItem(STORE)||"{}");
+    state.scores=state.scores||{};
+    const connectionStatus=document.getElementById("connectionStatus");
+    connectionStatus.textContent=SHEETS_ENDPOINT
+      ?"Connected: this submission can be sent directly to the teacher."
+      :"Not connected yet: the teacher must configure the Google Sheets URL. Copy and Download JSON already work.";
+    connectionStatus.classList.toggle("connected",Boolean(SHEETS_ENDPOINT));
+    const saveState=()=>{localStorage.setItem(STORE,JSON.stringify(state));updateProgress()};
+    const toast=message=>{const el=document.getElementById("toast");el.textContent=message;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2200)};
+
+    document.querySelectorAll("[data-save]").forEach(el=>{
+      const key=el.dataset.save;
+      if(el.type==="radio"||el.type==="checkbox"){if(state[key]===el.value||state[key]===true)el.checked=true}
+      else if(state[key]!==undefined)el.value=state[key];
+      const handler=()=>{
+        if(el.type==="radio"){if(el.checked)state[key]=el.value}
+        else if(el.type==="checkbox")state[key]=el.checked;
+        else state[key]=el.value;
+        saveState();if(el.id==="homeText")updateWordCount();
+      };
+      el.addEventListener(el.tagName==="SELECT"||el.type==="checkbox"?"change":"input",handler);
+    });
+
+    document.querySelectorAll("[data-stage]").forEach(card=>{
+      const key="stage-"+card.dataset.stage,restore=state[key];
+      if(restore){const btn=card.querySelector(`[data-value="${restore}"]`);if(btn)btn.classList.add("active")}
+      card.querySelectorAll("button").forEach(btn=>btn.addEventListener("click",()=>{
+        card.querySelectorAll("button").forEach(x=>x.classList.remove("active"));btn.classList.add("active");state[key]=btn.dataset.value;saveState();
+      }));
+    });
+
+    const checkCollection=id=>{
+      const container=document.getElementById(id);
+      const items=[...container.children].filter(el=>el.dataset.answer);
+      let correct=0,answered=0;
+      items.forEach(item=>{
+        const select=item.querySelector("select"),radio=item.querySelector("input[type='radio']:checked");
+        const value=select?select.value:radio?radio.value:"";
+        item.classList.remove("correct","incorrect");
+        if(value){answered++;if(value===item.dataset.answer){correct++;item.classList.add("correct")}else item.classList.add("incorrect")}
+      });
+      state.scores[id]={correct,total:items.length};saveState();
+      const feedback=document.getElementById(id+"Feedback");
+      feedback.className="feedback "+(correct===items.length?"success":"warn");
+      feedback.textContent=answered<items.length?`${correct}/${items.length} correct - complete every item.`:correct===items.length?`${correct}/${items.length} - Excellent.`:`${correct}/${items.length} correct - compare and try again.`;
+    };
+    document.querySelectorAll("[data-check]").forEach(btn=>btn.addEventListener("click",()=>checkCollection(btn.dataset.check)));
+
+    const list=document.getElementById("sequenceList");
+    const correctOrder=["goal","compare","enroll","practice","apply"];
+    const saveOrder=()=>{state.sequence=[...list.children].map(x=>x.dataset.id);saveState()};
+    if(Array.isArray(state.sequence)){
+      state.sequence.forEach(id=>{const el=list.querySelector(`[data-id="${id}"]`);if(el)list.appendChild(el)});
+    }
+    let dragged=null;
+    list.addEventListener("dragstart",e=>{dragged=e.target.closest(".sort-card");if(dragged)dragged.classList.add("dragging")});
+    list.addEventListener("dragend",()=>{if(dragged)dragged.classList.remove("dragging");dragged=null;saveOrder()});
+    list.addEventListener("dragover",e=>{
+      e.preventDefault();if(!dragged)return;
+      const cards=[...list.querySelectorAll(".sort-card:not(.dragging)")];
+      const after=cards.find(card=>e.clientY<=card.getBoundingClientRect().top+card.offsetHeight/2);
+      after?list.insertBefore(dragged,after):list.appendChild(dragged);
+    });
+    list.addEventListener("click",e=>{
+      const button=e.target.closest("[data-move]");if(!button)return;
+      const card=button.closest(".sort-card"),direction=Number(button.dataset.move);
+      if(direction<0&&card.previousElementSibling)list.insertBefore(card,card.previousElementSibling);
+      if(direction>0&&card.nextElementSibling)list.insertBefore(card.nextElementSibling,card);
+      saveOrder();
+    });
+    const scoreSequence=()=>{
+      const order=[...list.children].map(x=>x.dataset.id);
+      let correct=0;[...list.children].forEach((card,i)=>{card.classList.remove("correct","incorrect");if(order[i]===correctOrder[i]){correct++;card.classList.add("correct")}else card.classList.add("incorrect")});
+      state.scores.sequenceQuiz={correct,total:5};saveState();
+      const f=document.getElementById("sequenceFeedback");f.className="feedback "+(correct===5?"success":"warn");f.textContent=correct===5?"5/5 - Clear sequence.":`${correct}/5 positions correct - move the cards and try again.`;
+      return state.scores.sequenceQuiz;
+    };
+    document.getElementById("checkSequence").addEventListener("click",scoreSequence);
+
+    const clean=text=>text.trim().replace(/[.!?]+$/,"");
+    const buildRoad=()=>{
+      const goal=clean(state["if-goal"]||""),step=clean(state["if-step"]||""),result=clean(state["if-result"]||"");
+      const obstacle=clean(state["if-obstacle"]||""),response=clean(state["if-response"]||""),support=clean(state["if-support"]||"");
+      if(!goal||!step||!result)return toast("Add your goal, first step and positive result.");
+      const lines=[`My goal is to ${goal}.`,`If I ${step}, I will ${result}.`];
+      if(obstacle&&response)lines.push(`If ${obstacle}, I will ${response}.`);
+      if(support)lines.push(`If I need support, I will ${support}.`);
+      const output=document.getElementById("roadOutput");output.textContent=lines.join(" ");state.roadOutput=output.textContent;saveState();
+    };
+    document.getElementById("buildRoad").addEventListener("click",buildRoad);
+    if(state.roadOutput)document.getElementById("roadOutput").textContent=state.roadOutput;
+    document.getElementById("copyRoad").addEventListener("click",async()=>{
+      const value=document.getElementById("roadOutput").textContent.trim();if(!value)return toast("Create your action map first.");
+      try{await navigator.clipboard.writeText(value);toast("Action map copied.")}catch{toast("Select the text and copy it manually.")}
+    });
+
+    const objectiveSections=["vocabQuiz","gistQuiz","detailQuiz","languageQuiz"];
+    const countWords=text=>(text.trim().match(/\b[\w'-]+\b/g)||[]).length;
+    const updateWordCount=()=>{
+      const count=countWords(document.getElementById("homeText").value),meter=document.getElementById("wordMeter");
+      document.getElementById("wordCount").textContent=`${count} words`;meter.classList.toggle("good",count>=90&&count<=120);return count;
+    };
+    updateWordCount();
+    const objectiveScore=()=>{
+      const records=[
+        ...objectiveSections.map(id=>state.scores[id]||{correct:0,total:document.querySelectorAll(`#${id} [data-answer]`).length}),
+        state.scores.sequenceQuiz||{correct:0,total:5}
+      ];
+      const correct=records.reduce((n,x)=>n+(x.correct||0),0),total=records.reduce((n,x)=>n+(x.total||0),0);
+      return {correct,total,percent:total?Math.round(correct/total*100):0};
+    };
+    const collectObjectiveAnswers=()=>{
+      const answers={};
+      objectiveSections.forEach(id=>{
+        answers[id]=[...document.querySelectorAll(`#${id} [data-answer]`)].map(item=>{
+          const select=item.querySelector("select"),radio=item.querySelector("input[type='radio']:checked");
+          return select?select.value:radio?radio.value:"";
+        });
+      });
+      answers.sequenceQuiz=[...list.children].map(item=>item.dataset.id);
+      return answers;
+    };
+    const makePayload=()=>{
+      objectiveSections.forEach(checkCollection);
+      scoreSequence();
+      const checklist=[1,2,3,4].map(n=>Boolean(state["hc"+n])),score=objectiveScore(),text=document.getElementById("homeText").value.trim();
+      return{
+        lesson:"B1.5 Aula 4 - If I Take the First Step",
+        submitted_at:new Date().toISOString(),
+        student_id:document.getElementById("studentId").value.trim(),
+        student_name:document.getElementById("studentName").value.trim(),
+        objective_score:score,
+        objective_answers:collectObjectiveAnswers(),
+        written_work:{
+          warmup_consequence:state["warm-consequence"]||"",
+          goal:state["if-goal"]||"",
+          first_step:state["if-step"]||"",
+          positive_result:state["if-result"]||"",
+          obstacle:state["if-obstacle"]||"",
+          obstacle_response:state["if-response"]||"",
+          support_or_fallback:state["if-support"]||"",
+          if_then_action_map:state.roadOutput||"",
+          exit_result:state["exit-result"]||"",
+          exit_setback:state["exit-setback"]||"",
+          exit_action:state["exit-action"]||"",
+        },
+        self_check:{listening:state.s1||"",first_conditional:state.s2||"",consequences:state.s3||""},
+        homework_text:text,
+        word_count:countWords(text),
+        checklist
+      };
+    };
+    const formatPayload=p=>`B1.5 AULA 4 - HOMEWORK\nStudent: ${p.student_name||"(not entered)"}\nID: ${p.student_id||"(not entered)"}\nObjective score: ${p.objective_score.correct}/${p.objective_score.total} (${p.objective_score.percent}%)\nWords: ${p.word_count}\nChecklist: ${p.checklist.filter(Boolean).length}/4\n\n${p.homework_text}`;
+    const prepare=()=>{
+      const p=makePayload(),preview=document.getElementById("submissionPreview"),feedback=document.getElementById("submitFeedback");
+      preview.textContent=formatPayload(p);preview.classList.add("show");state.submission=p;saveState();
+      const issues=[];if(!p.student_id)issues.push("student ID");if(!p.student_name)issues.push("name");if(p.word_count<90||p.word_count>120)issues.push("90-120 words");if(p.checklist.some(x=>!x))issues.push("checklist");
+      feedback.className="feedback "+(issues.length?"warn":"success");feedback.textContent=issues.length?`Review: ${issues.join(", ")}.`:"Submission ready.";
+      return p;
+    };
+    document.getElementById("prepareSubmission").addEventListener("click",prepare);
+    document.getElementById("copySubmission").addEventListener("click",async()=>{const p=prepare();try{await navigator.clipboard.writeText(formatPayload(p));toast("Submission copied.")}catch{toast("Select the preview and copy it manually.")}});
+    document.getElementById("downloadSubmission").addEventListener("click",()=>{
+      const p=prepare(),safe=(p.student_id||"student").replace(/[^a-z0-9_-]+/gi,"-"),blob=new Blob([JSON.stringify(p,null,2)],{type:"application/json"}),a=document.createElement("a");
+      a.href=URL.createObjectURL(blob);a.download=`B1.5_Aula_4_${safe}.json`;a.click();URL.revokeObjectURL(a.href);toast("JSON downloaded.");
+    });
+    document.getElementById("sendSubmission").addEventListener("click",async()=>{
+      const p=prepare(),feedback=document.getElementById("submitFeedback");
+      if(!SHEETS_ENDPOINT){feedback.className="feedback warn";feedback.textContent="Teacher submission link is not configured in this copy. Use Copy or Download JSON.";return}
+      try{await fetch(SHEETS_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(p)});feedback.className="feedback success";feedback.textContent="Submission sent to the teacher.";toast("Submission sent.")}
+      catch{feedback.className="feedback warn";feedback.textContent="Could not send. Use Copy or Download JSON."}
+    });
+
+    const updateProgress=()=>{
+      const stageCount=Object.keys(state).filter(k=>k.startsWith("stage-")).length;
+      const milestones=[stageCount>=3,Boolean(state.scores.vocabQuiz?.correct>=4),Boolean(state.scores.gistQuiz?.correct>=1),Boolean(state.scores.detailQuiz?.correct>=6),Boolean(state.scores.languageQuiz?.correct>=4),Boolean(state.scores.sequenceQuiz?.correct>=4),Boolean(state["if-goal"]&&state["if-step"]&&state["if-result"]),Boolean(state["home-text"])];
+      const percent=Math.round(milestones.filter(Boolean).length/milestones.length*100);document.getElementById("progressBar").style.width=percent+"%";document.getElementById("progressText").textContent=percent+"%";
+    };
+    document.getElementById("resetAll").addEventListener("click",()=>{if(!confirm("Reset every answer and saved note?"))return;localStorage.removeItem(STORE);location.reload()});
+    updateProgress();
+  </script>
+</body>
+</html>
