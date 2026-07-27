@@ -561,3 +561,572 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 .level-grid .card.curriculum-ready:hover{transform:translateY(-5px);border-color:rgba(23,50,77,.35);box-shadow:var(--shadow-lg)}
 @media(max-width:900px){.curriculum-summary{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:620px){.curriculum-summary{grid-template-columns:1fr}.curriculum-card{min-height:0}}
+
+
+/* ================================================================
+   NAUTICAL MAP DESIGN — OPTION B
+   ================================================================ */
+
+:root{
+  --chart-blue:#16465b;
+  --chart-deep:#0d2d40;
+  --chart-grid:rgba(221,239,245,.12);
+  --route-gold:#f0ad3d;
+  --buoy-coral:#e76f51;
+}
+
+/* Compass-inspired brand mark */
+.logo-mark{
+  border-radius:50%;
+  border:2px solid rgba(255,255,255,.78);
+  box-shadow:
+    0 0 0 4px rgba(42,157,143,.16),
+    0 12px 24px rgba(42,157,143,.22);
+}
+.logo-mark::before{
+  inset:7px;
+  width:auto;
+  height:auto;
+  border-radius:50%;
+  background:
+    linear-gradient(45deg,transparent 47%,rgba(255,255,255,.42) 48% 52%,transparent 53%),
+    linear-gradient(-45deg,transparent 47%,rgba(255,255,255,.42) 48% 52%,transparent 53%);
+}
+.logo-mark::after{
+  right:50%;
+  bottom:50%;
+  width:8px;
+  height:8px;
+  transform:translate(50%,50%);
+  background:var(--gold);
+  box-shadow:none;
+}
+
+/* Home hero becomes an illustrated navigational chart */
+.hero{
+  background:
+    radial-gradient(circle at 84% 15%,rgba(42,157,143,.30),transparent 23rem),
+    linear-gradient(135deg,#15344b 0%,#164e63 58%,#1c6370 100%);
+}
+.hero-art{
+  min-width:0;
+}
+.nautical-map{
+  width:min(100%,610px)!important;
+  overflow:visible;
+}
+.map-grid-lines path{
+  stroke:#dcecf2;
+  stroke-width:1;
+  stroke-dasharray:4 8;
+}
+.map-waves path{
+  fill:none;
+  stroke:#a9e0dc;
+  stroke-width:4;
+  stroke-linecap:round;
+}
+.compass-rose text{
+  fill:#dcecf2;
+  font-size:11px;
+  font-weight:900;
+}
+.nautical-route-shadow{
+  fill:none;
+  stroke:#0a2131;
+  stroke-width:13;
+  stroke-linecap:round;
+  opacity:.24;
+}
+.nautical-route{
+  fill:none;
+  stroke:var(--route-gold);
+  stroke-width:7;
+  stroke-linecap:round;
+  stroke-dasharray:2 18;
+  animation:route-drift 13s linear infinite;
+}
+.map-port .port-halo{
+  fill:#17324d;
+  fill-opacity:.65;
+  stroke:#ffffff;
+  stroke-opacity:.42;
+  stroke-width:2;
+}
+.map-port .port-buoy{
+  fill:#f8fbfc;
+  stroke:#17324d;
+  stroke-width:5;
+}
+.map-port.live .port-buoy{
+  fill:#82d8cc;
+  stroke:#ffffff;
+}
+.map-port.destination .port-buoy{
+  fill:#f0ad3d;
+  stroke:#ffffff;
+}
+.port-code{
+  fill:#17324d;
+  font-size:14px;
+  font-weight:1000;
+  text-anchor:middle;
+}
+.port-code.small{font-size:12px}
+.port-name{
+  fill:#ffffff;
+  font-size:10px;
+  font-weight:950;
+  letter-spacing:.12em;
+  text-anchor:middle;
+}
+.destination-star{fill:#f0ad3d}
+.map-boat{
+  transform-box:fill-box;
+  transform-origin:center;
+  animation:boat-bob 3.8s ease-in-out infinite;
+}
+.map-label rect{
+  fill:#ffffff;
+  fill-opacity:.94;
+  stroke:#ffffff;
+  stroke-opacity:.62;
+}
+.map-label text{
+  fill:#17324d;
+  font-size:13px;
+  font-weight:1000;
+  letter-spacing:.08em;
+}
+.map-label .map-label-sub{
+  fill:#207b70;
+  font-size:11px;
+  letter-spacing:.02em;
+}
+@keyframes route-drift{
+  to{stroke-dashoffset:-160}
+}
+@keyframes boat-bob{
+  0%,100%{translate:0 0}
+  50%{translate:0 -5px}
+}
+
+/* Home level cards become ports on the chart */
+.level-grid .level-badge{
+  position:relative;
+  width:3.35rem;
+  height:3.35rem;
+  border-radius:50%;
+  border:5px solid #ffffff;
+  box-shadow:
+    0 0 0 4px var(--navy),
+    0 9px 20px rgba(23,50,77,.18);
+}
+.level-grid .card.available .level-badge{
+  box-shadow:
+    0 0 0 4px var(--teal),
+    0 9px 20px rgba(42,157,143,.20);
+}
+.level-grid .level-badge::after{
+  content:"PORT";
+  position:absolute;
+  top:calc(100% + 7px);
+  left:50%;
+  transform:translateX(-50%);
+  color:var(--muted);
+  font-size:.54rem;
+  letter-spacing:.12em;
+}
+.level-grid .card{
+  background:
+    linear-gradient(180deg,rgba(255,255,255,.98),rgba(249,252,253,.95)),
+    repeating-linear-gradient(0deg,transparent 0 24px,rgba(23,50,77,.035) 25px);
+}
+.level-grid .card::before{
+  background:
+    repeating-radial-gradient(ellipse at center,
+      rgba(42,157,143,.10) 0 2px,
+      transparent 3px 11px);
+}
+
+/* Featured cards: topographic chart feel */
+.route-feature-card,
+.highlight-panel{
+  background:
+    radial-gradient(circle at 90% 10%,rgba(42,157,143,.30),transparent 15rem),
+    repeating-linear-gradient(0deg,transparent 0 34px,rgba(255,255,255,.035) 35px),
+    linear-gradient(130deg,var(--chart-deep),var(--chart-blue));
+}
+.route-feature-card.a1{
+  background:
+    radial-gradient(circle at 90% 10%,rgba(233,162,59,.17),transparent 14rem),
+    repeating-linear-gradient(90deg,transparent 0 38px,rgba(255,255,255,.035) 39px),
+    linear-gradient(130deg,#17685f,#2a9d8f);
+}
+.route-feature-card::before,
+.highlight-panel::before{
+  content:"";
+  position:absolute;
+  left:1.2rem;
+  right:1.2rem;
+  bottom:1.1rem;
+  height:44px;
+  border-bottom:4px dotted rgba(240,173,61,.66);
+  border-radius:50%;
+  pointer-events:none;
+}
+
+/* Compact route map in level and module heroes */
+.inner-hero{
+  grid-template-columns:minmax(0,.95fr) minmax(420px,1.05fr);
+  min-height:360px;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 43px,var(--chart-grid) 44px),
+    repeating-linear-gradient(90deg,transparent 0 58px,var(--chart-grid) 59px),
+    linear-gradient(130deg,var(--chart-deep),var(--chart-blue));
+}
+.level-map-panel{
+  position:relative;
+  overflow:hidden;
+  min-height:260px;
+  border:1px solid rgba(255,255,255,.20);
+  border-radius:28px;
+  padding:1rem;
+  background:
+    radial-gradient(circle at 80% 18%,rgba(42,157,143,.19),transparent 12rem),
+    rgba(255,255,255,.055);
+  box-shadow:inset 0 0 0 1px rgba(255,255,255,.05);
+}
+.level-map-top,
+.level-map-foot{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:1rem;
+}
+.level-map-top strong{
+  display:block;
+  color:#ffffff;
+  font-size:1.05rem;
+}
+.level-map-kicker,
+.map-coordinate{
+  color:#91dcd3;
+  font-size:.68rem;
+  font-weight:900;
+  letter-spacing:.11em;
+  text-transform:uppercase;
+}
+.mini-compass{
+  position:relative;
+  flex:0 0 auto;
+  width:44px;
+  height:44px;
+  border:1px solid rgba(255,255,255,.38);
+  border-radius:50%;
+}
+.mini-compass::before,
+.mini-compass::after{
+  content:"";
+  position:absolute;
+  inset:7px;
+  clip-path:polygon(50% 0,61% 39%,100% 50%,61% 61%,50% 100%,39% 61%,0 50%,39% 39%);
+  background:#ffffff;
+}
+.mini-compass::after{
+  inset:13px;
+  background:var(--coral);
+  transform:rotate(45deg);
+}
+.mini-compass i{
+  position:absolute;
+  inset:50%;
+  width:5px;
+  height:5px;
+  transform:translate(-50%,-50%);
+  border-radius:50%;
+  background:var(--navy);
+  z-index:2;
+}
+.mini-map-track{
+  position:relative;
+  height:150px;
+  margin:.45rem .2rem .25rem;
+}
+.mini-route-line{
+  position:absolute;
+  left:5%;
+  right:5%;
+  top:67px;
+  border-top:4px dotted rgba(240,173,61,.88);
+}
+.mini-port{
+  position:absolute;
+  left:var(--port-position);
+  top:50px;
+  width:72px;
+  transform:translateX(-50%);
+  text-align:center;
+}
+.mini-port-marker{
+  display:grid;
+  place-items:center;
+  width:34px;
+  height:34px;
+  margin:0 auto .45rem;
+  border:5px solid #ffffff;
+  border-radius:50%;
+  background:var(--navy);
+  box-shadow:0 0 0 4px rgba(255,255,255,.18);
+}
+.mini-port-marker span{
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background:#ffffff;
+}
+.mini-port.visited .mini-port-marker{
+  background:var(--teal);
+}
+.mini-port.current .mini-port-marker{
+  width:42px;
+  height:42px;
+  margin-top:-4px;
+  background:var(--coral);
+  box-shadow:
+    0 0 0 5px var(--gold),
+    0 12px 24px rgba(0,0,0,.22);
+}
+.mini-port b{
+  display:block;
+  color:#ffffff;
+  font-size:.76rem;
+  line-height:1;
+}
+.mini-port small{
+  display:block;
+  margin-top:.22rem;
+  color:#bcd4dd;
+  font-size:.59rem;
+  white-space:nowrap;
+}
+.mini-port.current b{color:#ffd47a}
+.mini-boat{
+  position:absolute;
+  left:var(--boat-position);
+  top:6px;
+  width:40px;
+  height:42px;
+  transform:translateX(-50%) rotate(-5deg);
+  z-index:4;
+  animation:mini-boat-bob 3.5s ease-in-out infinite;
+}
+.mini-boat-hull{
+  position:absolute;
+  left:6px;
+  bottom:2px;
+  width:29px;
+  height:12px;
+  border-radius:4px 4px 16px 16px;
+  background:var(--gold);
+  box-shadow:0 5px 12px rgba(0,0,0,.20);
+}
+.mini-boat-mast{
+  position:absolute;
+  left:20px;
+  top:2px;
+  width:3px;
+  height:29px;
+  border-radius:3px;
+  background:#ffffff;
+}
+.mini-boat-sail{
+  position:absolute;
+  top:3px;
+  width:0;
+  height:0;
+  border-style:solid;
+}
+.mini-boat-sail.one{
+  left:4px;
+  border-width:0 16px 23px 0;
+  border-color:transparent #ffffff transparent transparent;
+}
+.mini-boat-sail.two{
+  left:23px;
+  border-width:0 0 20px 12px;
+  border-color:transparent transparent var(--teal) transparent;
+}
+.level-map-foot{
+  padding-top:.65rem;
+  border-top:1px solid rgba(255,255,255,.12);
+}
+.you-are-here{
+  color:#dbe9ee;
+  font-size:.76rem;
+}
+.you-are-here b{color:#ffd47a}
+@keyframes mini-boat-bob{
+  0%,100%{translate:0 0}
+  50%{translate:0 -4px}
+}
+
+/* Module and lesson cards become charted ports */
+.module-badge,
+.lesson-number{
+  position:relative;
+  border-radius:50%;
+  border:5px solid #ffffff;
+  box-shadow:
+    0 0 0 4px var(--navy),
+    0 10px 22px rgba(23,50,77,.16);
+}
+.card.available .module-badge,
+.lesson-card.available .lesson-number{
+  box-shadow:
+    0 0 0 4px var(--teal),
+    0 10px 22px rgba(42,157,143,.18);
+}
+.curriculum-card,
+.lesson-card{
+  background:
+    radial-gradient(circle at 110% -10%,rgba(42,157,143,.13),transparent 12rem),
+    repeating-linear-gradient(0deg,transparent 0 35px,rgba(23,50,77,.025) 36px),
+    linear-gradient(180deg,#ffffff,#f9fcfd);
+}
+.curriculum-card::before,
+.lesson-card::before{
+  content:"";
+  position:absolute;
+  left:-20px;
+  right:-20px;
+  bottom:-75px;
+  width:auto;
+  height:150px;
+  border-radius:50%;
+  background:
+    repeating-radial-gradient(ellipse at center,
+      rgba(42,157,143,.09) 0 2px,
+      transparent 3px 13px);
+}
+.curriculum-card.available::after,
+.lesson-card.available::after{
+  content:"";
+  position:absolute;
+  top:20px;
+  right:18px;
+  width:8px;
+  height:34px;
+  border-radius:4px;
+  background:linear-gradient(180deg,var(--coral) 0 34%,#ffffff 35% 66%,var(--coral) 67%);
+  box-shadow:0 0 0 3px rgba(23,50,77,.06);
+  opacity:.75;
+}
+.curriculum-card.available .card-link::before,
+.lesson-card.available .card-link::before{
+  content:"⚓";
+  font-size:.82rem;
+}
+.route-strip{
+  position:relative;
+}
+.route-strip::before{
+  content:"";
+  position:absolute;
+  left:7%;
+  right:7%;
+  top:50%;
+  border-top:3px dotted rgba(240,173,61,.58);
+  z-index:-1;
+}
+.route-step{
+  position:relative;
+  border-radius:24px;
+}
+.route-step::before{
+  content:"";
+  display:block;
+  width:14px;
+  height:14px;
+  margin-bottom:.45rem;
+  border:4px solid #ffffff;
+  border-radius:50%;
+  background:var(--teal);
+  box-shadow:0 0 0 3px var(--navy);
+}
+
+/* Nautical headings */
+.section-heading h2::before{
+  content:"";
+  display:inline-block;
+  width:1rem;
+  height:1rem;
+  margin-right:.55rem;
+  border:3px solid var(--teal);
+  border-radius:50%;
+  box-shadow:inset 0 0 0 3px #ffffff,0 0 0 2px var(--navy);
+  vertical-align:-.08rem;
+}
+
+@media(max-width:1040px){
+  .inner-hero{
+    grid-template-columns:1fr;
+  }
+  .level-map-panel{
+    width:100%;
+  }
+}
+@media(max-width:760px){
+  .mini-map-track{
+    height:410px;
+    margin-top:.8rem;
+  }
+  .mini-route-line{
+    left:34px;
+    right:auto;
+    top:20px;
+    bottom:20px;
+    height:auto;
+    border-top:0;
+    border-left:4px dotted rgba(240,173,61,.88);
+  }
+  .mini-port{
+    left:18px!important;
+    top:calc(12px + var(--port-mobile));
+    width:190px;
+    transform:none;
+    display:grid;
+    grid-template-columns:46px auto;
+    grid-template-rows:auto auto;
+    align-items:center;
+    text-align:left;
+  }
+  .mini-port-marker{
+    grid-row:1/3;
+    margin:0 .7rem 0 0;
+  }
+  .mini-port.current .mini-port-marker{
+    margin-top:0;
+  }
+  .mini-port b{font-size:.82rem}
+  .mini-port small{font-size:.68rem}
+  .mini-boat{
+    left:15px!important;
+    top:var(--boat-mobile);
+    transform:translateY(-25%) rotate(90deg);
+  }
+  .level-map-foot{
+    align-items:flex-start;
+    flex-direction:column;
+  }
+}
+@media(max-width:620px){
+  .hero-art{order:0}
+  .nautical-map{width:100%!important}
+  .level-map-panel{padding:.8rem}
+}
+@media(prefers-reduced-motion:reduce){
+  .nautical-route,
+  .map-boat,
+  .mini-boat{animation:none!important}
+}
