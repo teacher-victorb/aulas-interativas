@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>B1.5 Aula 6 - Personal and Professional Aspirations | Send to Teacher</title>
+  <title>B1.5 Lesson 6 - Personal and Professional Aspirations | English with Victor</title>
   <style>
     :root{
       --navy:#17324d;--ink:#203142;--teal:#2a9d8f;--teal-dark:#207b70;--gold:#e9a23b;
@@ -496,30 +496,305 @@
       .topbar.course-topbar { position: static; box-shadow: none; }
     }
 
-  </style>
+  
+
+/* =================================================================
+   ENGLISH WITH VICTOR · B1.5 NAUTICAL PORTAL LESSON SHELL
+   ================================================================= */
+:root{
+  --portal-navy:#17324d;
+  --portal-navy-2:#234861;
+  --portal-deep:#0f2f43;
+  --portal-teal:#2a9d8f;
+  --portal-teal-dark:#207b70;
+  --portal-gold:#e9a23b;
+  --portal-coral:#e76f51;
+  --portal-mint:#e7f5f1;
+  --portal-sky:#ddeff5;
+  --portal-paper:#ffffff;
+  --portal-line:#c9d4de;
+  --portal-muted:#637487;
+  --portal-shadow:0 18px 48px rgba(23,50,77,.13);
+}
+body{
+  background:
+    radial-gradient(circle at 7% 0%,rgba(42,157,143,.13),transparent 31rem),
+    radial-gradient(circle at 100% 11%,rgba(233,162,59,.13),transparent 29rem),
+    linear-gradient(180deg,#f7fbfc 0%,#edf3f5 55%,#f8faf8 100%);
+}
+.topbar.course-topbar{
+  position:sticky;
+  top:0;
+  z-index:80;
+  min-height:78px;
+  padding:.72rem clamp(.7rem,3vw,2rem);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.85rem;
+  color:#fff;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(42,157,143,.28),transparent 18rem),
+    linear-gradient(135deg,var(--portal-deep),#18556b);
+  border-bottom:1px solid rgba(255,255,255,.15);
+  box-shadow:0 10px 30px rgba(15,47,67,.22);
+  backdrop-filter:blur(18px);
+}
+.course-brand-area{display:flex;align-items:center;gap:.8rem;min-width:0}
+.course-home-link{
+  display:inline-flex;align-items:center;gap:.68rem;min-width:0;
+  color:#fff;text-decoration:none;
+}
+.course-logo{
+  position:relative;overflow:hidden;display:grid;place-items:center;flex:0 0 auto;
+  width:46px;height:46px;border:2px solid rgba(255,255,255,.82);border-radius:50%;
+  color:#fff;background:linear-gradient(145deg,var(--portal-teal),var(--portal-teal-dark));
+  box-shadow:0 0 0 4px rgba(42,157,143,.17),0 11px 24px rgba(0,0,0,.22);
+  font-weight:1000;
+}
+.course-logo::before{
+  content:"";position:absolute;inset:8px;border-radius:50%;
+  background:
+    linear-gradient(45deg,transparent 47%,rgba(255,255,255,.42) 48% 52%,transparent 53%),
+    linear-gradient(-45deg,transparent 47%,rgba(255,255,255,.42) 48% 52%,transparent 53%);
+}
+.course-logo::after{
+  content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;
+  transform:translate(-50%,-50%);border-radius:50%;background:var(--portal-gold);
+}
+.course-logo>span{position:relative;z-index:1}
+.course-brand-copy,.lesson-identity-copy{display:grid;min-width:0;line-height:1.12}
+.course-brand-copy strong{
+  color:#fff;font-size:.98rem;font-weight:950;letter-spacing:-.02em;white-space:nowrap
+}
+.course-brand-copy small{
+  margin-top:.16rem;color:#bcd6df;font-size:.7rem;font-weight:800;white-space:nowrap
+}
+.course-divider{width:1px;height:39px;background:rgba(255,255,255,.22)}
+.lesson-identity{display:flex;align-items:center;gap:.62rem;min-width:0}
+.lesson-number-badge{
+  position:relative;display:grid;place-items:center;flex:0 0 auto;
+  width:2.75rem;height:2.75rem;border:5px solid #fff;border-radius:50%;
+  color:#fff;background:var(--portal-coral);
+  box-shadow:0 0 0 4px var(--portal-gold),0 10px 22px rgba(0,0,0,.2);
+  font-weight:1000;
+}
+.lesson-number-badge::after{
+  content:"PORT";position:absolute;top:calc(100% + 7px);left:50%;transform:translateX(-50%);
+  color:#bcd6df;font-size:.48rem;font-weight:950;letter-spacing:.12em
+}
+.lesson-identity-copy strong{
+  color:#8be1d5;font-size:.7rem;font-weight:950;letter-spacing:.09em;text-transform:uppercase
+}
+.lesson-identity-copy small{
+  max-width:18rem;margin-top:.14rem;overflow:hidden;color:#fff;font-size:.88rem;
+  font-weight:900;text-overflow:ellipsis;white-space:nowrap
+}
+.course-progress-wrap{flex:1;max-width:23rem;margin-inline:.75rem}
+.course-progress-label{
+  display:flex;justify-content:space-between;margin-bottom:.24rem;
+  color:#dcebf0;font-size:.74rem;font-weight:850
+}
+.course-progress{
+  overflow:hidden;height:.64rem;border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;background:rgba(255,255,255,.12)
+}
+.course-progress>span,.course-progress>div{
+  display:block;width:0;height:100%;border-radius:inherit;
+  background:linear-gradient(90deg,#82d8cc,var(--portal-gold),var(--portal-coral));
+  transition:width .3s ease
+}
+.course-actions{display:flex;align-items:center;gap:.45rem}
+.portal-button,.portal-reset{
+  display:inline-flex;align-items:center;justify-content:center;gap:.38rem;
+  min-height:40px;border:1px solid rgba(255,255,255,.2);border-radius:999px;
+  padding:.54rem .76rem;color:#fff;background:rgba(255,255,255,.08);
+  box-shadow:0 7px 18px rgba(0,0,0,.08);font-size:.76rem;font-weight:900;
+  text-decoration:none;white-space:nowrap;transition:transform .18s ease,background .18s ease
+}
+.portal-button:hover,.portal-reset:hover{transform:translateY(-1px);background:rgba(255,255,255,.15)}
+.portal-button.home{background:rgba(255,255,255,.14)}
+.portal-button.level{color:#fff;background:rgba(42,157,143,.28)}
+.portal-button.module{color:var(--portal-navy);border-color:var(--portal-gold);background:var(--portal-gold)}
+.course-topbar .teacher-jump{
+  display:inline-flex;align-items:center;justify-content:center;border:0;border-radius:999px;
+  padding:.59rem .84rem;color:#fff;background:linear-gradient(135deg,var(--portal-coral),#ef8a64);
+  box-shadow:0 9px 20px rgba(231,111,81,.25);font-size:.77rem;font-weight:900;
+  text-decoration:none;white-space:nowrap
+}
+.portal-reset{cursor:pointer}
+.lesson-routebar{
+  width:min(1160px,calc(100% - 2rem));margin:.95rem auto 0;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.72rem 1rem;
+  border:1px solid rgba(201,212,222,.88);border-radius:20px;padding:.78rem .9rem;
+  color:var(--portal-muted);background:rgba(255,255,255,.9);
+  box-shadow:0 11px 30px rgba(23,50,77,.08);backdrop-filter:blur(12px)
+}
+.lesson-breadcrumbs,.lesson-sequence{display:flex;align-items:center;flex-wrap:wrap;gap:.43rem}
+.lesson-breadcrumbs a{color:var(--portal-teal-dark);font-weight:850;text-decoration:none}
+.lesson-breadcrumbs span[aria-hidden="true"]{color:var(--portal-line)}
+.lesson-breadcrumbs strong{color:var(--portal-navy)}
+.lesson-sequence{justify-content:flex-end}
+.sequence-link{
+  display:inline-flex;align-items:center;justify-content:center;gap:.36rem;
+  border:1px solid var(--portal-line);border-radius:999px;padding:.49rem .72rem;
+  color:var(--portal-navy);background:#f5f7f9;font-size:.77rem;font-weight:900;text-decoration:none
+}
+.sequence-link.next{
+  color:#fff;border-color:var(--portal-teal);
+  background:linear-gradient(135deg,var(--portal-teal),var(--portal-teal-dark))
+}
+.lesson-position{
+  border-radius:999px;padding:.4rem .65rem;color:var(--portal-teal-dark);
+  background:var(--portal-mint);font-size:.7rem;font-weight:950;
+  letter-spacing:.04em;text-transform:uppercase
+}
+.lesson-voyage{
+  grid-column:1/-1;position:relative;display:grid;grid-template-columns:repeat(7,1fr);
+  gap:.2rem;padding:.9rem .3rem .18rem
+}
+.lesson-voyage::before{
+  content:"";position:absolute;left:5%;right:5%;top:1.36rem;
+  border-top:4px dotted rgba(233,162,59,.72)
+}
+.voyage-stop{
+  position:relative;z-index:1;display:grid;justify-items:center;gap:.35rem;
+  color:var(--portal-muted);font-size:.63rem;font-weight:900;text-decoration:none
+}
+.voyage-stop::before{
+  content:"";width:19px;height:19px;border:4px solid #fff;border-radius:50%;
+  background:var(--portal-navy);box-shadow:0 0 0 3px rgba(23,50,77,.18)
+}
+.voyage-stop.visited::before{background:var(--portal-teal)}
+.voyage-stop.current::before{
+  width:27px;height:27px;margin-top:-4px;background:var(--portal-coral);
+  box-shadow:0 0 0 4px var(--portal-gold),0 8px 18px rgba(23,50,77,.18)
+}
+.voyage-stop.current{color:var(--portal-coral)}
+.voyage-stop.current::after{
+  content:"⛵";position:absolute;top:-1.62rem;left:50%;transform:translateX(-50%);
+  font-size:1.1rem;filter:drop-shadow(0 5px 5px rgba(23,50,77,.18))
+}
+main{margin-top:1.15rem}
+.hero{border:1px solid rgba(255,255,255,.1);box-shadow:0 30px 78px rgba(23,50,77,.2)}
+.hero h1{text-shadow:0 8px 28px rgba(0,0,0,.17)}
+.panel{
+  position:relative;overflow:hidden;
+  background:linear-gradient(180deg,rgba(255,255,255,.99),rgba(251,253,253,.98));
+  box-shadow:0 16px 44px rgba(23,50,77,.1);transition:box-shadow .2s ease
+}
+.panel::before{
+  content:"";position:absolute;inset:0 0 auto;height:4px;
+  background:linear-gradient(90deg,var(--portal-teal),var(--portal-gold),var(--portal-coral));
+  opacity:.75
+}
+.panel:hover{box-shadow:0 20px 52px rgba(23,50,77,.12)}
+.lesson-nav{
+  border:1px solid rgba(201,212,222,.85);border-radius:19px;padding:.7rem;
+  background:rgba(255,255,255,.86);box-shadow:0 10px 28px rgba(23,50,77,.07)
+}
+.lesson-nav a{transition:transform .18s ease,border-color .18s ease,background .18s ease}
+.lesson-nav a:hover{transform:translateY(-1px);background:var(--portal-mint)}
+.primary{background:linear-gradient(135deg,var(--portal-teal),var(--portal-teal-dark));box-shadow:0 9px 20px rgba(42,157,143,.2)}
+.secondary{background:linear-gradient(135deg,var(--portal-navy),var(--portal-navy-2));box-shadow:0 9px 20px rgba(23,50,77,.18)}
+.ghost{background:#fff;box-shadow:0 7px 18px rgba(23,50,77,.06)}
+.question-card,.quiz-card,.phrase-card,.scenario-card,.objective,.language-card{
+  transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease
+}
+.question-card:hover,.quiz-card:hover,.phrase-card:hover,.scenario-card:hover,.objective:hover,.language-card:hover{
+  transform:translateY(-2px);border-color:rgba(42,157,143,.42);
+  box-shadow:0 10px 24px rgba(23,50,77,.08)
+}
+.homework-panel{border-width:2px;box-shadow:0 24px 58px rgba(42,157,143,.12)}
+.course-footer{
+  width:min(1160px,calc(100% - 2rem));margin:-2.3rem auto 2.2rem;
+  display:grid;grid-template-columns:1.2fr auto;gap:1rem;align-items:center;
+  border:1px solid rgba(255,255,255,.16);border-radius:25px;padding:1.05rem 1.15rem;
+  color:#c5dbe3;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(42,157,143,.26),transparent 15rem),
+    linear-gradient(135deg,var(--portal-deep),#18556b);
+  box-shadow:0 15px 40px rgba(23,50,77,.15)
+}
+.course-footer-brand{display:flex;align-items:center;gap:.72rem}
+.course-footer-brand .course-logo{width:40px;height:40px}
+.course-footer-brand strong{display:block;color:#fff}
+.course-footer-brand span{display:block;font-size:.81rem}
+.course-footer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.48rem}
+.course-footer .portal-button{border-color:rgba(255,255,255,.18)}
+.course-footer .portal-button.module{color:var(--portal-navy);border-color:var(--portal-gold);background:var(--portal-gold)}
+.back-to-top{
+  position:fixed;right:1rem;bottom:1rem;z-index:42;display:grid;place-items:center;
+  width:42px;height:42px;border:1px solid rgba(255,255,255,.25);border-radius:50%;
+  color:#fff;background:var(--portal-navy);box-shadow:0 12px 26px rgba(23,50,77,.2);
+  font-weight:950;text-decoration:none
+}
+@media(max-width:1090px){
+  .course-brand-copy,.course-divider{display:none}
+  .course-progress-wrap{max-width:16rem}
+  .portal-button .button-label{display:none}
+}
+@media(max-width:850px){
+  .topbar.course-topbar{min-height:69px}
+  .lesson-identity-copy small{max-width:9rem}
+  .course-actions .portal-button.level{display:none}
+  .lesson-routebar{grid-template-columns:1fr}
+  .lesson-sequence{justify-content:space-between}
+  .course-footer{grid-template-columns:1fr}
+  .course-footer-links{justify-content:flex-start}
+}
+@media(max-width:620px){
+  .topbar.course-topbar{gap:.38rem;padding-inline:.5rem}
+  .course-logo{width:39px;height:39px}
+  .lesson-number-badge{width:2.25rem;height:2.25rem}
+  .lesson-number-badge::after{display:none}
+  .lesson-identity-copy strong{font-size:.61rem}
+  .lesson-identity-copy small{max-width:6.8rem;font-size:.72rem}
+  .course-progress-wrap{display:none}
+  .course-actions .portal-button.home,.course-actions .portal-button.module{display:none}
+  .course-topbar .teacher-jump{padding:.5rem .61rem}
+  .portal-reset{padding:.48rem .54rem}
+  .lesson-routebar{width:calc(100% - 1rem);margin-top:.55rem;border-radius:16px}
+  .lesson-breadcrumbs{font-size:.72rem}
+  .sequence-link{flex:1;padding-inline:.42rem}
+  .lesson-position{display:none}
+  .lesson-voyage{gap:0;padding-inline:0}
+  .voyage-stop span{display:none}
+  .course-footer{width:calc(100% - 1rem);margin-top:-3.2rem}
+  .course-footer-links .portal-button{flex:1}
+  .back-to-top{width:38px;height:38px}
+}
+@media print{
+  .lesson-routebar,.course-footer,.back-to-top,.portal-button,.teacher-jump,.portal-reset{display:none!important}
+  .topbar.course-topbar{position:static;box-shadow:none}
+}
+
+
+</style>
 </head>
 <body>
-  <header class="topbar course-topbar">
+  <header class="topbar course-topbar" id="lessonTop">
     <div class="course-brand-area">
-      <a class="course-home-link" href="../" aria-label="Go to the English with Victor home page">
-        <span class="course-logo" aria-hidden="true">V</span>
-        <span class="course-brand-copy"><strong>English with Victor</strong><small>Student Portal</small></span>
+      <a class="course-home-link" href="../" aria-label="Go to English with Victor home">
+        <span class="course-logo" aria-hidden="true"><span>V</span></span>
+        <span class="course-brand-copy"><strong>English with Victor</strong><small>Student Portal · Nautical Route</small></span>
       </a>
       <span class="course-divider" aria-hidden="true"></span>
       <div class="lesson-identity">
-        <span class="brand-mark">6</span>
-        <span class="lesson-identity-copy"><strong>Lesson 6 of 7</strong><small>Personal and Professional Aspirations</small></span>
+        <span class="lesson-number-badge">6</span>
+        <span class="lesson-identity-copy"><strong>B1.5 · Lesson 6 of 7</strong><small>Personal and Professional Aspirations</small></span>
       </div>
     </div>
-    <div class="progress-wrap" aria-label="Lesson progress">
-      <div class="progress-label"><span>Your progress</span><span id="progressText">0%</span></div>
-      <div class="progress"><span id="progressBar"></span></div>
+    <div class="course-progress-wrap" aria-label="Lesson progress">
+      <div class="course-progress-label"><span>Your progress</span><span id="progressText">0%</span></div>
+      <div class="course-progress"><span id="progressBar"></span></div>
     </div>
-    <div class="topbar-actions">
+    <div class="course-actions">
       <a class="portal-button home" href="../" title="Home"><span aria-hidden="true">⌂</span><span class="button-label">Home</span></a>
-      <a class="portal-button module" href="./" title="B1.5 module"><span aria-hidden="true">☰</span><span class="button-label">B1.5</span></a>
-      <a class="teacher-jump" href="#homework"><span aria-hidden="true">✉</span> Send</a>
-      <button class="reset" id="resetAll" type="button" title="Reset all answers">Reset</button>
+      <a class="portal-button level" href="../B1/" title="B1 level"><span aria-hidden="true">◉</span><span class="button-label">B1</span></a>
+      <a class="portal-button module" href="./" title="B1.5 module"><span aria-hidden="true">⚓</span><span class="button-label">B1.5</span></a>
+      <a class="teacher-jump" href="#homework"><span aria-hidden="true">✉</span> Homework</a>
+      <button class="portal-reset" id="resetAll" type="button" title="Reset this lesson">Reset</button>
     </div>
   </header>
   <nav class="lesson-routebar" aria-label="Course navigation">
@@ -531,8 +806,11 @@
     </div>
     <div class="lesson-sequence">
       <a class="sequence-link" href="B1.5_Aula_5.html"><span aria-hidden="true">←</span> Lesson 5</a>
-      <span class="lesson-position">6 / 7</span>
+      <span class="lesson-position">Port 6 of 7</span>
       <a class="sequence-link next" href="B1.5_Aula_7.html">Lesson 7 <span aria-hidden="true">→</span></a>
+    </div>
+    <div class="lesson-voyage" aria-label="B1.5 lesson route">
+      <a class="voyage-stop visited" href="B1.5_Aula_1.html" aria-label="Lesson 1: Future Me"><span>1</span></a><a class="voyage-stop visited" href="B1.5_Aula_2.html" aria-label="Lesson 2: Before Someday"><span>2</span></a><a class="voyage-stop visited" href="B1.5_Aula_3.html" aria-label="Lesson 3: Dreams into Plans"><span>3</span></a><a class="voyage-stop visited" href="B1.5_Aula_4.html" aria-label="Lesson 4: If I Take the First Step"><span>4</span></a><a class="voyage-stop visited" href="B1.5_Aula_5.html" aria-label="Lesson 5: Opportunities and Limits"><span>5</span></a><a class="voyage-stop current" href="B1.5_Aula_6.html" aria-label="Lesson 6: Personal and Professional Aspirations"><span>6</span></a><a class="voyage-stop future" href="B1.5_Aula_7.html" aria-label="Lesson 7: My Vision Statement"><span>7</span></a>
     </div>
   </nav>
 
@@ -726,17 +1004,18 @@
 
   <footer class="course-footer">
     <div class="course-footer-brand">
-      <span class="course-logo" aria-hidden="true">V</span>
+      <span class="course-logo" aria-hidden="true"><span>V</span></span>
       <div><strong>English with Victor</strong><span>B1.5 · Lesson 6: Personal and Professional Aspirations</span></div>
     </div>
     <nav class="course-footer-links" aria-label="Footer course navigation">
       <a class="portal-button" href="B1.5_Aula_5.html">← Lesson 5</a>
-      <a class="portal-button module" href="./">All lessons</a>
+      <a class="portal-button module" href="./">⚓ All B1.5 lessons</a>
+      <a class="portal-button" href="../B1/">B1 level</a>
       <a class="portal-button home" href="../">Home</a>
       <a class="portal-button" href="B1.5_Aula_7.html">Lesson 7 →</a>
     </nav>
   </footer>
-  <a class="back-to-top" href="#pageTitle" aria-label="Back to top">↑</a>
+  <a class="back-to-top" href="#lessonTop" aria-label="Back to top">↑</a>
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script>
