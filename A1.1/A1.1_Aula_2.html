@@ -334,10 +334,10 @@ main{margin-top:1.15rem}
   .topbar.course-topbar{position:static;box-shadow:none}
 }
 
+
 </style>
 </head>
 <body>
-  
   <header class="topbar course-topbar" id="lessonTop">
     <div class="course-brand-area">
       <a class="course-home-link" href="../" aria-label="Go to English with Victor home">
@@ -378,7 +378,6 @@ main{margin-top:1.15rem}
       <a class="voyage-stop visited" href="A1.1_Aula_1.html" aria-label="Lesson 1"><span>1</span></a><a class="voyage-stop current" href="A1.1_Aula_2.html" aria-label="Lesson 2"><span>2</span></a><a class="voyage-stop future" href="A1.1_Aula_3.html" aria-label="Lesson 3"><span>3</span></a><a class="voyage-stop future" href="A1.1_Aula_4.html" aria-label="Lesson 4"><span>4</span></a><a class="voyage-stop future" href="A1.1_Aula_5.html" aria-label="Lesson 5"><span>5</span></a><a class="voyage-stop future" href="A1.1_Aula_6.html" aria-label="Lesson 6"><span>6</span></a><a class="voyage-stop future" href="A1.1_Aula_7.html" aria-label="Lesson 7"><span>7</span></a><a class="voyage-stop future" href="A1.1_Aula_8.html" aria-label="Lesson 8"><span>8</span></a>
     </div>
   </nav>
-
   <main>
     <section class="hero">
       <div class="hero-copy">
@@ -526,7 +525,7 @@ main{margin-top:1.15rem}
         <article class="letter-family"><b>O sound</b><span>O</span></article>
         <article class="letter-family"><b>U sound</b><span>Q U W</span></article>
         <article class="letter-family"><b>R sound</b><span>R</span></article>
-        <article class="letter-family"><b>Listen carefully</b><span>B/V • E/I • G/J • M/N</span></article>
+        <article class="letter-family"><b>Listen carefully</b><span>K/Q • E/I • D/G • M/N</span></article>
       </div>
       <h3>Choose the repair phrase</h3>
       <div class="quiz-grid" id="repairQuiz">
@@ -641,7 +640,7 @@ main{margin-top:1.15rem}
           <select data-save="home-practice" id="homePractice"><option value="">Choose</option><option value="1">once</option><option value="2">twice</option><option value="3">three times</option></select>
         </label>
         <label class="text-label">One difficult letter pair
-          <input type="text" data-save="home-difficult-pair" id="homeDifficultPair" placeholder="B / V">
+          <input type="text" data-save="home-difficult-pair" id="homeDifficultPair" placeholder="K / Q">
         </label>
         <label class="checkline full"><input type="checkbox" data-save="home-confirm" id="homeConfirm"> I checked my names, spelling, dialogue and third-person introduction.</label>
       </div>
@@ -650,6 +649,7 @@ main{margin-top:1.15rem}
       <p class="source-note">The visual boards and surrounding activities are original. The audio files were supplied by the teacher and identified as material used with Interchange 5th edition and CNA. Before public web publication, confirm audio redistribution rights or replace the tracks with licensed recordings.</p>
     </section>
   </main>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
 
   <footer class="course-footer">
     <div class="course-footer-brand">
@@ -665,13 +665,9 @@ main{margin-top:1.15rem}
     </nav>
   </footer>
   <a class="back-to-top" href="#lessonTop" aria-label="Back to top">↑</a>
-
-
-  <div class="toast" id="toast" role="status" aria-live="polite"></div>
-
-  <script>
+<script>
     const STORAGE_KEY="rota-a11-aula2-v1";
-    const SHEETS_ENDPOINT="https://script.google.com/macros/s/AKfycby3l-tad3EPSUQyI4Bi6ylQmuouaY8HkVKA4hmQBbph0KOw03_vYeFVReVnTr7V41tV/exec";
+    const SHEETS_ENDPOINT = "https://script.google.com/macros/s/AKfycby3l-tad3EPSUQyI4Bi6ylQmuouaY8HkVKA4hmQBbph0KOw03_vYeFVReVnTr7V41tV/exec";
     const saveEls=[...document.querySelectorAll("[data-save]")];
     let lastPayload=null;
     const toast=(message)=>{const el=document.getElementById("toast");el.textContent=message;el.classList.add("show");setTimeout(()=>el.classList.remove("show"),2200)};
@@ -785,7 +781,7 @@ main{margin-top:1.15rem}
     };
     const buildPayload=()=>{
       const objectiveAnswers=collectObjectiveAnswers(),correct=objectiveAnswers.filter(x=>x.correct).length;
-      return {
+      const payload={
         meta:{module:"A1.1",lesson_id:"A1.1-L2",lesson_title:"Names and Spelling",generated_at:new Date().toISOString(),page_url:location.href,progress_percent:updateProgress()},
         student:{name:document.getElementById("studentName").value.trim(),class_group:document.getElementById("studentClass").value.trim(),email:document.getElementById("studentEmail").value.trim()},
         objective_score:{correct,total:objectiveAnswers.length,percentage:objectiveAnswers.length?Math.round(correct/objectiveAnswers.length*100):0},
@@ -810,6 +806,27 @@ main{margin-top:1.15rem}
         },
         all_saved_answers:getState()
       };
+      const homeworkText=[
+        payload.homework.first_name ? `First name: ${payload.homework.first_name}` : "",
+        payload.homework.last_name ? `Last name: ${payload.homework.last_name}` : "",
+        payload.homework.surname_spelling ? `Surname spelling: ${payload.homework.surname_spelling}` : "",
+        payload.homework.first_meeting_dialogue,
+        payload.homework.third_person_introduction,
+        payload.homework.difficult_letter_pair ? `Difficult letter pair: ${payload.homework.difficult_letter_pair}` : ""
+      ].filter(Boolean).join("\n\n");
+
+      // Compatibility aliases for the current Google Sheets receiver.
+      payload.submitted_at=payload.meta.generated_at;
+      payload.lesson="A1.1 Aula 2 - Names and Spelling";
+      payload.student_name=payload.student.name;
+      payload.student_id=payload.student.email||payload.student.class_group;
+      payload.objective_score.percent=payload.objective_score.percentage;
+      payload.homework_text=homeworkText;
+      payload.word_count=homeworkText.trim()?homeworkText.trim().split(/\s+/).length:0;
+      payload.checklist=[payload.homework.learner_confirmed];
+      payload.written_work=payload.open_responses;
+      payload.self_check=payload.self_assessment;
+      return payload;
     };
     const validateSubmission=()=>{
       const missing=[];
