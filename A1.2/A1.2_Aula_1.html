@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>A1.2 Lesson 1 - Meet My Family | English with Victor</title>
+  <title>A1.2 Lesson 1 - Meet my family | English with Victor</title>
   <style>
     :root{--navy:#0b2d4d;--teal:#2a9d8f;--teal2:#125f56;--gold:#e9a62f;--coral:#ea7656;--ink:#12263a;--muted:#5b6b7b;--line:#cdd9e0;--light:#f3f7f8;--sky:#eaf6f8;--cream:#fbf6ed;--ok:#177e64;--bad:#b83a3a}
     *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#eef4f5;color:var(--ink);font-family:Inter,Arial,sans-serif;line-height:1.45}
@@ -172,7 +172,7 @@ body{
   letter-spacing:.04em;text-transform:uppercase
 }
 .lesson-voyage{
-  grid-column:1/-1;position:relative;display:grid;grid-template-columns:repeat(2,1fr);
+  grid-column:1/-1;position:relative;display:grid;grid-template-columns:repeat(10,1fr);
   gap:.2rem;padding:.9rem .3rem .18rem
 }
 .lesson-voyage::before{
@@ -304,7 +304,7 @@ main{margin-top:1.15rem}
       <span class="course-divider" aria-hidden="true"></span>
       <div class="lesson-identity">
         <span class="lesson-number-badge">1</span>
-        <span class="lesson-identity-copy"><strong>A1.2 · Lesson 1 of 2</strong><small>Meet My Family</small></span>
+        <span class="lesson-identity-copy"><strong>A1.2 · Lesson 1 of 10</strong><small>Meet my family</small></span>
       </div>
     </div>
     <div class="course-progress-wrap" aria-label="Lesson progress">
@@ -324,16 +324,14 @@ main{margin-top:1.15rem}
       <a href="../">Home</a><span aria-hidden="true">/</span>
       <a href="../A1/">A1</a><span aria-hidden="true">/</span>
       <a href="./">A1.2</a><span aria-hidden="true">/</span>
-      <strong>Lesson 1: Meet My Family</strong>
+      <strong>Lesson 1: Meet my family</strong>
     </div>
     <div class="lesson-sequence">
       <a class="sequence-link" href="./"><span aria-hidden="true">←</span> Module</a>
-      <span class="lesson-position">Port 1 of 2</span>
+      <span class="lesson-position">Port 1 of 10</span>
       <a class="sequence-link next" href="A1.2_Aula_2.html">Lesson 2 <span aria-hidden="true">→</span></a>
     </div>
-    <div class="lesson-voyage" aria-label="A1.2 lesson route">
-      <a class="voyage-stop current" href="A1.2_Aula_1.html" aria-label="Lesson 1: Meet My Family"><span>1</span></a><a class="voyage-stop future" href="A1.2_Aula_2.html" aria-label="Lesson 2: Family Connections"><span>2</span></a>
-    </div>
+    <div class="lesson-voyage" aria-label="A1.2 lesson route"><a class="voyage-stop current" href="A1.2_Aula_1.html" aria-label="Lesson 1: Meet my family"><span>1</span></a><a class="voyage-stop future" href="A1.2_Aula_2.html" aria-label="Lesson 2: Family connections"><span>2</span></a><a class="voyage-stop future" href="A1.2_Aula_3.html" aria-label="Lesson 3: What do they look like? • Part 1"><span>3</span></a><a class="voyage-stop future" href="A1.2_Aula_4.html" aria-label="Lesson 4: What do they look like? • Part 2"><span>4</span></a><a class="voyage-stop future" href="A1.2_Aula_5.html" aria-label="Lesson 5: What is the person like?"><span>5</span></a><a class="voyage-stop future" href="A1.2_Aula_6.html" aria-label="Lesson 6: Who are they talking about?"><span>6</span></a><a class="voyage-stop future" href="A1.2_Aula_7.html" aria-label="Lesson 7: Families around us"><span>7</span></a><a class="voyage-stop future" href="A1.2_Aula_8.html" aria-label="Lesson 8: A complete description"><span>8</span></a><a class="voyage-stop future" href="A1.2_Aula_9.html" aria-label="Lesson 9: Someone important to me"><span>9</span></a><a class="voyage-stop future" href="A1.2_Aula_10.html" aria-label="Lesson 10: My People Map"><span>10</span></a></div>
   </nav>
   <main>
     <section class="hero"><div class="pills"><span class="pill">A1</span><span class="pill">50–60 min</span><span class="pill">Vocabulary + listening</span></div><h1>Meet my family</h1><p>See the connections, hear the family words and introduce people with <b>This is…</b> and <b>These are…</b>.</p><div class="callout"><b>Your choice:</b> use a real family, chosen family, important people or a fictional family. Share only what feels comfortable.</div></section>
@@ -401,7 +399,7 @@ main{margin-top:1.15rem}
   <footer class="course-footer">
     <div class="course-footer-brand">
       <span class="course-logo" aria-hidden="true"><span>V</span></span>
-      <div><strong>English with Victor</strong><span>A1.2 · Lesson 1: Meet My Family</span></div>
+      <div><strong>English with Victor</strong><span>A1.2 · Lesson 1: Meet my family</span></div>
     </div>
     <nav class="course-footer-links" aria-label="Footer course navigation">
       
@@ -413,7 +411,59 @@ main{margin-top:1.15rem}
   </footer>
   <a class="back-to-top" href="#lessonTop" aria-label="Back to top">↑</a>
 <script>
-  const ENDPOINT = "https://script.google.com/macros/s/AKfycby3l-tad3EPSUQyI4Bi6ylQmuouaY8HkVKA4hmQBbph0KOw03_vYeFVReVnTr7V41tV/exec";
+  const ENDPOINT="https://script.google.com/macros/s/AKfycby3l-tad3EPSUQyI4Bi6ylQmuouaY8HkVKA4hmQBbph0KOw03_vYeFVReVnTr7V41tV/exec";
+
+function normalizeSubmissionPayload(raw){
+  const payload = raw && typeof raw === "object" ? {...raw} : {};
+  const student = payload.student && typeof payload.student === "object" ? payload.student : {};
+  const answers = payload.answers && typeof payload.answers === "object" ? payload.answers : {};
+  const scoreSource = payload.objective_score || payload.objectiveScore || {};
+  const correct = scoreSource.correct ?? scoreSource.score ?? "";
+  const total = scoreSource.total ?? "";
+  let percent = scoreSource.percent ?? scoreSource.percentage ?? "";
+  if ((percent === "" || percent === null || percent === undefined) && Number.isFinite(Number(correct)) && Number(total) > 0) {
+    percent = Math.round((Number(correct) / Number(total)) * 100);
+  }
+  payload.submitted_at = payload.submitted_at || payload.submittedAt || (payload.meta && payload.meta.generated_at) || new Date().toISOString();
+  payload.student_name = payload.student_name || student.name || "";
+  payload.student_id = payload.student_id || student.email || student.class_group || student.classGroup || student.id || "";
+  payload.objective_score = {...scoreSource, correct, total, percent};
+
+  const homework = (payload.homework && typeof payload.homework === "object" ? payload.homework : null) ||
+                   (answers.homework && typeof answers.homework === "object" ? answers.homework : {}) || {};
+  const writing = (answers.writing && typeof answers.writing === "object" ? answers.writing : null) ||
+                  (payload.writing && typeof payload.writing === "object" ? payload.writing : {}) || {};
+
+  const firstText = (...values) => {
+    for (const value of values) {
+      if (typeof value === "string" && value.trim()) return value.trim();
+    }
+    return "";
+  };
+
+  payload.homework_text = payload.homework_text || firstText(
+    homework.text, homework.paragraph, homework.final, homework.finalText, homework.draft,
+    answers.homeworkText, answers.finalText, answers.draftText,
+    writing.homework, writing.final, writing.finalText, writing.paragraph, writing.draft
+  );
+
+  const checklistSource = payload.checklist || homework.checks || homework.checklist || answers.checklist || [];
+  if (Array.isArray(checklistSource)) payload.checklist = checklistSource;
+  else if (checklistSource && typeof checklistSource === "object") payload.checklist = Object.values(checklistSource).filter(v => typeof v === "boolean");
+  else payload.checklist = [];
+  if (!payload.checklist.length && homework && typeof homework === "object") {
+    payload.checklist = Object.values(homework).filter(v => typeof v === "boolean");
+  }
+
+  payload.word_count = Number.isFinite(Number(payload.word_count)) ? Number(payload.word_count) :
+    (payload.homework_text ? payload.homework_text.trim().split(/\s+/).filter(Boolean).length : 0);
+
+  payload.written_work = payload.written_work || answers;
+  payload.self_check = payload.self_check || answers.selfAssessment || answers.self_assessment || payload.selfAssessment || payload.self_assessment || {};
+  payload.objective_answers = payload.objective_answers || answers;
+  return payload;
+}
+
   const labelAnswers=["grandfather","grandmother","grandfather","grandmother","aunt","uncle","father","mother","stepfather","cousin","me","brother","sister"];
   const labelOptions=["","grandfather","grandmother","aunt","uncle","father","mother","stepfather","cousin","me","brother","sister"];
   const tfData=[["Jessica is highlighted in the family map.", true], ["Jessica has one brother.", true], ["Jessica has one sister.", true], ["Jessica has two cousins in the picture.", false], ["There are two grandmothers.", true], ["A stepfather is part of the family map.", true]];
@@ -462,11 +512,11 @@ main{margin-top:1.15rem}
   document.querySelector('[data-check="language"]').onclick=()=>{let ok=0;languageData.forEach((x,i)=>{if(qs(`#lang${i}`).value===x[1])ok++});show("#languageFeedback",ok,6)};
   document.querySelector('[data-check="detective"]').onclick=()=>{let ok=0;detectiveData.forEach((x,i)=>{if(qs(`#det${i}`).value===x[1])ok++});show("#detectiveFeedback",ok,8)};
   function collect(){const answers={labels:labelAnswers.map((_,i)=>qs(`#label${i}`).value),usefulWords:qs("#usefulWords").value,gist:document.querySelector('input[name="gist"]:checked')?.value||"",heardWords:heard.filter((_,i)=>qs(`#heard${i}`).checked),trueFalse:tfData.map((_,i)=>document.querySelector(`input[name="tf${i}"]:checked`)?.value||""),familyNames:nameData.map((x,i)=>({relationship:x[0],answer:qs(`#familyName${i}`).value})),language:languageData.map((_,i)=>qs(`#lang${i}`).value),detective:detectiveData.map((_,i)=>qs(`#det${i}`).value),peopleMap:[qs("#person1").value,qs("#person2").value,qs("#person3").value],speakingPlan:qs("#speakingPlan").value,exit:{newWords:qs("#newWords").value,sentence:qs("#exitSentence").value},selfAssessment:scaleStatements.map((s,i)=>({statement:s,rating:document.querySelector(`input[name="scale${i}"]:checked`)?.value||""})),homework:{text:qs("#homeworkText").value,checks:[qs("#hwCheck1").checked,qs("#hwCheck2").checked,qs("#hwCheck3").checked]}};return{lesson:"A1.2 Aula 1 - Meet my family",submittedAt:new Date().toISOString(),student:{name:qs("#studentName").value,email:qs("#studentEmail").value},answers}}
-  function prepare(){const data=collect();data.submitted_at=data.submittedAt||new Date().toISOString();data.student_name=data.student?.name||"";data.student_id=data.student?.email||"";data.homework_text=data.answers?.homework?.text||"";data.checklist=data.answers?.homework?.checks||[];qs("#submission").textContent=JSON.stringify(data,null,2);qs("#submission").classList.add("show");return data}
+  function prepare(){const data=collect();qs("#submission").textContent=JSON.stringify(data,null,2);qs("#submission").classList.add("show");return data}
   qs("#prepare").onclick=()=>{prepare();qs("#submissionFeedback").textContent="Submission prepared.";qs("#submissionFeedback").className="feedback ok"};
   qs("#copy").onclick=async()=>{const text=JSON.stringify(prepare(),null,2);try{await navigator.clipboard.writeText(text);qs("#submissionFeedback").textContent="Copied.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Copy not available. Select the JSON below.";qs("#submissionFeedback").className="feedback bad"}};
   qs("#download").onclick=()=>{const blob=new Blob([JSON.stringify(prepare(),null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="A1.2_Aula_1_"+(qs("#studentName").value.trim().replace(/\s+/g,"_")||"student")+".json";a.click();URL.revokeObjectURL(a.href)};
-  qs("#send").onclick=async()=>{const data=prepare();if(!ENDPOINT){qs("#submissionFeedback").textContent="The submission service is not configured yet. Download the JSON and send it to your teacher.";qs("#submissionFeedback").className="feedback bad";return}try{await fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(data)});qs("#submissionFeedback").textContent="Sent to teacher.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Could not send. Download the JSON instead.";qs("#submissionFeedback").className="feedback bad"}};
+  qs("#send").onclick=async()=>{const data=prepare();if(!ENDPOINT){qs("#submissionFeedback").textContent="The submission service is not configured yet. Download the JSON and send it to your teacher.";qs("#submissionFeedback").className="feedback bad";return}try{await fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(normalizeSubmissionPayload(data))});qs("#submissionFeedback").textContent="Sent to teacher.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Could not send. Download the JSON instead.";qs("#submissionFeedback").className="feedback bad"}};
   qs("#reset").onclick=()=>{if(confirm("Reset all answers for this lesson?")){localStorage.removeItem("a12l1");location.reload()}};
   load();
   </script>
