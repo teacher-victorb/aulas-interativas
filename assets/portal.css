@@ -529,7 +529,7 @@ a:focus-visible,button:focus-visible,input:focus-visible{
 
 
 /* A1 portal expansion */
-.featured-route-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1rem}
+.featured-route-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1rem}
 .route-feature-card{position:relative;overflow:hidden;display:flex;flex-direction:column;min-height:290px;border-radius:30px;padding:1.45rem;color:#fff;background:linear-gradient(130deg,var(--navy),#20596e);box-shadow:var(--shadow-lg)}
 .route-feature-card.a1{background:linear-gradient(130deg,#207b70,#2a9d8f)}
 .route-feature-card:after{content:"";position:absolute;right:-70px;bottom:-95px;width:210px;height:210px;border-radius:50%;background:rgba(233,162,59,.18)}
