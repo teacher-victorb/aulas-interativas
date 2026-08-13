@@ -287,6 +287,15 @@ main{margin-top:1.15rem}
 }
 
 
+
+
+/* Submission hotfix: JSON is a machine payload, not student-facing content. */
+pre.submission,
+.submission#submission,
+#submission.submission {
+  display:none !important;
+}
+
 </style></head><body>
 <header class="topbar course-topbar" id="lessonTop">
 <div class="course-brand-area"><a class="course-home-link" href="../"><span class="course-logo" aria-hidden="true"><span>V</span></span><span class="course-brand-copy"><strong>English with Victor</strong><small>Student Portal · Nautical Route</small></span></a>
@@ -325,7 +334,7 @@ main{margin-top:1.15rem}
 <section class="panel"><div class="head"><span class="step">5</span><div><h2>Trailer lab: Inside Out</h2><p>Watch once for the big idea and again for evidence.</p></div><span class="time">7 min</span></div><div class="note"><b>First viewing:</b> watch without subtitles. <b>Second viewing:</b> pause only after each question.</div><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/yRUAzGQ3nSY?rel=0&cc_load_policy=0" title="Inside Out official US trailer" allow="accelerometer; autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe></div><p><a href="https://www.youtube.com/watch?v=yRUAzGQ3nSY" target="_blank" rel="noopener">Open the official trailer in a new tab</a></p><div class="tf"><span>1. Riley moves to a different city.</span><label><input type="radio" name="trailer-1" value="true" data-save="trailer-1" data-answer="true"> True</label><label><input type="radio" name="trailer-1" value="false" data-save="trailer-1" data-answer="true"> False</label></div><div class="tf"><span>2. The emotions work inside Riley’s mind.</span><label><input type="radio" name="trailer-2" value="true" data-save="trailer-2" data-answer="true"> True</label><label><input type="radio" name="trailer-2" value="false" data-save="trailer-2" data-answer="true"> False</label></div><div class="tf"><span>3. Riley is excited about every part of the move.</span><label><input type="radio" name="trailer-3" value="true" data-save="trailer-3" data-answer="false"> True</label><label><input type="radio" name="trailer-3" value="false" data-save="trailer-3" data-answer="false"> False</label></div><div class="tf"><span>4. The trailer presents both funny and difficult moments.</span><label><input type="radio" name="trailer-4" value="true" data-save="trailer-4" data-answer="true"> True</label><label><input type="radio" name="trailer-4" value="false" data-save="trailer-4" data-answer="true"> False</label></div><div class="actions"><button class="check" data-check="trailer">Check T/F</button><span class="feedback" id="trailer-feedback"></span></div><div class="planner"><label>Main character<input data-save="tr-main"></label><label>Setting<input data-save="tr-setting"></label><label>Central change / problem<textarea data-save="tr-problem"></textarea></label><label>Two adjectives + reason<textarea data-save="tr-opinion"></textarea></label></div></section>
 <section class="panel"><div class="head"><span class="step">6</span><div><h2>Recommend it</h2><p>Prepare a 45–60 second recommendation.</p></div><span class="time">10 min</span></div><div class="planner"><label>Film / series + genre<input data-save="rec-title"></label><label>Main character + setting<input data-save="rec-character"></label><label>Plot<textarea data-save="rec-plot" placeholder="The story follows…"></textarea></label><label>Opinion + reason<textarea data-save="rec-opinion" placeholder="In my opinion, it’s… because…"></textarea></label><label>Audience<textarea data-save="rec-audience" placeholder="You should watch it if you like…"></textarea></label></div><div class="note"><b>Finish:</b> I don’t want to give any spoilers.</div></section>
 <section class="panel"><div class="head"><span class="step">7</span><div><h2>Exit ticket</h2><p>Choose one number for every statement.</p></div><span class="time">3 min</span></div><div class="scale-legend"><b>Scale:</b> 1 = Strongly disagree · 2 = Disagree · 3 = Neutral · 4 = Agree · 5 = Strongly agree</div><div class="scale-header"><strong>I CAN…</strong><div class="scale-numbers"><span>1</span><span>2</span><span>3</span><span>4</span><span>5</span></div></div><div class="scale-row"><span>I can identify the character, setting and main problem in a synopsis.</span><div class="scale-circles"><label><input type="radio" name="likert-1" value="1" data-save="likert-1"><span class="sr-only">1</span></label><label><input type="radio" name="likert-1" value="2" data-save="likert-1"><span class="sr-only">2</span></label><label><input type="radio" name="likert-1" value="3" data-save="likert-1"><span class="sr-only">3</span></label><label><input type="radio" name="likert-1" value="4" data-save="likert-1"><span class="sr-only">4</span></label><label><input type="radio" name="likert-1" value="5" data-save="likert-1"><span class="sr-only">5</span></label></div></div><div class="scale-row"><span>I can describe a plot in the present simple.</span><div class="scale-circles"><label><input type="radio" name="likert-2" value="1" data-save="likert-2"><span class="sr-only">1</span></label><label><input type="radio" name="likert-2" value="2" data-save="likert-2"><span class="sr-only">2</span></label><label><input type="radio" name="likert-2" value="3" data-save="likert-2"><span class="sr-only">3</span></label><label><input type="radio" name="likert-2" value="4" data-save="likert-2"><span class="sr-only">4</span></label><label><input type="radio" name="likert-2" value="5" data-save="likert-2"><span class="sr-only">5</span></label></div></div><div class="scale-row"><span>I can organise events with at the beginning, then and in the end.</span><div class="scale-circles"><label><input type="radio" name="likert-3" value="1" data-save="likert-3"><span class="sr-only">1</span></label><label><input type="radio" name="likert-3" value="2" data-save="likert-3"><span class="sr-only">2</span></label><label><input type="radio" name="likert-3" value="3" data-save="likert-3"><span class="sr-only">3</span></label><label><input type="radio" name="likert-3" value="4" data-save="likert-3"><span class="sr-only">4</span></label><label><input type="radio" name="likert-3" value="5" data-save="likert-3"><span class="sr-only">5</span></label></div></div><div class="scale-row"><span>I can recommend a film and give a reason without major spoilers.</span><div class="scale-circles"><label><input type="radio" name="likert-4" value="1" data-save="likert-4"><span class="sr-only">1</span></label><label><input type="radio" name="likert-4" value="2" data-save="likert-4"><span class="sr-only">2</span></label><label><input type="radio" name="likert-4" value="3" data-save="likert-4"><span class="sr-only">3</span></label><label><input type="radio" name="likert-4" value="4" data-save="likert-4"><span class="sr-only">4</span></label><label><input type="radio" name="likert-4" value="5" data-save="likert-4"><span class="sr-only">5</span></label></div></div><label>One next step<input data-save="next-step" placeholder="Next, I will…"></label></section>
-<section class="panel homework" id="homework"><div class="head"><span class="step">8</span><div><h2>Homework Mode · Send to Teacher</h2><p>Complete, check and prepare your submission. No GPT is used.</p></div><span class="time">after class</span></div><div class="steps"><div><b>1 · Complete</b><p>Finish the objective activities and the recommendation.</p></div><div><b>2 · Check</b><p>70–90 words; plot, opinion, reason, audience and spoiler shield.</p></div><div><b>3 · Send</b><p>All saved answers are included, not only the paragraph.</p></div></div><div class="planner"><label>Student name<input data-save="student-name"></label><label>Student ID / email<input data-save="student-id"></label><label>My recommendation (70–90 words)<textarea id="homework-text" data-save="homework-text" placeholder="I recommend… The story follows…"></textarea><small id="word-count">0 words</small></label></div><div class="actions"><button class="primary" id="prepare">Prepare submission</button><button class="secondary" id="copy">Copy JSON</button><button class="ghost" id="download">Download JSON</button><a class="ghost" id="email" href="#">Email teacher</a></div><p id="send-status" class="feedback"></p></section>
+<section class="panel homework" id="homework"><div class="head"><span class="step">8</span><div><h2>Homework Mode · Send to Teacher</h2><p>Complete, check and prepare your submission. No GPT is used.</p></div><span class="time">after class</span></div><div class="steps"><div><b>1 · Complete</b><p>Finish the objective activities and the recommendation.</p></div><div><b>2 · Check</b><p>70–90 words; plot, opinion, reason, audience and spoiler shield.</p></div><div><b>3 · Send</b><p>All saved answers are included, not only the paragraph.</p></div></div><div class="planner"><label>Student name<input data-save="student-name"></label><label>Student ID / email<input data-save="student-id"></label><label>My recommendation (70–90 words)<textarea id="homework-text" data-save="homework-text" placeholder="I recommend… The story follows…"></textarea><small id="word-count">0 words</small></label></div><div class="actions"><button class="primary" id="prepare">Send to Teacher</button><button class="secondary" id="copy">Copy JSON</button><button class="ghost" id="download">Download JSON</button><a class="ghost" id="email" href="#">Email teacher</a></div><p id="send-status" class="feedback"></p></section>
 </main>
 <footer class="course-footer"><div class="course-footer-brand"><span class="course-logo" aria-hidden="true"><span>V</span></span><div><strong>English with Victor</strong><span>A2.1 · Lesson 5 of 6 · What’s it about?</span></div></div>
 <nav class="course-footer-links"><a class="portal-button" href="A2.1_Aula_3-4.html">← 3–4</a><a class="portal-button module" href="./">⚓ All A2.1 lessons</a><a class="portal-button" href="../A2/">A2 level</a><a class="portal-button home" href="../">Home</a><a class="portal-button" href="A2.1_Aula_6.html">6 →</a></nav></footer>
@@ -334,9 +343,12 @@ main{margin-top:1.15rem}
 const META={"lesson": "A2.1 Aula 5", "title": "What's it about?", "version": "1.0"}; const ENDPOINT="https://script.google.com/macros/s/AKfycby3l-tad3EPSUQyI4Bi6ylQmuouaY8HkVKA4hmQBbph0KOw03_vYeFVReVnTr7V41tV/exec";
 
 function normalizeSubmissionPayload(raw){
-  const payload = raw && typeof raw === "object" ? {...raw} : {};
-  const answers = payload.answers && typeof payload.answers === "object" ? payload.answers : {};
-  const student = payload.student && typeof payload.student === "object" ? payload.student : {};
+  const source = raw && typeof raw === "object" ? raw : {};
+  const answers = source.answers && typeof source.answers === "object" ? source.answers : {};
+  const student = source.student && typeof source.student === "object" ? source.student : {};
+  const scoreSource =
+    source.objective_score && typeof source.objective_score === "object" ? source.objective_score :
+    source.objectiveScore && typeof source.objectiveScore === "object" ? source.objectiveScore : {};
 
   const domValue = (...selectors) => {
     for (const selector of selectors) {
@@ -345,6 +357,7 @@ function normalizeSubmissionPayload(raw){
     }
     return "";
   };
+
   const firstText = (...values) => {
     for (const value of values) {
       if (typeof value === "string" && value.trim()) return value.trim();
@@ -352,68 +365,113 @@ function normalizeSubmissionPayload(raw){
     return "";
   };
 
-  payload.submitted_at =
-    payload.submitted_at || payload.submittedAt ||
-    (payload.meta && payload.meta.generated_at) || new Date().toISOString();
-
-  payload.student_name = payload.student_name || student.name ||
-    answers["student-name"] || answers.studentName ||
-    domValue("#studentName",'[data-save="student-name"]');
-
-  payload.student_id = payload.student_id || student.email || student.id ||
-    answers["student-email"] || answers["student-id"] || answers.studentEmail ||
-    domValue("#studentEmail",'[data-save="student-email"]','[data-save="student-id"]','[data-save="student-class"]');
-
   const homework =
-    payload.homework && typeof payload.homework === "object" ? payload.homework :
+    source.homework && typeof source.homework === "object" ? source.homework :
     answers.homework && typeof answers.homework === "object" ? answers.homework : {};
 
-  payload.homework_text = payload.homework_text || firstText(
-    homework.text, homework.paragraph, homework.message, homework.invitation,
+  const writing =
+    source.writing && typeof source.writing === "object" ? source.writing :
+    answers.writing && typeof answers.writing === "object" ? answers.writing : {};
+
+  const homeworkText = firstText(
+    source.homework_text,
+    homework.text, homework.paragraph, homework.final, homework.finalText,
+    homework.draft, homework.message, homework.invitation,
     answers["homework-text"], answers["invitation-text"],
-    answers.homeworkText, answers.invitationText, answers.message, answers.recommendation,
-    domValue("#homeworkText","#homework-text",'[data-save="homework-text"]','[data-save="invitation-text"]')
+    answers.homeworkText, answers.invitationText,
+    answers.finalText, answers.draftText, answers.message, answers.recommendation,
+    writing.homework, writing.final, writing.finalText, writing.paragraph, writing.draft,
+    domValue("#homeworkText","#homework-text",
+             '[data-save="homework-text"]','[data-save="invitation-text"]')
   );
 
-  const pairs = [];
-  const addPair = (c,t) => {
-    c=Number(c); t=Number(t);
-    if(Number.isFinite(c) && Number.isFinite(t) && t>0) pairs.push([c,t]);
-  };
-  const parseScore = v => {
-    if(typeof v==="string"){
-      const m=v.match(/(\d+)\s*\/\s*(\d+)/);
-      if(m) addPair(m[1],m[2]);
-    } else if(v && typeof v==="object"){
-      addPair(v.correct ?? v.score, v.total);
+  const checklistSource =
+    source.checklist || homework.checks || homework.checklist || answers.checklist || [];
+
+  let checklist = [];
+  if (Array.isArray(checklistSource)) checklist = checklistSource;
+  else if (checklistSource && typeof checklistSource === "object") {
+    checklist = Object.values(checklistSource).filter(v => typeof v === "boolean");
+  }
+  if (!checklist.length && homework && typeof homework === "object") {
+    checklist = Object.values(homework).filter(v => typeof v === "boolean");
+  }
+
+  let correct = scoreSource.correct ?? scoreSource.score ?? "";
+  let total = scoreSource.total ?? "";
+  let percent = scoreSource.percent ?? scoreSource.percentage ?? "";
+
+  // Some newer pages store multiple score blocks.
+  const scorePairs = [];
+  const addScore = value => {
+    if (typeof value === "string") {
+      const m = value.match(/(\d+)\s*\/\s*(\d+)/);
+      if (m) scorePairs.push([Number(m[1]),Number(m[2])]);
+    } else if (value && typeof value === "object") {
+      const c = Number(value.correct ?? value.score);
+      const t = Number(value.total);
+      if (Number.isFinite(c) && Number.isFinite(t) && t > 0) scorePairs.push([c,t]);
     }
   };
-  if(payload.objectiveScores && typeof payload.objectiveScores==="object") Object.values(payload.objectiveScores).forEach(parseScore);
-  if(payload.scores && typeof payload.scores==="object") Object.values(payload.scores).forEach(parseScore);
-  if(payload.objective_score && typeof payload.objective_score==="object") parseScore(payload.objective_score);
+  if (source.objectiveScores && typeof source.objectiveScores === "object") {
+    Object.values(source.objectiveScores).forEach(addScore);
+  }
+  if (source.scores && typeof source.scores === "object") {
+    Object.values(source.scores).forEach(addScore);
+  }
+  if ((correct === "" || total === "") && scorePairs.length) {
+    correct = scorePairs.reduce((sum,p)=>sum+p[0],0);
+    total = scorePairs.reduce((sum,p)=>sum+p[1],0);
+  }
+  if ((percent === "" || percent === null || percent === undefined) &&
+      Number.isFinite(Number(correct)) && Number(total) > 0) {
+    percent = Math.round(Number(correct) / Number(total) * 100);
+  }
 
-  const correct=pairs.reduce((s,x)=>s+x[0],0);
-  const total=pairs.reduce((s,x)=>s+x[1],0);
-  const existing=payload.objective_score && typeof payload.objective_score==="object" ? payload.objective_score : {};
-  payload.objective_score={
-    ...existing,
-    correct:existing.correct ?? (total?correct:""),
-    total:existing.total ?? (total||""),
-    percent:existing.percent ?? existing.percentage ?? (total?Math.round(correct/total*100):"")
+  const selfCheck =
+    source.self_check ||
+    answers.selfAssessment || answers.self_assessment ||
+    source.selfAssessment || source.self_assessment || {};
+
+  return {
+    lesson:
+      source.lesson ||
+      (source.meta && (source.meta.lesson || source.meta.title)) ||
+      document.title,
+    submitted_at:
+      source.submitted_at || source.submittedAt ||
+      (source.meta && source.meta.generated_at) ||
+      new Date().toISOString(),
+    student_id:
+      source.student_id || student.email || student.class_group ||
+      student.classGroup || student.id ||
+      answers["student-email"] || answers["student-id"] ||
+      domValue("#studentEmail",'[data-save="student-email"]',
+               '[data-save="student-id"]','[data-save="student-class"]'),
+    student_name:
+      source.student_name || student.name ||
+      answers["student-name"] || answers.studentName ||
+      domValue("#studentName",'[data-save="student-name"]'),
+    objective_score: {
+      correct,
+      total,
+      percent
+    },
+    word_count:
+      Number.isFinite(Number(source.word_count)) ? Number(source.word_count) :
+      (homeworkText ? homeworkText.trim().split(/\s+/).filter(Boolean).length : 0),
+    checklist,
+    homework_text: homeworkText,
+    written_work:
+      source.written_work && typeof source.written_work === "object"
+        ? source.written_work
+        : {},
+    self_check: selfCheck,
+    objective_answers:
+      source.objective_answers && typeof source.objective_answers === "object"
+        ? source.objective_answers
+        : answers
   };
-
-  const checklistSource=payload.checklist || homework.checks || homework.checklist || answers.checklist || [];
-  if(Array.isArray(checklistSource)) payload.checklist=checklistSource;
-  else if(checklistSource && typeof checklistSource==="object") payload.checklist=Object.values(checklistSource).filter(v=>typeof v==="boolean");
-  else payload.checklist=[];
-
-  payload.word_count=Number.isFinite(Number(payload.word_count)) ? Number(payload.word_count) :
-    (payload.homework_text ? payload.homework_text.trim().split(/\s+/).filter(Boolean).length : 0);
-
-  payload.written_work=payload.written_work || answers;
-  payload.self_check=payload.self_check || answers.selfAssessment || answers.self_assessment || payload.selfAssessment || payload.self_assessment || {};
-  payload.objective_answers=payload.objective_answers || answers;
-  return payload;
 }
  const TEACHER_EMAIL="";
 const fields=[...document.querySelectorAll('[data-save]')];
@@ -425,7 +483,7 @@ function update(){const groups=[...new Set(fields.map(el=>el.type==='radio'?el.n
 function score(selector){const els=[...document.querySelectorAll(selector)];let ok=0,total=0;const seen=new Set();els.forEach(el=>{if(el.type==='radio'&&seen.has(el.name))return;if(el.type==='radio')seen.add(el.name);total++;const actual=value(el).trim().toLowerCase();const expected=String(el.dataset.answer).trim().toLowerCase();const right=actual===expected;el.style.borderColor=right?'var(--ok)':'var(--bad)';if(right)ok++});return [ok,total]}
 document.querySelectorAll('[data-check]').forEach(btn=>btn.addEventListener('click',()=>{const kind=btn.dataset.check;const selector=kind==='lang'?'[data-save^="lang-"]':kind==='match'?'[data-save^="match-"]':kind==='event'?'[data-save^="event-"]':'input[data-save^="trailer-"]';const [ok,total]=score(selector);const out=document.getElementById(kind+'-feedback');out.textContent=`${ok}/${total} correct`;out.className='feedback '+(ok===total?'result-ok':'result-bad')}));
 function collect(){const answers={};fields.forEach(el=>{answers[el.dataset.save]=value(el)});return normalizeSubmissionPayload({...META,submittedAt:new Date().toISOString(),answers})}
-let prepared=null;document.getElementById('prepare').addEventListener('click',async()=>{prepared=collect();const words=(prepared.answers['homework-text']||'').trim().split(/\s+/).filter(Boolean).length;const status=document.getElementById('send-status');if(ENDPOINT){try{await fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(prepared)});status.textContent='Submission sent to the teacher.';status.className='feedback result-ok'}catch(err){status.textContent='Could not send automatically. Use Download JSON or Email teacher.';status.className='feedback result-bad'}}else{status.textContent=words>=70&&words<=90?'Ready: all lesson responses are included.':'Prepared, but the recommendation should contain 70–90 words.'}});
+let prepared=null;document.getElementById('prepare').addEventListener('click',async()=>{prepared=collect();const words=(prepared.answers['homework-text']||'').trim().split(/\s+/).filter(Boolean).length;const status=document.getElementById('send-status');if(ENDPOINT){try{await fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(prepared)});status.textContent='Submission sent to the teacher.';status.className='feedback result-ok'}catch(err){status.textContent='Could not send automatically. Use Download JSON or Email teacher.';status.className='feedback result-bad'}}else{status.textContent=words>=70&&words<=90?'Ready: all lesson responses are included.':'Prepared, but the recommendation should contain 70–90 words.'}});
 document.getElementById('copy').addEventListener('click',async()=>{prepared=prepared||collect();await navigator.clipboard.writeText(JSON.stringify(prepared,null,2));document.getElementById('send-status').textContent='Submission JSON copied.'});
 document.getElementById('download').addEventListener('click',()=>{prepared=prepared||collect();const blob=new Blob([JSON.stringify(prepared,null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='A2.1_Aula_5_'+(prepared.answers['student-name']||'student').replace(/[^a-z0-9]+/gi,'_')+'.json';a.click();URL.revokeObjectURL(a.href)});
 document.getElementById('email').addEventListener('click',e=>{e.preventDefault();prepared=prepared||collect();const subject=encodeURIComponent('A2.1 Aula 5 — '+(prepared.answers['student-name']||'Student'));const body=encodeURIComponent('Hello,\n\nHere is my A2.1 Aula 5 submission:\n\n'+JSON.stringify(prepared,null,2));location.href='mailto:'+TEACHER_EMAIL+'?subject='+subject+'&body='+body});

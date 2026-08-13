@@ -293,6 +293,15 @@ main{margin-top:1.15rem}
 
 
 
+
+
+/* Submission hotfix: JSON is a machine payload, not student-facing content. */
+pre.submission,
+.submission#submission,
+#submission.submission {
+  display:none !important;
+}
+
 </style>
 </head>
 <body>
@@ -461,11 +470,11 @@ main{margin-top:1.15rem}
   document.querySelector('[data-check="language"]').onclick=()=>{let ok=0;languageData.forEach((x,i)=>{if(qs(`#lang${i}`).value===x[1])ok++});show("#languageFeedback",ok,6)};
   document.querySelector('[data-check="detective"]').onclick=()=>{let ok=0;detectiveData.forEach((x,i)=>{if(qs(`#det${i}`).value===x[1])ok++});show("#detectiveFeedback",ok,8)};
   function collect(){const answers={labels:labelAnswers.map((_,i)=>qs(`#label${i}`).value),usefulWords:qs("#usefulWords").value,gist:document.querySelector('input[name="gist"]:checked')?.value||"",heardWords:heard.map((word,i)=>({word,order:qs(`#heard${i}`).value})),trueFalse:tfData.map((_,i)=>document.querySelector(`input[name="tf${i}"]:checked`)?.value||""),familyNames:nameData.map((x,i)=>({relationship:x[0],answer:qs(`#familyName${i}`).value})),language:languageData.map((_,i)=>qs(`#lang${i}`).value),detective:detectiveData.map((_,i)=>qs(`#det${i}`).value),peopleMap:[qs("#person1").value,qs("#person2").value,qs("#person3").value],speakingPlan:qs("#speakingPlan").value,exit:{newWords:qs("#newWords").value,sentence:qs("#exitSentence").value},selfAssessment:scaleStatements.map((s,i)=>({statement:s,rating:document.querySelector(`input[name="scale${i}"]:checked`)?.value||""})),homework:{text:qs("#homeworkText").value,checks:[qs("#hwCheck1").checked,qs("#hwCheck2").checked,qs("#hwCheck3").checked]}};return{lesson:"A1.2 Aula 1 - Meet my family",submittedAt:new Date().toISOString(),student:{name:qs("#studentName").value,email:qs("#studentEmail").value},answers}}
-  function prepare(){const data=collect();qs("#submission").textContent=JSON.stringify(data,null,2);qs("#submission").classList.add("show");return data}
+  function prepare(){const data=collect();qs("#submission").textContent=JSON.stringify(data,null,2);return data}
   qs("#prepare").onclick=()=>{prepare();qs("#submissionFeedback").textContent="Submission prepared.";qs("#submissionFeedback").className="feedback ok"};
-  qs("#copy").onclick=async()=>{const text=JSON.stringify(prepare(),null,2);try{await navigator.clipboard.writeText(text);qs("#submissionFeedback").textContent="Copied.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Copy not available. Select the JSON below.";qs("#submissionFeedback").className="feedback bad"}};
+  qs("#copy").onclick=async()=>{const text=JSON.stringify(prepare(),null,2);try{await navigator.clipboard.writeText(text);qs("#submissionFeedback").textContent="Copied.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Copy not available. Use Download JSON instead.";qs("#submissionFeedback").className="feedback bad"}};
   qs("#download").onclick=()=>{const blob=new Blob([JSON.stringify(prepare(),null,2)],{type:"application/json"});const a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="A1.2_Aula_1_"+(qs("#studentName").value.trim().replace(/\s+/g,"_")||"student")+".json";a.click();URL.revokeObjectURL(a.href)};
-  qs("#send").onclick=async()=>{const data=prepare();if(!ENDPOINT){qs("#submissionFeedback").textContent="Google Sheets is not configured yet. Download the JSON and send it to your teacher.";qs("#submissionFeedback").className="feedback bad";return}try{await fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(data)});qs("#submissionFeedback").textContent="Sent to teacher.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Could not send. Download the JSON instead.";qs("#submissionFeedback").className="feedback bad"}};
+  qs("#send").onclick=async()=>{const data=collect();if(!ENDPOINT){qs("#submissionFeedback").textContent="Google Sheets is not configured yet. Download the JSON and send it to your teacher.";qs("#submissionFeedback").className="feedback bad";return}try{await fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});qs("#submissionFeedback").textContent="Sent to teacher.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Could not send. Download the JSON instead.";qs("#submissionFeedback").className="feedback bad"}};
   qs("#reset").onclick=()=>{if(confirm("Reset all answers for this lesson?")){localStorage.removeItem("a12l1");location.reload()}};
   load();
   </script>

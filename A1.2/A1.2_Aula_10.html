@@ -281,6 +281,15 @@ main{margin-top:1.15rem}
 }
 
 
+
+
+/* Submission hotfix: JSON is a machine payload, not student-facing content. */
+pre.submission,
+.submission#submission,
+#submission.submission {
+  display:none !important;
+}
+
 </style>
 </head>
 <body>
@@ -393,32 +402,27 @@ function save(){const data={elapsed};tracked().forEach((el,i)=>{const key=el.id|
 function load(){const data=JSON.parse(localStorage.getItem("a12lesson10")||"{}");elapsed=Number(data.elapsed||0);tracked().forEach((el,i)=>{const key=el.id||el.name+"-"+i;if(!(key in data))return;if(el.type==="checkbox"||el.type==="radio")el.checked=data[key];else el.value=data[key]});paintTime();progress()}
 function progress(){const required=tracked().filter(el=>el.type!=="email"&&!el.id.startsWith("p3")&&!el.id.startsWith("speak3"));const done=required.filter(el=>el.type==="checkbox"?el.checked:el.type==="radio"?el.checked:Boolean(el.value)).length;const pct=Math.min(100,Math.round(done/Math.max(1,required.length-12)*100));qs("#progressText").textContent=pct+"%";qs("#progressBar").style.width=pct+"%"}
 tracked().forEach(el=>el.addEventListener("input",save));tracked().forEach(el=>el.addEventListener("change",save));
-function showSubmission(){const text=JSON.stringify(collect(),null,2);qs("#submission").textContent=text;qs("#submission").style.display="block";return text}
+function showSubmission(){const text=JSON.stringify(collect(),null,2);qs("#submission").textContent=text;return text}
 qs("#prepare").addEventListener("click",()=>{showSubmission();qs("#submissionFeedback").textContent="Submission ready";qs("#submissionFeedback").className="feedback ok"});
 qs("#copy").addEventListener("click",async()=>{await navigator.clipboard.writeText(showSubmission());qs("#submissionFeedback").textContent="Copied";qs("#submissionFeedback").className="feedback ok"});
 qs("#download").addEventListener("click",()=>{const blob=new Blob([showSubmission()],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="A1.2_Aula_10_"+(qs("#studentName").value||"student").replace(/\s+/g,"_")+".json";a.click();URL.revokeObjectURL(a.href)});
 const TEACHER_ENDPOINT="https://script.google.com/macros/s/AKfycby3l-tad3EPSUQyI4Bi6ylQmuouaY8HkVKA4hmQBbph0KOw03_vYeFVReVnTr7V41tV/exec";
 
 function normalizeSubmissionPayload(raw){
-  const payload = raw && typeof raw === "object" ? {...raw} : {};
-  const student = payload.student && typeof payload.student === "object" ? payload.student : {};
-  const answers = payload.answers && typeof payload.answers === "object" ? payload.answers : {};
-  const scoreSource = payload.objective_score || payload.objectiveScore || {};
-  const correct = scoreSource.correct ?? scoreSource.score ?? "";
-  const total = scoreSource.total ?? "";
-  let percent = scoreSource.percent ?? scoreSource.percentage ?? "";
-  if ((percent === "" || percent === null || percent === undefined) && Number.isFinite(Number(correct)) && Number(total) > 0) {
-    percent = Math.round((Number(correct) / Number(total)) * 100);
-  }
-  payload.submitted_at = payload.submitted_at || payload.submittedAt || (payload.meta && payload.meta.generated_at) || new Date().toISOString();
-  payload.student_name = payload.student_name || student.name || "";
-  payload.student_id = payload.student_id || student.email || student.class_group || student.classGroup || student.id || "";
-  payload.objective_score = {...scoreSource, correct, total, percent};
+  const source = raw && typeof raw === "object" ? raw : {};
+  const answers = source.answers && typeof source.answers === "object" ? source.answers : {};
+  const student = source.student && typeof source.student === "object" ? source.student : {};
+  const scoreSource =
+    source.objective_score && typeof source.objective_score === "object" ? source.objective_score :
+    source.objectiveScore && typeof source.objectiveScore === "object" ? source.objectiveScore : {};
 
-  const homework = (payload.homework && typeof payload.homework === "object" ? payload.homework : null) ||
-                   (answers.homework && typeof answers.homework === "object" ? answers.homework : {}) || {};
-  const writing = (answers.writing && typeof answers.writing === "object" ? answers.writing : null) ||
-                  (payload.writing && typeof payload.writing === "object" ? payload.writing : {}) || {};
+  const domValue = (...selectors) => {
+    for (const selector of selectors) {
+      const el = document.querySelector(selector);
+      if (el && typeof el.value === "string" && el.value.trim()) return el.value.trim();
+    }
+    return "";
+  };
 
   const firstText = (...values) => {
     for (const value of values) {
@@ -427,30 +431,116 @@ function normalizeSubmissionPayload(raw){
     return "";
   };
 
-  payload.homework_text = payload.homework_text || firstText(
-    homework.text, homework.paragraph, homework.final, homework.finalText, homework.draft,
-    answers.homeworkText, answers.finalText, answers.draftText,
-    writing.homework, writing.final, writing.finalText, writing.paragraph, writing.draft
+  const homework =
+    source.homework && typeof source.homework === "object" ? source.homework :
+    answers.homework && typeof answers.homework === "object" ? answers.homework : {};
+
+  const writing =
+    source.writing && typeof source.writing === "object" ? source.writing :
+    answers.writing && typeof answers.writing === "object" ? answers.writing : {};
+
+  const homeworkText = firstText(
+    source.homework_text,
+    homework.text, homework.paragraph, homework.final, homework.finalText,
+    homework.draft, homework.message, homework.invitation,
+    answers["homework-text"], answers["invitation-text"],
+    answers.homeworkText, answers.invitationText,
+    answers.finalText, answers.draftText, answers.message, answers.recommendation,
+    writing.homework, writing.final, writing.finalText, writing.paragraph, writing.draft,
+    domValue("#homeworkText","#homework-text",
+             '[data-save="homework-text"]','[data-save="invitation-text"]')
   );
 
-  const checklistSource = payload.checklist || homework.checks || homework.checklist || answers.checklist || [];
-  if (Array.isArray(checklistSource)) payload.checklist = checklistSource;
-  else if (checklistSource && typeof checklistSource === "object") payload.checklist = Object.values(checklistSource).filter(v => typeof v === "boolean");
-  else payload.checklist = [];
-  if (!payload.checklist.length && homework && typeof homework === "object") {
-    payload.checklist = Object.values(homework).filter(v => typeof v === "boolean");
+  const checklistSource =
+    source.checklist || homework.checks || homework.checklist || answers.checklist || [];
+
+  let checklist = [];
+  if (Array.isArray(checklistSource)) checklist = checklistSource;
+  else if (checklistSource && typeof checklistSource === "object") {
+    checklist = Object.values(checklistSource).filter(v => typeof v === "boolean");
+  }
+  if (!checklist.length && homework && typeof homework === "object") {
+    checklist = Object.values(homework).filter(v => typeof v === "boolean");
   }
 
-  payload.word_count = Number.isFinite(Number(payload.word_count)) ? Number(payload.word_count) :
-    (payload.homework_text ? payload.homework_text.trim().split(/\s+/).filter(Boolean).length : 0);
+  let correct = scoreSource.correct ?? scoreSource.score ?? "";
+  let total = scoreSource.total ?? "";
+  let percent = scoreSource.percent ?? scoreSource.percentage ?? "";
 
-  payload.written_work = payload.written_work || answers;
-  payload.self_check = payload.self_check || answers.selfAssessment || answers.self_assessment || payload.selfAssessment || payload.self_assessment || {};
-  payload.objective_answers = payload.objective_answers || answers;
-  return payload;
+  // Some newer pages store multiple score blocks.
+  const scorePairs = [];
+  const addScore = value => {
+    if (typeof value === "string") {
+      const m = value.match(/(\d+)\s*\/\s*(\d+)/);
+      if (m) scorePairs.push([Number(m[1]),Number(m[2])]);
+    } else if (value && typeof value === "object") {
+      const c = Number(value.correct ?? value.score);
+      const t = Number(value.total);
+      if (Number.isFinite(c) && Number.isFinite(t) && t > 0) scorePairs.push([c,t]);
+    }
+  };
+  if (source.objectiveScores && typeof source.objectiveScores === "object") {
+    Object.values(source.objectiveScores).forEach(addScore);
+  }
+  if (source.scores && typeof source.scores === "object") {
+    Object.values(source.scores).forEach(addScore);
+  }
+  if ((correct === "" || total === "") && scorePairs.length) {
+    correct = scorePairs.reduce((sum,p)=>sum+p[0],0);
+    total = scorePairs.reduce((sum,p)=>sum+p[1],0);
+  }
+  if ((percent === "" || percent === null || percent === undefined) &&
+      Number.isFinite(Number(correct)) && Number(total) > 0) {
+    percent = Math.round(Number(correct) / Number(total) * 100);
+  }
+
+  const selfCheck =
+    source.self_check ||
+    answers.selfAssessment || answers.self_assessment ||
+    source.selfAssessment || source.self_assessment || {};
+
+  return {
+    lesson:
+      source.lesson ||
+      (source.meta && (source.meta.lesson || source.meta.title)) ||
+      document.title,
+    submitted_at:
+      source.submitted_at || source.submittedAt ||
+      (source.meta && source.meta.generated_at) ||
+      new Date().toISOString(),
+    student_id:
+      source.student_id || student.email || student.class_group ||
+      student.classGroup || student.id ||
+      answers["student-email"] || answers["student-id"] ||
+      domValue("#studentEmail",'[data-save="student-email"]',
+               '[data-save="student-id"]','[data-save="student-class"]'),
+    student_name:
+      source.student_name || student.name ||
+      answers["student-name"] || answers.studentName ||
+      domValue("#studentName",'[data-save="student-name"]'),
+    objective_score: {
+      correct,
+      total,
+      percent
+    },
+    word_count:
+      Number.isFinite(Number(source.word_count)) ? Number(source.word_count) :
+      (homeworkText ? homeworkText.trim().split(/\s+/).filter(Boolean).length : 0),
+    checklist,
+    homework_text: homeworkText,
+    written_work:
+      source.written_work && typeof source.written_work === "object"
+        ? source.written_work
+        : {},
+    self_check: selfCheck,
+    objective_answers:
+      source.objective_answers && typeof source.objective_answers === "object"
+        ? source.objective_answers
+        : answers
+  };
 }
 
-qs("#send").addEventListener("click",async()=>{const payload=collect();if(!TEACHER_ENDPOINT){showSubmission();qs("#submissionFeedback").textContent="The submission service is not configured yet. Copy or download the complete submission.";qs("#submissionFeedback").className="feedback bad";return}try{const response=await fetch(TEACHER_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(normalizeSubmissionPayload(payload))});qs("#submissionFeedback").textContent="Sent to teacher";qs("#submissionFeedback").className="feedback ok"}catch(error){showSubmission();qs("#submissionFeedback").textContent="Could not send. Copy or download the submission.";qs("#submissionFeedback").className="feedback bad"}});
+qs("#send").addEventListener("click",async()=>{const payload=collect();if(!TEACHER_ENDPOINT){showSubmission();qs("#submissionFeedback").textContent="The submission service is not configured yet. Copy or download the complete submission.";qs("#submissionFeedback").className="feedback bad";return}try{const response=await fetch(TEACHER_ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(normalizeSubmissionPayload(payload))});qs("#submissionFeedback").textContent="Sent to teacher";qs("#submissionFeedback").className="feedback ok"}catch(error){showSubmission();qs("#submissionFeedback").textContent="Could not send. Copy or download the submission.";qs("#submissionFeedback").className="feedback bad"}});
 qs("#reset").addEventListener("click",()=>{if(confirm("Clear all answers?")){localStorage.removeItem("a12lesson10");location.reload()}});
 load();
 </script>

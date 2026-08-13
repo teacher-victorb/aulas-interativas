@@ -296,6 +296,15 @@ main{margin-top:1.15rem}
 }
 
 
+
+
+/* Submission hotfix: JSON is a machine payload, not student-facing content. */
+pre.submission,
+.submission#submission,
+#submission.submission {
+  display:none !important;
+}
+
 </style>
 </head>
 <body>
@@ -338,9 +347,12 @@ main{margin-top:1.15rem}
 const TEACHER_ENDPOINT="https://script.google.com/macros/s/AKfycby3l-tad3EPSUQyI4Bi6ylQmuouaY8HkVKA4hmQBbph0KOw03_vYeFVReVnTr7V41tV/exec";
 
 function normalizeSubmissionPayload(raw){
-  const payload = raw && typeof raw === "object" ? {...raw} : {};
-  const answers = payload.answers && typeof payload.answers === "object" ? payload.answers : {};
-  const student = payload.student && typeof payload.student === "object" ? payload.student : {};
+  const source = raw && typeof raw === "object" ? raw : {};
+  const answers = source.answers && typeof source.answers === "object" ? source.answers : {};
+  const student = source.student && typeof source.student === "object" ? source.student : {};
+  const scoreSource =
+    source.objective_score && typeof source.objective_score === "object" ? source.objective_score :
+    source.objectiveScore && typeof source.objectiveScore === "object" ? source.objectiveScore : {};
 
   const domValue = (...selectors) => {
     for (const selector of selectors) {
@@ -349,6 +361,7 @@ function normalizeSubmissionPayload(raw){
     }
     return "";
   };
+
   const firstText = (...values) => {
     for (const value of values) {
       if (typeof value === "string" && value.trim()) return value.trim();
@@ -356,68 +369,113 @@ function normalizeSubmissionPayload(raw){
     return "";
   };
 
-  payload.submitted_at =
-    payload.submitted_at || payload.submittedAt ||
-    (payload.meta && payload.meta.generated_at) || new Date().toISOString();
-
-  payload.student_name = payload.student_name || student.name ||
-    answers["student-name"] || answers.studentName ||
-    domValue("#studentName",'[data-save="student-name"]');
-
-  payload.student_id = payload.student_id || student.email || student.id ||
-    answers["student-email"] || answers["student-id"] || answers.studentEmail ||
-    domValue("#studentEmail",'[data-save="student-email"]','[data-save="student-id"]','[data-save="student-class"]');
-
   const homework =
-    payload.homework && typeof payload.homework === "object" ? payload.homework :
+    source.homework && typeof source.homework === "object" ? source.homework :
     answers.homework && typeof answers.homework === "object" ? answers.homework : {};
 
-  payload.homework_text = payload.homework_text || firstText(
-    homework.text, homework.paragraph, homework.message, homework.invitation,
+  const writing =
+    source.writing && typeof source.writing === "object" ? source.writing :
+    answers.writing && typeof answers.writing === "object" ? answers.writing : {};
+
+  const homeworkText = firstText(
+    source.homework_text,
+    homework.text, homework.paragraph, homework.final, homework.finalText,
+    homework.draft, homework.message, homework.invitation,
     answers["homework-text"], answers["invitation-text"],
-    answers.homeworkText, answers.invitationText, answers.message, answers.recommendation,
-    domValue("#homeworkText","#homework-text",'[data-save="homework-text"]','[data-save="invitation-text"]')
+    answers.homeworkText, answers.invitationText,
+    answers.finalText, answers.draftText, answers.message, answers.recommendation,
+    writing.homework, writing.final, writing.finalText, writing.paragraph, writing.draft,
+    domValue("#homeworkText","#homework-text",
+             '[data-save="homework-text"]','[data-save="invitation-text"]')
   );
 
-  const pairs = [];
-  const addPair = (c,t) => {
-    c=Number(c); t=Number(t);
-    if(Number.isFinite(c) && Number.isFinite(t) && t>0) pairs.push([c,t]);
-  };
-  const parseScore = v => {
-    if(typeof v==="string"){
-      const m=v.match(/(\d+)\s*\/\s*(\d+)/);
-      if(m) addPair(m[1],m[2]);
-    } else if(v && typeof v==="object"){
-      addPair(v.correct ?? v.score, v.total);
+  const checklistSource =
+    source.checklist || homework.checks || homework.checklist || answers.checklist || [];
+
+  let checklist = [];
+  if (Array.isArray(checklistSource)) checklist = checklistSource;
+  else if (checklistSource && typeof checklistSource === "object") {
+    checklist = Object.values(checklistSource).filter(v => typeof v === "boolean");
+  }
+  if (!checklist.length && homework && typeof homework === "object") {
+    checklist = Object.values(homework).filter(v => typeof v === "boolean");
+  }
+
+  let correct = scoreSource.correct ?? scoreSource.score ?? "";
+  let total = scoreSource.total ?? "";
+  let percent = scoreSource.percent ?? scoreSource.percentage ?? "";
+
+  // Some newer pages store multiple score blocks.
+  const scorePairs = [];
+  const addScore = value => {
+    if (typeof value === "string") {
+      const m = value.match(/(\d+)\s*\/\s*(\d+)/);
+      if (m) scorePairs.push([Number(m[1]),Number(m[2])]);
+    } else if (value && typeof value === "object") {
+      const c = Number(value.correct ?? value.score);
+      const t = Number(value.total);
+      if (Number.isFinite(c) && Number.isFinite(t) && t > 0) scorePairs.push([c,t]);
     }
   };
-  if(payload.objectiveScores && typeof payload.objectiveScores==="object") Object.values(payload.objectiveScores).forEach(parseScore);
-  if(payload.scores && typeof payload.scores==="object") Object.values(payload.scores).forEach(parseScore);
-  if(payload.objective_score && typeof payload.objective_score==="object") parseScore(payload.objective_score);
+  if (source.objectiveScores && typeof source.objectiveScores === "object") {
+    Object.values(source.objectiveScores).forEach(addScore);
+  }
+  if (source.scores && typeof source.scores === "object") {
+    Object.values(source.scores).forEach(addScore);
+  }
+  if ((correct === "" || total === "") && scorePairs.length) {
+    correct = scorePairs.reduce((sum,p)=>sum+p[0],0);
+    total = scorePairs.reduce((sum,p)=>sum+p[1],0);
+  }
+  if ((percent === "" || percent === null || percent === undefined) &&
+      Number.isFinite(Number(correct)) && Number(total) > 0) {
+    percent = Math.round(Number(correct) / Number(total) * 100);
+  }
 
-  const correct=pairs.reduce((s,x)=>s+x[0],0);
-  const total=pairs.reduce((s,x)=>s+x[1],0);
-  const existing=payload.objective_score && typeof payload.objective_score==="object" ? payload.objective_score : {};
-  payload.objective_score={
-    ...existing,
-    correct:existing.correct ?? (total?correct:""),
-    total:existing.total ?? (total||""),
-    percent:existing.percent ?? existing.percentage ?? (total?Math.round(correct/total*100):"")
+  const selfCheck =
+    source.self_check ||
+    answers.selfAssessment || answers.self_assessment ||
+    source.selfAssessment || source.self_assessment || {};
+
+  return {
+    lesson:
+      source.lesson ||
+      (source.meta && (source.meta.lesson || source.meta.title)) ||
+      document.title,
+    submitted_at:
+      source.submitted_at || source.submittedAt ||
+      (source.meta && source.meta.generated_at) ||
+      new Date().toISOString(),
+    student_id:
+      source.student_id || student.email || student.class_group ||
+      student.classGroup || student.id ||
+      answers["student-email"] || answers["student-id"] ||
+      domValue("#studentEmail",'[data-save="student-email"]',
+               '[data-save="student-id"]','[data-save="student-class"]'),
+    student_name:
+      source.student_name || student.name ||
+      answers["student-name"] || answers.studentName ||
+      domValue("#studentName",'[data-save="student-name"]'),
+    objective_score: {
+      correct,
+      total,
+      percent
+    },
+    word_count:
+      Number.isFinite(Number(source.word_count)) ? Number(source.word_count) :
+      (homeworkText ? homeworkText.trim().split(/\s+/).filter(Boolean).length : 0),
+    checklist,
+    homework_text: homeworkText,
+    written_work:
+      source.written_work && typeof source.written_work === "object"
+        ? source.written_work
+        : {},
+    self_check: selfCheck,
+    objective_answers:
+      source.objective_answers && typeof source.objective_answers === "object"
+        ? source.objective_answers
+        : answers
   };
-
-  const checklistSource=payload.checklist || homework.checks || homework.checklist || answers.checklist || [];
-  if(Array.isArray(checklistSource)) payload.checklist=checklistSource;
-  else if(checklistSource && typeof checklistSource==="object") payload.checklist=Object.values(checklistSource).filter(v=>typeof v==="boolean");
-  else payload.checklist=[];
-
-  payload.word_count=Number.isFinite(Number(payload.word_count)) ? Number(payload.word_count) :
-    (payload.homework_text ? payload.homework_text.trim().split(/\s+/).filter(Boolean).length : 0);
-
-  payload.written_work=payload.written_work || answers;
-  payload.self_check=payload.self_check || answers.selfAssessment || answers.self_assessment || payload.selfAssessment || payload.self_assessment || {};
-  payload.objective_answers=payload.objective_answers || answers;
-  return payload;
 }
 
 const STORAGE_KEY = 'a21_l2_state_v1';
@@ -446,11 +504,11 @@ document.addEventListener('input',()=>{save();updateProgress()});document.addEve
 document.getElementById('reset').addEventListener('click',()=>{if(confirm('Reset all answers?')){localStorage.removeItem(STORAGE_KEY);location.reload()}});
 function submissionData(){const d=getState();d.lesson='A2.1 Aula 2 — What should we watch?';d.submittedAt=new Date().toISOString();d.objectiveScores={forms:score(formKey),responses:score(responseKey),mini:score(miniKey)};return d}
 function score(key){let n=0;for(const [id,a] of Object.entries(key))if(normalize(document.getElementById(id)?.value)===normalize(a))n++;return `${n}/${Object.keys(key).length}`}
-function prepare(){const text=JSON.stringify(normalizeSubmissionPayload(submissionData()),null,2);const pre=document.getElementById('submission');pre.textContent=text;pre.style.display='block';document.getElementById('submissionFeedback').textContent='Submission ready: all answers are included.';document.getElementById('submissionFeedback').className='feedback ok';return text}
+function prepare(){const text=JSON.stringify(normalizeSubmissionPayload(submissionData()),null,2);const pre=document.getElementById('submission');pre.textContent=text;document.getElementById('submissionFeedback').textContent='Submission ready: all answers are included.';document.getElementById('submissionFeedback').className='feedback ok';return text}
 document.getElementById('prepare').addEventListener('click',prepare);
 document.getElementById('copy').addEventListener('click',async()=>{const t=prepare();await navigator.clipboard.writeText(t);document.getElementById('submissionFeedback').textContent='Copied.'});
 document.getElementById('download').addEventListener('click',()=>{const t=prepare();const blob=new Blob([t],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='A2.1_Aula_2_'+(document.getElementById('studentName').value||'student').replace(/\W+/g,'_')+'.json';a.click();URL.revokeObjectURL(a.href)});
-document.getElementById('send').addEventListener('click',async()=>{const data=submissionData();const f=document.getElementById('submissionFeedback');if(!document.getElementById('studentName').value.trim()){f.textContent='Add the student name first.';f.className='feedback bad';return}if(!TEACHER_ENDPOINT){prepare();f.textContent='The submission service is not configured yet. Use Copy or Download JSON.';f.className='feedback bad';return}try{await fetch(TEACHER_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify(normalizeSubmissionPayload(data))});f.textContent='Sent to Teacher.';f.className='feedback ok'}catch(e){f.textContent='Could not send. Download the JSON instead.';f.className='feedback bad'}});
+document.getElementById('send').addEventListener('click',async()=>{const data=submissionData();const f=document.getElementById('submissionFeedback');if(!document.getElementById('studentName').value.trim()){f.textContent='Add the student name first.';f.className='feedback bad';return}if(!TEACHER_ENDPOINT){prepare();f.textContent='The submission service is not configured yet. Use Copy or Download JSON.';f.className='feedback bad';return}try{await fetch(TEACHER_ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(normalizeSubmissionPayload(data))});f.textContent='Sent to Teacher.';f.className='feedback ok'}catch(e){f.textContent='Could not send. Download the JSON instead.';f.className='feedback bad'}});
 load();updateProgress();
 </script>
 </body></html>

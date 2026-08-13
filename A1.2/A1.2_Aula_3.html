@@ -278,6 +278,15 @@ main{margin-top:1.15rem}
 
 
 
+
+
+/* Submission hotfix: JSON is a machine payload, not student-facing content. */
+pre.submission,
+.submission#submission,
+#submission.submission {
+  display:none !important;
+}
+
 </style></head><body>
 <header class="topbar course-topbar" id="lessonTop">
     <div class="course-brand-area">
@@ -365,12 +374,12 @@ function snapshot(){const data={};qsa("input,select,textarea").forEach(el=>{if(e
 function save(){localStorage.setItem(STORAGE,JSON.stringify(snapshot()));progress()}
 function load(){let data={};try{data=JSON.parse(localStorage.getItem(STORAGE)||"{}")}catch{};qsa("input,select,textarea").forEach(el=>{if(el.type==="radio")el.checked=data[el.name]===el.value;else if(el.type==="checkbox")el.checked=!!data[el.id];else if(el.id&&data[el.id]!==undefined)el.value=data[el.id]});progress()}
 document.addEventListener("input",save);document.addEventListener("change",save);
-function prepare(){const data=collect();qs("#submission").textContent=JSON.stringify(data,null,2);qs("#submission").classList.add("show");return data}
+function prepare(){const data=collect();qs("#submission").textContent=JSON.stringify(data,null,2);return data}
 qs("#prepare").onclick=()=>{prepare();qs("#submissionFeedback").textContent="Submission prepared.";qs("#submissionFeedback").className="feedback ok"};
-qs("#copy").onclick=async()=>{const text=JSON.stringify(prepare(),null,2);try{await navigator.clipboard.writeText(text);qs("#submissionFeedback").textContent="Copied.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Copy not available. Select the JSON below.";qs("#submissionFeedback").className="feedback bad"}};
+qs("#copy").onclick=async()=>{const text=JSON.stringify(prepare(),null,2);try{await navigator.clipboard.writeText(text);qs("#submissionFeedback").textContent="Copied.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Copy not available. Use Download JSON instead.";qs("#submissionFeedback").className="feedback bad"}};
 qs("#download").onclick=()=>{const blob=new Blob([JSON.stringify(prepare(),null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=DOWNLOAD_NAME+"_"+(qs("#studentName").value.trim().replace(/\s+/g,"_")||"student")+".json";a.click();URL.revokeObjectURL(a.href)};
 const ENDPOINT="https://script.google.com/macros/s/AKfycby3l-tad3EPSUQyI4Bi6ylQmuouaY8HkVKA4hmQBbph0KOw03_vYeFVReVnTr7V41tV/exec";
-qs("#send").onclick=async()=>{const data=prepare();if(!ENDPOINT){qs("#submissionFeedback").textContent="Google Sheets is not configured yet. Download the JSON and send it to your teacher.";qs("#submissionFeedback").className="feedback bad";return}try{await fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain"},body:JSON.stringify(data)});qs("#submissionFeedback").textContent="Sent to teacher.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Could not send. Download the JSON instead.";qs("#submissionFeedback").className="feedback bad"}};
+qs("#send").onclick=async()=>{const data=collect();if(!ENDPOINT){qs("#submissionFeedback").textContent="Google Sheets is not configured yet. Download the JSON and send it to your teacher.";qs("#submissionFeedback").className="feedback bad";return}try{await fetch(ENDPOINT,{method:"POST",mode:"no-cors",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(data)});qs("#submissionFeedback").textContent="Sent to teacher.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Could not send. Download the JSON instead.";qs("#submissionFeedback").className="feedback bad"}};
 qs("#reset").onclick=()=>{if(confirm("Reset all answers for this lesson?")){localStorage.removeItem(STORAGE);location.reload()}};
 
 selectBlock("#visualItems",visualData,"visual",["1","2","3","4"]);qs("#detailItems").innerHTML=detailData.map((x,i)=>`<div class="item answer-row"><label>${esc(x[0])} • ${esc(x[1])}</label><input id="detail${i}" type="text"></div>`).join("");selectBlock("#languageItems",languageData.concat(grammarData),"language",["is","are","has","have","wears","Does","Do","does"]);selectBlock("#possItems",possData,"poss",["My","Your","His","Her","Their"]);
