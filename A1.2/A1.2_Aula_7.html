@@ -397,7 +397,7 @@ function prepare(){const text=JSON.stringify(collect(),null,2);qs("#submission")
 qs("#prepare").onclick=()=>{prepare();qs("#submissionFeedback").textContent="Submission prepared.";qs("#submissionFeedback").className="feedback ok"};
 qs("#copy").onclick=async()=>{await navigator.clipboard.writeText(prepare());qs("#submissionFeedback").textContent="Copied.";qs("#submissionFeedback").className="feedback ok"};
 qs("#download").onclick=()=>{const blob=new Blob([prepare()],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="A1.2_Aula_7_"+(qs("#studentName").value.trim().replace(/\s+/g,"_")||"student")+".json";a.click();URL.revokeObjectURL(a.href)};
-const TEACHER_ENDPOINT="https://script.google.com/macros/s/AKfycby3l-tad3EPSUQyI4Bi6ylQmuouaY8HkVKA4hmQBbph0KOw03_vYeFVReVnTr7V41tV/exec";
+const TEACHER_ENDPOINT="https://script.google.com/macros/s/AKfycbyLOc1slw72q1AE0XyiEGSzgtDMK1hHsiwLfZe9L-6BhjIL_OuGduxMxs4U0RXue3Z6GA/exec";
 
 function normalizeSubmissionPayload(raw){
   const source = raw && typeof raw === "object" ? raw : {};

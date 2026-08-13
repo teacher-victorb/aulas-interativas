@@ -376,7 +376,7 @@ function prepare(){const data=collect();qs("#submission").textContent=JSON.strin
 qs("#prepare").onclick=()=>{prepare();qs("#submissionFeedback").textContent="Submission prepared.";qs("#submissionFeedback").className="feedback ok"};
 qs("#copy").onclick=async()=>{const text=JSON.stringify(prepare(),null,2);try{await navigator.clipboard.writeText(text);qs("#submissionFeedback").textContent="Copied.";qs("#submissionFeedback").className="feedback ok"}catch{qs("#submissionFeedback").textContent="Copy not available. Use Download JSON instead.";qs("#submissionFeedback").className="feedback bad"}};
 qs("#download").onclick=()=>{const blob=new Blob([JSON.stringify(prepare(),null,2)],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download=DOWNLOAD_NAME+"_"+(qs("#studentName").value.trim().replace(/\s+/g,"_")||"student")+".json";a.click();URL.revokeObjectURL(a.href)};
-const ENDPOINT="https://script.google.com/macros/s/AKfycby3l-tad3EPSUQyI4Bi6ylQmuouaY8HkVKA4hmQBbph0KOw03_vYeFVReVnTr7V41tV/exec";
+const ENDPOINT="https://script.google.com/macros/s/AKfycbyLOc1slw72q1AE0XyiEGSzgtDMK1hHsiwLfZe9L-6BhjIL_OuGduxMxs4U0RXue3Z6GA/exec";
 
 function normalizeSubmissionPayload(raw){
   const source = raw && typeof raw === "object" ? raw : {};

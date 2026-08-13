@@ -395,7 +395,7 @@ function showSubmission(){const text=JSON.stringify(collect(),null,2);qs("#submi
 qs("#prepare").addEventListener("click",()=>{showSubmission();qs("#submissionFeedback").textContent="Submission ready";qs("#submissionFeedback").className="feedback ok"});
 qs("#copy").addEventListener("click",async()=>{await navigator.clipboard.writeText(showSubmission());qs("#submissionFeedback").textContent="Copied";qs("#submissionFeedback").className="feedback ok"});
 qs("#download").addEventListener("click",()=>{const blob=new Blob([showSubmission()],{type:"application/json"}),a=document.createElement("a");a.href=URL.createObjectURL(blob);a.download="A1.2_Aula_8_"+(qs("#studentName").value||"student").replace(/\s+/g,"_")+".json";a.click();URL.revokeObjectURL(a.href)});
-const TEACHER_ENDPOINT="https://script.google.com/macros/s/AKfycby3l-tad3EPSUQyI4Bi6ylQmuouaY8HkVKA4hmQBbph0KOw03_vYeFVReVnTr7V41tV/exec";
+const TEACHER_ENDPOINT="https://script.google.com/macros/s/AKfycbyLOc1slw72q1AE0XyiEGSzgtDMK1hHsiwLfZe9L-6BhjIL_OuGduxMxs4U0RXue3Z6GA/exec";
 
 function normalizeSubmissionPayload(raw){
   const source = raw && typeof raw === "object" ? raw : {};
