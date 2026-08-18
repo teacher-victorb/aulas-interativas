@@ -581,6 +581,131 @@ main{margin-top:1.15rem}
   (() => {
     const STORAGE_KEY="a11_l8_first_contact_v1";
     const SHEETS_ENDPOINT="https://script.google.com/macros/s/AKfycbyLOc1slw72q1AE0XyiEGSzgtDMK1hHsiwLfZe9L-6BhjIL_OuGduxMxs4U0RXue3Z6GA/exec";
+
+
+function prepareTeacherPayload(raw){
+  const payload = raw && typeof raw === "object" ? {...raw} : {};
+  const student = payload.student && typeof payload.student === "object" ? payload.student : {};
+  const meta = payload.meta && typeof payload.meta === "object" ? payload.meta : {};
+  const homework = payload.homework && typeof payload.homework === "object" ? payload.homework : {};
+  const selfAssessment =
+    payload.self_check ||
+    payload.self_assessment ||
+    payload.selfAssessment ||
+    {};
+
+  const stringsFromObject = obj => {
+    const values = [];
+    const walk = value => {
+      if (typeof value === "string") {
+        const text = value.trim();
+        if (text) values.push(text);
+      } else if (Array.isArray(value)) {
+        value.forEach(walk);
+      } else if (value && typeof value === "object") {
+        Object.values(value).forEach(walk);
+      }
+    };
+    walk(obj);
+    return values;
+  };
+
+  const booleansFromObject = obj => {
+    const values = [];
+    const walk = value => {
+      if (typeof value === "boolean") values.push(value);
+      else if (Array.isArray(value)) value.forEach(walk);
+      else if (value && typeof value === "object") Object.values(value).forEach(walk);
+    };
+    walk(obj);
+    return values;
+  };
+
+  const scoreSource =
+    payload.objective_score && typeof payload.objective_score === "object"
+      ? payload.objective_score
+      : payload.score && typeof payload.score === "object"
+        ? payload.score
+        : {};
+
+  let correct = scoreSource.correct ?? scoreSource.score ?? "";
+  let total = scoreSource.total ?? "";
+  let percent = scoreSource.percent ?? scoreSource.percentage ?? "";
+
+  if ((correct === "" || total === "") && payload.scores && typeof payload.scores === "object") {
+    correct = payload.scores.objective_correct ?? correct;
+    total = payload.scores.objective_total ?? total;
+  }
+
+  if ((percent === "" || percent === null || percent === undefined) &&
+      Number.isFinite(Number(correct)) && Number(total) > 0) {
+    percent = Math.round(Number(correct) / Number(total) * 100);
+  }
+
+  const homeworkText =
+    payload.homework_text ||
+    stringsFromObject(homework).join("\n\n");
+
+  const checklist =
+    Array.isArray(payload.checklist)
+      ? payload.checklist
+      : booleansFromObject(homework);
+
+  const lessonName =
+    payload.lesson ||
+    [meta.lesson_id, meta.lesson_title].filter(Boolean).join(" - ") ||
+    document.title.replace(/\s*\|\s*English with Victor\s*$/i, "");
+
+  payload.lesson = lessonName;
+  payload.submitted_at =
+    payload.submitted_at ||
+    payload.submittedAt ||
+    meta.generated_at ||
+    new Date().toISOString();
+
+  payload.student_name =
+    payload.student_name ||
+    student.name ||
+    "";
+
+  payload.student_id =
+    payload.student_id ||
+    student.email ||
+    student.class_group ||
+    student.classGroup ||
+    student.id ||
+    "";
+
+  payload.objective_score = {
+    ...scoreSource,
+    correct,
+    total,
+    percent
+  };
+
+  payload.word_count =
+    Number.isFinite(Number(payload.word_count))
+      ? Number(payload.word_count)
+      : (homeworkText ? homeworkText.trim().split(/\s+/).filter(Boolean).length : 0);
+
+  payload.checklist = checklist;
+  payload.homework_text = homeworkText;
+
+  payload.written_work =
+    payload.written_work ||
+    payload.open_responses ||
+    {};
+
+  payload.self_check = selfAssessment;
+
+  payload.objective_answers =
+    payload.objective_answers ||
+    payload.objectiveAnswers ||
+    [];
+
+  return payload;
+}
+
     const $=(selector,root=document)=>root.querySelector(selector);
     const $$=(selector,root=document)=>Array.from(root.querySelectorAll(selector));
     const normalise=value=>String(value??"").trim().toLowerCase().replace(/[’']/g,"'").replace(/\s+/g," ").replace(/[.!?]+$/,"");
@@ -682,12 +807,48 @@ main{margin-top:1.15rem}
       link.href=url;link.download=`A1.1_Aula_8_${safe}.json`;document.body.appendChild(link);link.click();link.remove();URL.revokeObjectURL(url);toast("JSON downloaded");
     });
     $("#sendSubmission").addEventListener("click",async()=>{
-      const payload=previewPayload();
-      if(!payload.student.name){showFeedback("submission",0,1);$("#submissionFeedback").textContent="Add the student name before sending.";return}
-      if(!$("#confirmOwnWork").checked){showFeedback("submission",0,1);$("#submissionFeedback").textContent="Confirm that fictional details were used and checked.";return}
-      if(!SHEETS_ENDPOINT){showFeedback("submission",0,1);$("#submissionFeedback").textContent="Teacher link is not configured yet. Use Copy submission or Download JSON.";return}
-      try{const response=await fetch(SHEETS_ENDPOINT,{method:"POST",headers:{"Content-Type":"text/plain;charset=utf-8"},body:JSON.stringify(payload)});if(!response.ok)throw new Error(`HTTP ${response.status}`);const el=$("#submissionFeedback");el.className="feedback show good";el.textContent="Sent to Teacher successfully.";toast("Sent to Teacher")}
-      catch(error){const el=$("#submissionFeedback");el.className="feedback show bad";el.textContent=`The page could not send the work. Download the JSON and send it manually. (${error.message})`}
+      const feedback=$("#submissionFeedback");
+      const sendButton=$("#sendSubmission");
+      const rawPayload=buildPayload();
+      
+      if(!rawPayload.student.name){
+        showFeedback("submission",0,1);
+        feedback.textContent="Add the student name before sending.";
+        return;
+      }
+      if(!$("#confirmOwnWork").checked){
+        showFeedback("submission",0,1);
+        feedback.textContent="Confirm that fictional details were used and checked.";
+        return;
+      }
+      if(!SHEETS_ENDPOINT){
+        feedback.className="feedback show bad";
+        feedback.textContent="Teacher submission link is not configured.";
+        return;
+      }
+
+      const payload=prepareTeacherPayload(rawPayload);
+      sendButton.disabled=true;
+      sendButton.textContent="Sending...";
+
+      try{
+        await fetch(SHEETS_ENDPOINT,{
+          method:"POST",
+          mode:"no-cors",
+          headers:{"Content-Type":"text/plain;charset=utf-8"},
+          body:JSON.stringify(payload)
+        });
+        feedback.className="feedback show good";
+        feedback.textContent="Submission sent for processing.";
+        toast("Submission sent.");
+      }catch(error){
+        feedback.className="feedback show bad";
+        feedback.textContent="Could not send. Use Download JSON and contact your teacher.";
+        console.error(error);
+      }finally{
+        sendButton.disabled=false;
+        sendButton.textContent="Send to Teacher";
+      }
     });
     $("#resetPage").addEventListener("click",()=>{
       if(!confirm("Clear every answer on this page?"))return;
