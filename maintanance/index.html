@@ -1,0 +1,147 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="theme-color" content="#072936">
+  <title>Maintenance | English with Victor</title>
+  <meta name="description" content="English with Victor is temporarily under maintenance.">
+  <style>
+    :root{
+      --navy:#052734; --navy2:#0a3542; --teal:#0f6672; --teal2:#138899;
+      --foam:#edf9f8; --cream:#fffaf0; --gold:#f3c56b; --coral:#ef826f;
+      --ink:#14323b; --muted:#617982; --white:#fff;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;min-height:100%}
+    body{
+      min-height:100vh;
+      font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
+      color:var(--ink);
+      overflow-x:hidden;
+      background:
+        radial-gradient(circle at 18% 12%,rgba(35,174,181,.18),transparent 28rem),
+        linear-gradient(160deg,#031f2a 0%,#063644 52%,#0c5963 100%);
+    }
+    .page{position:relative;min-height:100vh;display:grid;place-items:center;padding:34px 20px 120px;isolation:isolate}
+    .stars,.stars:before,.stars:after{
+      content:"";position:absolute;inset:0;pointer-events:none;
+      background-image:
+        radial-gradient(circle,rgba(255,255,255,.58) 1px,transparent 1.4px),
+        radial-gradient(circle,rgba(255,255,255,.25) 1px,transparent 1.4px);
+      background-size:120px 120px,170px 170px;background-position:15px 30px,60px 85px;
+      opacity:.28;z-index:-4
+    }
+    .shell{
+      width:min(1040px,100%);
+      display:grid;grid-template-columns:minmax(0,1.05fr) minmax(330px,.95fr);
+      border-radius:32px;overflow:hidden;
+      box-shadow:0 35px 100px rgba(0,0,0,.30);
+      background:rgba(255,255,255,.96);
+      border:1px solid rgba(255,255,255,.3)
+    }
+    .content{padding:clamp(38px,6vw,76px);background:linear-gradient(180deg,rgba(255,255,255,.98),rgba(245,252,250,.98))}
+    .brand{display:flex;align-items:center;gap:12px;margin-bottom:54px;color:var(--navy);font-weight:800;letter-spacing:-.02em}
+    .logo{width:42px;height:42px;border-radius:14px;display:grid;place-items:center;color:#fff;font-size:18px;background:linear-gradient(145deg,var(--navy),var(--teal2));box-shadow:0 8px 24px rgba(7,54,67,.18)}
+    .brand small{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--teal);margin-top:2px}
+    .eyebrow{display:inline-flex;align-items:center;gap:9px;padding:9px 13px;border-radius:999px;font-weight:800;font-size:12px;letter-spacing:.11em;text-transform:uppercase;color:#8d5d12;background:#fff1cc;border:1px solid #f9dda1;margin-bottom:18px}
+    .eyebrow:before{content:"";width:8px;height:8px;border-radius:50%;background:var(--gold);box-shadow:0 0 0 5px rgba(243,197,107,.2);animation:pulse 2s ease-in-out infinite}
+    h1{margin:0;max-width:680px;color:var(--navy);font-family:Georgia,"Times New Roman",serif;font-size:clamp(42px,6vw,72px);line-height:.98;letter-spacing:-.045em}
+    .lead{margin:24px 0 0;max-width:590px;color:var(--muted);font-size:clamp(17px,2vw,20px);line-height:1.7}
+    .note{margin-top:34px;display:flex;align-items:flex-start;gap:14px;padding:18px 19px;border-radius:18px;border:1px solid #d9ece9;background:#f7fcfb;color:#365961;line-height:1.55}
+    .note-icon{flex:0 0 38px;width:38px;height:38px;display:grid;place-items:center;border-radius:12px;color:#fff;background:linear-gradient(145deg,var(--teal),var(--teal2))}
+    .signature{margin-top:30px;font-size:13px;color:#758b91}
+    .scene{position:relative;min-height:620px;overflow:hidden;background:linear-gradient(180deg,#073441 0%,#0a5260 50%,#0a7280 100%)}
+    .moon{position:absolute;top:62px;right:60px;width:76px;height:76px;border-radius:50%;background:#fff4c8;box-shadow:0 0 45px rgba(255,244,200,.26)}
+    .moon:after{content:"";position:absolute;width:72px;height:72px;border-radius:50%;background:#0a4553;top:-12px;left:17px}
+    .route{position:absolute;width:280px;height:210px;left:42px;top:110px;border:3px dashed rgba(255,255,255,.33);border-left-color:transparent;border-bottom-color:transparent;border-radius:50%;transform:rotate(-12deg)}
+    .compass{position:absolute;top:56px;left:48px;width:84px;height:84px;border:1px solid rgba(255,255,255,.28);border-radius:50%;opacity:.75}
+    .compass:before,.compass:after{content:"";position:absolute;inset:50% auto auto 50%;background:rgba(255,255,255,.44);transform:translate(-50%,-50%)}
+    .compass:before{width:1px;height:104px}.compass:after{width:104px;height:1px}.compass span{position:absolute;inset:9px;border:1px solid rgba(255,255,255,.17);border-radius:50%}
+    .island{position:absolute;right:48px;bottom:116px;width:205px;height:64px;border-radius:50% 50% 42% 48%;background:#d6bc73;box-shadow:inset 0 -18px 0 rgba(136,104,48,.13);transform:rotate(-3deg);z-index:4}
+    .island:after{content:"";position:absolute;right:4px;bottom:-10px;width:150px;height:28px;border-radius:50%;background:rgba(6,53,65,.25);z-index:-1}
+    .lighthouse{position:absolute;right:108px;bottom:165px;width:55px;height:155px;z-index:5}
+    .tower{position:absolute;bottom:0;left:9px;width:37px;height:112px;clip-path:polygon(18% 0,82% 0,100% 100%,0 100%);background:linear-gradient(180deg,var(--cream) 0 26%,var(--coral) 26% 42%,var(--cream) 42% 65%,var(--coral) 65% 80%,var(--cream) 80%);box-shadow:0 6px 15px rgba(0,0,0,.18)}
+    .lamp{position:absolute;top:17px;left:6px;width:43px;height:29px;border:4px solid #183e47;border-radius:5px;background:var(--gold);box-shadow:0 0 38px rgba(243,197,107,.65)}
+    .roof{position:absolute;top:2px;left:1px;width:54px;height:24px;clip-path:polygon(50% 0,100% 100%,0 100%);background:#173c45}
+    .beam{position:absolute;right:134px;bottom:293px;width:330px;height:105px;transform-origin:right center;transform:rotate(-8deg);clip-path:polygon(100% 35%,0 0,0 100%,100% 65%);background:linear-gradient(90deg,rgba(255,238,164,0),rgba(255,238,164,.12),rgba(255,238,164,.28));animation:beam 5s ease-in-out infinite alternate;z-index:2}
+    .boat{position:absolute;left:70px;bottom:145px;width:138px;height:105px;z-index:6;animation:boat 3.8s ease-in-out infinite}
+    .hull{position:absolute;bottom:2px;left:9px;width:119px;height:32px;border-radius:5px 5px 52% 48%;background:#f2a26f;box-shadow:inset 0 -9px 0 #d77a5d}
+    .mast{position:absolute;left:65px;bottom:30px;width:4px;height:72px;border-radius:4px;background:#183b44}
+    .sail{position:absolute;left:68px;bottom:42px;width:58px;height:54px;clip-path:polygon(0 0,100% 100%,0 100%);background:#fff6db;filter:drop-shadow(0 4px 4px rgba(0,0,0,.10))}
+    .sail.small{left:23px;width:40px;clip-path:polygon(100% 0,100% 100%,0 100%);background:#ef826f}
+    .wave{position:absolute;left:-10%;width:120%;height:140px;border-radius:45% 55% 0 0 / 38% 42% 0 0}
+    .wave.one{bottom:-80px;background:#0d8794;z-index:7;animation:wave 8s linear infinite alternate}
+    .wave.two{bottom:-105px;background:#08727f;z-index:8;opacity:.94;transform:translateX(-5%);animation:wave 10s linear infinite alternate-reverse}
+    .wave.three{bottom:-130px;background:#075963;z-index:9;animation:wave 12s linear infinite alternate}
+    .scene-copy{position:absolute;left:42px;right:42px;bottom:42px;z-index:12;color:#fff}
+    .scene-copy strong{display:block;font-family:Georgia,"Times New Roman",serif;font-size:24px;letter-spacing:-.02em;margin-bottom:4px}
+    .scene-copy span{color:rgba(255,255,255,.70);font-size:13px;letter-spacing:.04em}
+    @keyframes pulse{0%,100%{transform:scale(1);opacity:.85}50%{transform:scale(1.22);opacity:1}}
+    @keyframes boat{0%,100%{transform:translateY(0) rotate(-1deg)}50%{transform:translateY(-8px) rotate(1.5deg)}}
+    @keyframes wave{from{transform:translateX(-2%)}to{transform:translateX(4%)}}
+    @keyframes beam{from{transform:rotate(-13deg);opacity:.72}to{transform:rotate(3deg);opacity:1}}
+    @media(max-width:820px){
+      .page{padding:18px 14px 80px}.shell{grid-template-columns:1fr;border-radius:25px}.content{padding:35px 28px 42px}
+      .brand{margin-bottom:38px}.scene{min-height:420px}.route{top:58px;left:20px}.compass{top:32px;left:28px}.moon{top:32px;right:34px}
+      .island{bottom:100px}.lighthouse{bottom:145px}.boat{bottom:120px;left:35px}.beam{bottom:273px}.scene-copy{bottom:28px;left:28px;right:28px}
+    }
+    @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important}}
+  </style>
+</head>
+<body>
+  <main class="page">
+    <div class="stars" aria-hidden="true"></div>
+    <section class="shell" aria-labelledby="maintenance-title">
+      <div class="content">
+        <div class="brand">
+          <span class="logo" aria-hidden="true">V</span>
+          <span>English with Victor<small>Student Portal</small></span>
+        </div>
+        <div class="eyebrow">Temporary maintenance</div>
+        <h1 id="maintenance-title">We’re adjusting the course.</h1>
+        <p class="lead">
+          The student portal is temporarily unavailable while we review the activities
+          and improve the learning experience.
+        </p>
+        <div class="note">
+          <div class="note-icon" aria-hidden="true">⚓</div>
+          <div><strong>Please come back soon.</strong><br>
+          Your course route will be available again after maintenance is complete.</div>
+        </div>
+        <p class="signature">English with Victor · Rota da Travessia</p>
+      </div>
+
+      <div class="scene" aria-hidden="true">
+        <div class="moon"></div>
+        <div class="compass"><span></span></div>
+        <div class="route"></div>
+        <div class="beam"></div>
+
+        <div class="boat">
+          <div class="mast"></div>
+          <div class="sail"></div>
+          <div class="sail small"></div>
+          <div class="hull"></div>
+        </div>
+
+        <div class="lighthouse">
+          <div class="roof"></div>
+          <div class="lamp"></div>
+          <div class="tower"></div>
+        </div>
+
+        <div class="island"></div>
+        <div class="wave one"></div>
+        <div class="wave two"></div>
+        <div class="wave three"></div>
+
+        <div class="scene-copy">
+          <strong>Course maintenance in progress</strong>
+          <span>Charting a smoother route for your next lesson.</span>
+        </div>
+      </div>
+    </section>
+  </main>
+</body>
+</html>
