@@ -1,0 +1,87 @@
+{
+  "lesson_path": "A2.2/A2.2_Aula_1.html",
+  "module_index": "A2.2/index.html",
+  "active_endpoint": "https://script.google.com/macros/s/AKfycbyLOc1slw72q1AE0XyiEGSzgtDMK1hHsiwLfZe9L-6BhjIL_OuGduxMxs4U0RXue3Z6GA/exec",
+  "endpoint_present": true,
+  "apps_script_urls_found": [
+    "https://script.google.com/macros/s/AKfycbyLOc1slw72q1AE0XyiEGSzgtDMK1hHsiwLfZe9L-6BhjIL_OuGduxMxs4U0RXue3Z6GA/exec"
+  ],
+  "teacher_post_no_cors": true,
+  "teacher_text_plain_utf8": true,
+  "code_gs_payload_fields": true,
+  "home_link": true,
+  "a2_link": true,
+  "module_link": true,
+  "route_stops": 7,
+  "media_refs": 9,
+  "missing_media": [],
+  "javascript_ok": true,
+  "javascript_message": "",
+  "html_size_bytes": 51820,
+  "media": [
+    {
+      "source": "assets/images/maya.png",
+      "output": "assets/A2.2/media/L1_maya.webp",
+      "before_bytes": 2572986,
+      "after_bytes": 175048,
+      "type": "image"
+    },
+    {
+      "source": "assets/images/bianca_mario.png",
+      "output": "assets/A2.2/media/L1_bianca_mario.webp",
+      "before_bytes": 2209314,
+      "after_bytes": 112688,
+      "type": "image"
+    },
+    {
+      "source": "assets/images/leo.png",
+      "output": "assets/A2.2/media/L1_leo.webp",
+      "before_bytes": 2413900,
+      "after_bytes": 132272,
+      "type": "image"
+    },
+    {
+      "source": "assets/images/dialogues.png",
+      "output": "assets/A2.2/media/L1_dialogues.webp",
+      "before_bytes": 2149037,
+      "after_bytes": 138906,
+      "type": "image"
+    },
+    {
+      "source": "assets/images/homework_listening.png",
+      "output": "assets/A2.2/media/L1_homework_listening.webp",
+      "before_bytes": 2230760,
+      "after_bytes": 165636,
+      "type": "image"
+    },
+    {
+      "source": "assets/images/noah.png",
+      "output": "assets/A2.2/media/L1_noah.webp",
+      "before_bytes": 2529820,
+      "after_bytes": 148500,
+      "type": "image"
+    },
+    {
+      "source": "assets/audio/A2.2 Aula 1 - I was born in Brazil.mp3",
+      "output": "assets/A2.2/media/L1_audio_01_i_was_born_in_brazil.mp3",
+      "before_bytes": 559782,
+      "after_bytes": 559782,
+      "type": "audio"
+    },
+    {
+      "source": "assets/audio/A2.2 Aula 1 - Where were you.mp3",
+      "output": "assets/A2.2/media/L1_audio_02_where_were_you.mp3",
+      "before_bytes": 558780,
+      "after_bytes": 558780,
+      "type": "audio"
+    },
+    {
+      "source": "assets/audio/A2.2 Aula 1 - Homework - Back then.mp3",
+      "output": "assets/A2.2/media/L1_audio_03_homework_back_then.mp3",
+      "before_bytes": 886421,
+      "after_bytes": 886421,
+      "type": "audio"
+    }
+  ],
+  "all_ok": true
+}
