@@ -1,10 +1,11 @@
 {
-  "index_has_31_lessons": true,
-  "index_has_4_live_modules": true,
-  "index_has_a21": true,
-  "index_links_portal_css": true,
-  "index_links_portal_js": true,
-  "portal_css_nonempty": true,
-  "portal_js_nonempty": true,
+  "root_34_lessons": true,
+  "root_5_modules": true,
+  "root_has_A22_feature": true,
+  "root_A2_map_live": true,
+  "A2_9_lessons": true,
+  "A2_A22_available": true,
+  "A22_index_3_lessons": true,
+  "A22_uses_portal_assets": true,
   "all_ok": true
 }

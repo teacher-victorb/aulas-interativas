@@ -1,24 +1,22 @@
-RECUPERAÇÃO DA HOME — ENGLISH WITH VICTOR
+ATUALIZAÇÃO DO PORTAL — A2.2
 
-O problema identificado no GitHub:
-- index.html ainda existe na raiz.
-- index.html chama assets/portal.css e assets/portal.js.
-- atualmente a pasta assets do GitHub mostra apenas audio/ e images/.
-- portanto a Home perde o estilo e parte do comportamento quando portal.css/portal.js somem.
+Substitua/mescle exatamente:
 
-RESTAURE NA RAIZ DO REPOSITÓRIO:
+/index.html
+/A2/index.html
+/A2.2/index.html
 
-index.html
-assets/
-  portal.css
-  portal.js
+O que muda:
+- Home: 34 lessons live
+- Home: 5 live modules
+- A2 aparece como LIVE no mapa náutico
+- A2.2 entra nos Featured routes
+- A2: 9 lessons live no total
+- A2.2 deixa de aparecer como "Curriculum mapped"
+- A2.2 passa a aparecer como "3 lessons live"
+- A2.2/index.html passa a listar Aulas 1, 2 e 3
 
-IMPORTANTE:
-NÃO APAGUE:
-assets/images/
-assets/audio/
-
-Apenas mescle os dois arquivos portal.css e portal.js dentro da pasta assets já existente.
+Nenhum HTML de aula e nenhum asset é alterado neste pacote.
 
 Commit sugerido:
-Restaurar arquivos da Home do portal
+Ativar A2.2 no portal e atualizar navegação
