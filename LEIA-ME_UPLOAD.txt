@@ -1,0 +1,129 @@
+A2.2 — PADRÃO GLOBAL DE ASSETS
+
+ESTRUTURA DEFINITIVA RECOMENDADA
+
+A2.2/
+├── A2.2_Aula_1.html
+├── A2.2_Aula_2.html
+├── A2.2_Aula_3.html
+└── ... próximas aulas
+
+assets/
+├── images/
+└── audio/
+
+REGRA DE CAMINHOS
+Como os HTMLs ficam dentro da pasta A2.2:
+
+IMAGENS
+../assets/images/nome-do-arquivo
+
+ÁUDIOS
+../assets/audio/nome-do-arquivo
+
+Não use:
+assets/...
+./assets/...
+assets/A2.2/...
+assets/A2.2/media/...
+
+GOOGLE SHEETS
+Todos os 3 HTMLs usam SOMENTE:
+https://script.google.com/macros/s/AKfycbyLOc1slw72q1AE0XyiEGSzgtDMK1hHsiwLfZe9L-6BhjIL_OuGduxMxs4U0RXue3Z6GA/exec
+
+O envio foi padronizado para:
+POST
+mode: no-cors
+Content-Type: text/plain;charset=utf-8
+
+Também foi adicionada compatibilidade com o Code.gs atual:
+lesson
+submitted_at
+student_id
+student_name
+objective_score
+word_count
+checklist
+homework_text
+written_work
+self_check
+objective_answers
+
+AULA 1
+Os assets que você havia enviado anteriormente foram incluídos nas pastas globais:
+assets/images/
+assets/audio/
+
+AULA 2
+Os 7 PNGs e 4 MP3 que estavam embutidos em Base64 no HTML foram extraídos.
+As imagens foram convertidas para WebP.
+O HTML ficou muito mais leve.
+
+AULA 3
+O ZIP atual continha apenas o HTML. Por isso o código foi corrigido para procurar
+os arquivos nas pastas globais, mas os binários da Aula 3 precisam já existir no
+repositório ou ser copiados posteriormente para:
+
+assets/images/
+- alex_college.png
+- alex_high.png
+- alex_young.png
+- ben.png
+- chloe.png
+- daniel.png
+- interview.png
+- isabella.png
+- maya_age15.png
+- maya_age19.png
+- maya_age7.png
+- milestones.png
+- sofia_a.png
+- sofia_b.png
+- sofia_c.png
+- sofia_d.png
+- sofia_e.png
+
+assets/audio/
+- A2.2%20Aula%203%20-%20Homework%20-%20Education%20snapshots.mp3
+- A2.2%20Aula%203%20-%20School%20interview.mp3
+- A2.2%20Aula%203%20-%20School%20verbs.mp3
+
+PADRÃO PARA NOMES NOVOS
+Para evitar colisões, prefira daqui para frente:
+A22_L4_nome.webp
+A22_L4_audio_01.mp3
+
+UPLOAD NO GITHUB
+Mescle na raiz:
+A2.2/
+assets/
+
+Commit sugerido:
+Padronizar A2.2 com assets globais
+
+
+MANIFESTO CORRIGIDO — AULA 3
+Imagens esperadas em assets/images/:
+- alex_college.png
+- alex_high.png
+- alex_young.png
+- ben.png
+- chloe.png
+- daniel.png
+- interview.png
+- isabella.png
+- maya_age15.png
+- maya_age19.png
+- maya_age7.png
+- milestones.png
+- sofia_a.png
+- sofia_b.png
+- sofia_c.png
+- sofia_d.png
+- sofia_e.png
+
+Áudios esperados em assets/audio/:
+- A2.2%20Aula%203%20-%20Homework%20-%20Education%20snapshots.mp3
+- A2.2%20Aula%203%20-%20School%20interview.mp3
+- A2.2%20Aula%203%20-%20School%20verbs.mp3
+- A2.2%20Aula%203%20-%20Sofia's%20education%20story.mp3

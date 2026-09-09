@@ -1,87 +1,135 @@
 {
-  "lesson_path": "A2.2/A2.2_Aula_1.html",
-  "module_index": "A2.2/index.html",
+  "structure": {
+    "lessons": "A2.2/",
+    "images": "assets/images/",
+    "audio": "assets/audio/"
+  },
   "active_endpoint": "https://script.google.com/macros/s/AKfycbyLOc1slw72q1AE0XyiEGSzgtDMK1hHsiwLfZe9L-6BhjIL_OuGduxMxs4U0RXue3Z6GA/exec",
-  "endpoint_present": true,
-  "apps_script_urls_found": [
-    "https://script.google.com/macros/s/AKfycbyLOc1slw72q1AE0XyiEGSzgtDMK1hHsiwLfZe9L-6BhjIL_OuGduxMxs4U0RXue3Z6GA/exec"
-  ],
-  "teacher_post_no_cors": true,
-  "teacher_text_plain_utf8": true,
-  "code_gs_payload_fields": true,
-  "home_link": true,
-  "a2_link": true,
-  "module_link": true,
-  "route_stops": 7,
-  "media_refs": 9,
-  "missing_media": [],
-  "javascript_ok": true,
-  "javascript_message": "",
-  "html_size_bytes": 51820,
-  "media": [
+  "all_html_validated": true,
+  "files": [
     {
-      "source": "assets/images/maya.png",
-      "output": "assets/A2.2/media/L1_maya.webp",
-      "before_bytes": 2572986,
-      "after_bytes": 175048,
-      "type": "image"
+      "lesson": 1,
+      "file": "A2.2/A2.2_Aula_1.html",
+      "inside_a22_paths": true,
+      "bad_asset_refs": [],
+      "data_images_remaining": 0,
+      "data_audio_remaining": 0,
+      "active_endpoint_only": true,
+      "content_type_correct": true,
+      "no_cors": true,
+      "teacher_adapter": true,
+      "javascript_ok": true,
+      "javascript_message": ""
     },
     {
-      "source": "assets/images/bianca_mario.png",
-      "output": "assets/A2.2/media/L1_bianca_mario.webp",
-      "before_bytes": 2209314,
-      "after_bytes": 112688,
-      "type": "image"
+      "lesson": 2,
+      "file": "A2.2/A2.2_Aula_2.html",
+      "inside_a22_paths": true,
+      "bad_asset_refs": [],
+      "data_images_remaining": 0,
+      "data_audio_remaining": 0,
+      "active_endpoint_only": true,
+      "content_type_correct": true,
+      "no_cors": true,
+      "teacher_adapter": true,
+      "javascript_ok": true,
+      "javascript_message": ""
     },
     {
-      "source": "assets/images/leo.png",
-      "output": "assets/A2.2/media/L1_leo.webp",
-      "before_bytes": 2413900,
-      "after_bytes": 132272,
-      "type": "image"
-    },
-    {
-      "source": "assets/images/dialogues.png",
-      "output": "assets/A2.2/media/L1_dialogues.webp",
-      "before_bytes": 2149037,
-      "after_bytes": 138906,
-      "type": "image"
-    },
-    {
-      "source": "assets/images/homework_listening.png",
-      "output": "assets/A2.2/media/L1_homework_listening.webp",
-      "before_bytes": 2230760,
-      "after_bytes": 165636,
-      "type": "image"
-    },
-    {
-      "source": "assets/images/noah.png",
-      "output": "assets/A2.2/media/L1_noah.webp",
-      "before_bytes": 2529820,
-      "after_bytes": 148500,
-      "type": "image"
-    },
-    {
-      "source": "assets/audio/A2.2 Aula 1 - I was born in Brazil.mp3",
-      "output": "assets/A2.2/media/L1_audio_01_i_was_born_in_brazil.mp3",
-      "before_bytes": 559782,
-      "after_bytes": 559782,
-      "type": "audio"
-    },
-    {
-      "source": "assets/audio/A2.2 Aula 1 - Where were you.mp3",
-      "output": "assets/A2.2/media/L1_audio_02_where_were_you.mp3",
-      "before_bytes": 558780,
-      "after_bytes": 558780,
-      "type": "audio"
-    },
-    {
-      "source": "assets/audio/A2.2 Aula 1 - Homework - Back then.mp3",
-      "output": "assets/A2.2/media/L1_audio_03_homework_back_then.mp3",
-      "before_bytes": 886421,
-      "after_bytes": 886421,
-      "type": "audio"
+      "lesson": 3,
+      "file": "A2.2/A2.2_Aula_3.html",
+      "inside_a22_paths": true,
+      "bad_asset_refs": [],
+      "data_images_remaining": 0,
+      "data_audio_remaining": 0,
+      "active_endpoint_only": true,
+      "content_type_correct": true,
+      "no_cors": true,
+      "teacher_adapter": true,
+      "javascript_ok": true,
+      "javascript_message": ""
     }
   ],
-  "all_ok": true
+  "lesson2_assets_extracted": [
+    {
+      "kind": "image",
+      "file": "A22_L2_image_01.webp",
+      "bytes": 214692
+    },
+    {
+      "kind": "image",
+      "file": "A22_L2_image_02.webp",
+      "bytes": 262296
+    },
+    {
+      "kind": "audio",
+      "file": "A22_L2_audio_01.mp3",
+      "bytes": 872210
+    },
+    {
+      "kind": "image",
+      "file": "A22_L2_image_03.webp",
+      "bytes": 239778
+    },
+    {
+      "kind": "audio",
+      "file": "A22_L2_audio_02.mp3",
+      "bytes": 636899
+    },
+    {
+      "kind": "image",
+      "file": "A22_L2_image_04.webp",
+      "bytes": 242474
+    },
+    {
+      "kind": "image",
+      "file": "A22_L2_image_05.webp",
+      "bytes": 112914
+    },
+    {
+      "kind": "audio",
+      "file": "A22_L2_audio_03.mp3",
+      "bytes": 475567
+    },
+    {
+      "kind": "image",
+      "file": "A22_L2_image_06.webp",
+      "bytes": 220246
+    },
+    {
+      "kind": "audio",
+      "file": "A22_L2_audio_04.mp3",
+      "bytes": 1086205
+    },
+    {
+      "kind": "image",
+      "file": "A22_L2_image_07.webp",
+      "bytes": 289084
+    }
+  ],
+  "lesson3_expected_existing_images": [
+    "alex_college.png",
+    "alex_high.png",
+    "alex_young.png",
+    "ben.png",
+    "chloe.png",
+    "daniel.png",
+    "interview.png",
+    "isabella.png",
+    "maya_age15.png",
+    "maya_age19.png",
+    "maya_age7.png",
+    "milestones.png",
+    "sofia_a.png",
+    "sofia_b.png",
+    "sofia_c.png",
+    "sofia_d.png",
+    "sofia_e.png"
+  ],
+  "lesson3_expected_existing_audio": [
+    "A2.2%20Aula%203%20-%20Homework%20-%20Education%20snapshots.mp3",
+    "A2.2%20Aula%203%20-%20School%20interview.mp3",
+    "A2.2%20Aula%203%20-%20School%20verbs.mp3",
+    "A2.2%20Aula%203%20-%20Sofia's%20education%20story.mp3"
+  ]
 }
