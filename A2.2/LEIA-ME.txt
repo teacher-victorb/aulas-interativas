@@ -1,0 +1,22 @@
+ATUALIZAÇÃO DO PORTAL — A2.2
+
+Substitua/mescle exatamente:
+
+/index.html
+/A2/index.html
+/A2.2/index.html
+
+O que muda:
+- Home: 34 lessons live
+- Home: 5 live modules
+- A2 aparece como LIVE no mapa náutico
+- A2.2 entra nos Featured routes
+- A2: 9 lessons live no total
+- A2.2 deixa de aparecer como "Curriculum mapped"
+- A2.2 passa a aparecer como "3 lessons live"
+- A2.2/index.html passa a listar Aulas 1, 2 e 3
+
+Nenhum HTML de aula e nenhum asset é alterado neste pacote.
+
+Commit sugerido:
+Ativar A2.2 no portal e atualizar navegação
