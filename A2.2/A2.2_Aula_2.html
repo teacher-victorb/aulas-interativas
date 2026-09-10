@@ -1,6 +1,246 @@
 <!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>A2.2 Aula 2 — Growing up</title><style>
 :root{--navy:#0b2d4d;--teal:#2a9d8f;--cream:#fbf6ed;--warm:#e9a62f;--coral:#ea7656;--pale:#eaf6f8;--line:#cdd9e0;--text:#1c2733;--muted:#5b6b7b}*{box-sizing:border-box}body{margin:0;background:#eef4f4;color:var(--text);font:16px/1.45 "Noto Serif",Georgia,serif}main{max-width:1060px;margin:auto;background:#fff;padding:36px 54px 58px}.top{text-align:center;color:var(--teal);font-weight:800;letter-spacing:.04em;font-size:.78rem}.cover{text-align:center;padding:46px 0 25px;border-bottom:0}h1{font:800 clamp(2.35rem,5vw,3.9rem)/1 "Noto Serif",Georgia,serif;color:var(--navy);margin:.25rem 0}.sub{color:#125f56;font:1.2rem/1.35 "Noto Serif",Georgia,serif}.meta,table{width:100%;border-collapse:collapse}th{background:var(--navy);color:#fff;text-align:left}td,th{border:1px solid var(--line);padding:8px;vertical-align:top}.meta td{background:#fff}.privacy,.box{margin:14px 0;padding:12px;border:1px solid var(--coral);background:var(--pale)}.privacy{background:var(--cream)}.panel{margin:32px 0}.head{display:grid;grid-template-columns:72px 1fr 104px;position:relative;min-height:54px;margin-bottom:28px;background:var(--navy);color:#fff}.head .number{background:var(--teal);display:grid;place-items:center;font-size:1.55rem;font-weight:800}.head .minutes{background:var(--warm);color:var(--navy);display:grid;place-items:center;font-size:.86rem;font-weight:800}.head h2{margin:0;padding:15px 14px 12px;font-size:1.15rem;line-height:1.2}.head p{position:absolute;top:100%;left:0;margin:0;padding:4px 0 0;color:var(--muted);font-size:.86rem}h3{color:var(--navy);font-size:1.05rem;margin:20px 0 6px}h4{color:#125f56;margin:14px 0 6px}img{display:block;width:100%;height:auto;margin:14px auto;border:1px solid var(--line)}.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.card{border:1px solid var(--line);padding:12px;background:#fff}.answer{border:0;border-bottom:2px solid var(--navy);padding:5px;background:#fff;color:var(--navy);font:inherit;max-width:100%}.short{width:130px}.wide{width:100%}.question{margin:9px 0}.good{outline:2px solid #2a9d8f;background:#f0fbf6}.bad{outline:2px solid var(--coral);background:#fff5f5}textarea{width:100%;min-height:150px;border:1px solid var(--line);padding:10px;font:inherit}.audio{display:grid;grid-template-columns:145px 1fr;margin:14px 0;border:1px solid var(--teal);background:var(--pale)}.audio-label{display:grid;place-items:center;padding:12px;background:var(--teal);color:#fff;font-size:.82rem;font-weight:800}.audio-content{padding:9px 12px}audio{display:block;width:100%;margin-top:5px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:32px}button{background:var(--teal);border:0;border-radius:0;padding:12px 16px;color:white;font:700 1rem "Noto Serif",Georgia,serif}#status{font-weight:700;color:var(--navy)}.small{font-size:.82rem}@media(max-width:720px){main{padding:22px 15px}.grid2,.grid3{grid-template-columns:1fr}.head{grid-template-columns:52px 1fr 76px}.head h2{font-size:1rem}.audio{grid-template-columns:104px 1fr}td,th{padding:6px;font-size:.91rem}}
-</style></head><body><main><div class="top">ROTA DA TRAVESSIA • A2.2 – TRAJETÓRIA PESSOAL E PROFISSIONAL</div><section class="cover"><label>Student name <input class="answer" data-save="student-name"></label> &nbsp; <label>Class / group <input class="answer" data-save="class-name"></label><h1>Growing up</h1><p class="sub">Childhood memories and the things we did.</p><table class="meta"><tr><th>LESSON</th><th>TIME</th><th>FOCUS</th><th>OUTPUT</th></tr><tr><td>2 of 7</td><td>65–75 min</td><td>Regular Simple Past + did/didn’t + childhood</td><td>Ask about and describe childhood memories</td></tr></table><h2>Aula 2 • Student Book</h2><div class="privacy"><b>PRIVACY</b> — Use real, adapted or fictional information. Share only what you are comfortable sharing.</div><h3>Today I can</h3><ul><li>I can understand simple childhood memories.</li><li>I can use common regular verbs to talk about childhood.</li><li>I can ask simple questions with <b>did</b>.</li><li>I can choose between a <b>BE question</b> and an <b>ACTION question</b>.</li><li>I can talk about a few things I did as a child.</li></ul></section>
+</style>
+<style id="ev-portal-shell">
+:root{
+  --ev-navy:#17324d;
+  --ev-deep:#0f2f43;
+  --ev-teal:#2a9d8f;
+  --ev-teal-dark:#207b70;
+  --ev-gold:#e9a23b;
+  --ev-coral:#e76f51;
+  --ev-line:#c9d4de;
+  --ev-muted:#637487;
+}
+.ev-course-topbar,
+.ev-course-topbar * ,
+.ev-routebar,
+.ev-routebar *,
+.ev-course-footer,
+.ev-course-footer *{
+  box-sizing:border-box;
+}
+.ev-course-topbar{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  min-height:76px;
+  padding:.7rem clamp(.65rem,3vw,1.8rem);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:.85rem;
+  color:#fff;
+  background:
+    radial-gradient(circle at 90% 0%,rgba(42,157,143,.28),transparent 18rem),
+    linear-gradient(135deg,var(--ev-deep),#18556b);
+  border-bottom:1px solid rgba(255,255,255,.15);
+  box-shadow:0 10px 30px rgba(15,47,67,.22);
+}
+.ev-brand-area{display:flex;align-items:center;gap:.75rem;min-width:0}
+.ev-home-link{display:flex;align-items:center;gap:.65rem;color:#fff;text-decoration:none;min-width:0}
+.ev-logo{
+  position:relative;display:grid;place-items:center;flex:0 0 auto;
+  width:44px;height:44px;border:2px solid rgba(255,255,255,.82);border-radius:50%;
+  color:#fff;background:linear-gradient(145deg,var(--ev-teal),var(--ev-teal-dark));
+  box-shadow:0 0 0 4px rgba(42,157,143,.17),0 10px 22px rgba(0,0,0,.18);
+  font:900 1rem/1 system-ui,sans-serif;
+}
+.ev-logo::after{
+  content:"";position:absolute;left:50%;top:50%;width:7px;height:7px;
+  transform:translate(-50%,-50%);border-radius:50%;background:var(--ev-gold);
+}
+.ev-logo span{position:relative;z-index:1}
+.ev-brand-copy,.ev-lesson-copy{display:grid;min-width:0;line-height:1.12}
+.ev-brand-copy strong{color:#fff;font:900 .96rem/1.1 system-ui,sans-serif;white-space:nowrap}
+.ev-brand-copy small{margin-top:.15rem;color:#bcd6df;font:700 .68rem/1.1 system-ui,sans-serif;white-space:nowrap}
+.ev-divider{width:1px;height:38px;background:rgba(255,255,255,.22)}
+.ev-lesson-identity{display:flex;align-items:center;gap:.6rem;min-width:0}
+.ev-lesson-badge{
+  display:grid;place-items:center;flex:0 0 auto;width:2.55rem;height:2.55rem;
+  border:4px solid #fff;border-radius:50%;color:#fff;background:var(--ev-coral);
+  box-shadow:0 0 0 3px var(--ev-gold),0 9px 20px rgba(0,0,0,.18);
+  font:950 .88rem/1 system-ui,sans-serif;
+}
+.ev-lesson-copy strong{
+  color:#8be1d5;font:900 .67rem/1.1 system-ui,sans-serif;
+  letter-spacing:.08em;text-transform:uppercase
+}
+.ev-lesson-copy small{
+  max-width:18rem;margin-top:.13rem;overflow:hidden;color:#fff;
+  font:850 .84rem/1.2 system-ui,sans-serif;text-overflow:ellipsis;white-space:nowrap
+}
+.ev-progress-wrap{flex:1;max-width:21rem;margin-inline:.65rem}
+.ev-progress-label{
+  display:flex;justify-content:space-between;margin-bottom:.22rem;
+  color:#dcebf0;font:750 .7rem/1 system-ui,sans-serif
+}
+.ev-progress-track{
+  overflow:hidden;height:.58rem;border:1px solid rgba(255,255,255,.18);
+  border-radius:999px;background:rgba(255,255,255,.12)
+}
+.ev-progress-track span{
+  display:block;width:0;height:100%;border-radius:inherit;
+  background:linear-gradient(90deg,var(--ev-gold),#ffd17b);
+  transition:width .2s ease;
+}
+.ev-actions{display:flex;align-items:center;gap:.4rem}
+.ev-button,.ev-homework-jump{
+  display:inline-flex;align-items:center;justify-content:center;gap:.35rem;
+  min-height:37px;padding:.52rem .7rem;border:1px solid rgba(255,255,255,.24);
+  border-radius:999px;color:#fff;background:rgba(255,255,255,.08);
+  font:850 .74rem/1 system-ui,sans-serif;text-decoration:none;white-space:nowrap
+}
+.ev-button:hover,.ev-homework-jump:hover{background:rgba(255,255,255,.16)}
+.ev-button.ev-module{color:var(--ev-navy);border-color:var(--ev-gold);background:var(--ev-gold)}
+.ev-homework-jump{background:rgba(42,157,143,.32)}
+
+.ev-routebar{
+  position:relative;z-index:20;
+  width:min(1180px,calc(100% - 1.5rem));
+  margin:.75rem auto 0;padding:.72rem .9rem;
+  display:grid;grid-template-columns:minmax(0,1fr) auto;gap:.65rem 1rem;
+  color:var(--ev-navy);background:rgba(255,255,255,.94);
+  border:1px solid var(--ev-line);border-radius:18px;
+  box-shadow:0 10px 26px rgba(23,50,77,.08);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.ev-breadcrumbs,.ev-sequence{display:flex;align-items:center;flex-wrap:wrap;gap:.38rem}
+.ev-breadcrumbs{font-size:.76rem}
+.ev-breadcrumbs a{color:var(--ev-teal-dark);font-weight:850;text-decoration:none}
+.ev-breadcrumbs .ev-slash{color:var(--ev-line)}
+.ev-breadcrumbs strong{color:var(--ev-navy)}
+.ev-sequence{justify-content:flex-end}
+.ev-seq-link{
+  display:inline-flex;align-items:center;justify-content:center;min-height:31px;padding:.38rem .58rem;
+  border:1px solid var(--ev-line);border-radius:999px;color:var(--ev-navy);background:#fff;
+  font-size:.72rem;font-weight:850;text-decoration:none
+}
+.ev-seq-link.ev-next{color:#fff;border-color:var(--ev-teal);background:var(--ev-teal)}
+.ev-seq-link.ev-disabled{color:#8997a3;background:#f3f6f7;cursor:default}
+.ev-position{font-size:.7rem;font-weight:850;color:var(--ev-muted)}
+.ev-voyage{
+  grid-column:1/-1;position:relative;display:grid;grid-template-columns:repeat(7,1fr);
+  align-items:center;gap:.35rem;padding:.1rem .2rem 0
+}
+.ev-voyage::before{
+  content:"";position:absolute;left:4%;right:4%;top:50%;height:2px;
+  background:repeating-linear-gradient(90deg,var(--ev-line) 0 7px,transparent 7px 12px);
+}
+.ev-stop{
+  position:relative;z-index:1;display:grid;place-items:center;justify-self:center;
+  width:29px;height:29px;border:2px solid var(--ev-line);border-radius:50%;
+  color:var(--ev-muted);background:#fff;font:900 .68rem/1 system-ui,sans-serif;text-decoration:none
+}
+.ev-stop.ev-current{color:#fff;border-color:var(--ev-coral);background:var(--ev-coral);box-shadow:0 0 0 4px rgba(231,111,81,.14)}
+.ev-stop.ev-available{color:#fff;border-color:var(--ev-teal);background:var(--ev-teal)}
+.ev-stop.ev-future{color:#9aa6af;background:#f3f5f6}
+
+.ev-course-footer{
+  width:min(1180px,calc(100% - 1.5rem));
+  margin:2rem auto 1rem;padding:1rem 1.15rem;
+  display:grid;grid-template-columns:1fr auto;align-items:center;gap:1rem;
+  color:#d8e5ea;background:linear-gradient(135deg,var(--ev-deep),#173f55);
+  border:1px solid rgba(255,255,255,.08);border-radius:20px;
+  box-shadow:0 18px 42px rgba(15,47,67,.18);
+  font-family:system-ui,-apple-system,"Segoe UI",sans-serif;
+}
+.ev-footer-brand{display:flex;align-items:center;gap:.7rem}
+.ev-footer-brand .ev-logo{width:39px;height:39px}
+.ev-footer-brand strong{display:block;color:#fff;font-size:.9rem}
+.ev-footer-brand span{display:block;margin-top:.15rem;font-size:.76rem}
+.ev-footer-links{display:flex;flex-wrap:wrap;justify-content:flex-end;gap:.42rem}
+.ev-course-footer .ev-button{min-height:34px;padding:.46rem .62rem}
+.ev-course-footer .ev-button.ev-module{color:var(--ev-navy)}
+.ev-back-top{
+  position:fixed;right:1rem;bottom:1rem;z-index:900;display:grid;place-items:center;
+  width:40px;height:40px;border-radius:50%;color:#fff;background:var(--ev-navy);
+  box-shadow:0 10px 24px rgba(23,50,77,.22);font:900 1rem/1 system-ui,sans-serif;text-decoration:none
+}
+@media(max-width:1000px){
+  .ev-brand-copy,.ev-divider{display:none}
+  .ev-progress-wrap{max-width:15rem}
+  .ev-button .ev-button-label{display:none}
+}
+@media(max-width:760px){
+  .ev-course-topbar{min-height:66px;padding:.55rem}
+  .ev-progress-wrap{display:none}
+  .ev-actions .ev-button.ev-level{display:none}
+  .ev-routebar{grid-template-columns:1fr}
+  .ev-sequence{justify-content:space-between}
+  .ev-course-footer{grid-template-columns:1fr}
+  .ev-footer-links{justify-content:flex-start}
+}
+@media(max-width:520px){
+  .ev-logo{width:37px;height:37px}
+  .ev-lesson-badge{width:2.15rem;height:2.15rem}
+  .ev-lesson-copy strong{font-size:.58rem}
+  .ev-lesson-copy small{max-width:7rem;font-size:.68rem}
+  .ev-actions .ev-button.ev-home,.ev-actions .ev-button.ev-module{display:none}
+  .ev-homework-jump{padding:.48rem .55rem}
+  .ev-routebar{width:calc(100% - 1rem);margin-top:.5rem;border-radius:15px}
+  .ev-breadcrumbs{font-size:.69rem}
+  .ev-position{display:none}
+  .ev-voyage{gap:0}
+  .ev-course-footer{width:calc(100% - 1rem)}
+  .ev-footer-links .ev-button{flex:1}
+}
+@media print{
+  .ev-course-topbar,.ev-routebar,.ev-course-footer,.ev-back-top{display:none!important}
+}
+</style>
+
+</head><body>
+
+<header class="ev-course-topbar" id="lessonTop">
+  <div class="ev-brand-area">
+    <a class="ev-home-link" href="../" aria-label="Go to English with Victor home">
+      <span class="ev-logo" aria-hidden="true"><span>V</span></span>
+      <span class="ev-brand-copy">
+        <strong>English with Victor</strong>
+        <small>Student Portal · Nautical Route</small>
+      </span>
+    </a>
+    <span class="ev-divider" aria-hidden="true"></span>
+    <div class="ev-lesson-identity">
+      <span class="ev-lesson-badge">2</span>
+      <span class="ev-lesson-copy">
+        <strong>A2.2 · Lesson 2 of 7</strong>
+        <small>Growing up</small>
+      </span>
+    </div>
+  </div>
+
+  <div class="ev-progress-wrap" aria-label="Lesson progress">
+    <div class="ev-progress-label"><span>Your progress</span><span id="evProgressText">0%</span></div>
+    <div class="ev-progress-track"><span id="evProgressBar"></span></div>
+  </div>
+
+  <div class="ev-actions">
+    <a class="ev-button ev-home" href="../" title="Home"><span>⌂</span><span class="ev-button-label">Home</span></a>
+    <a class="ev-button ev-level" href="../A2/" title="A2 level"><span>◉</span><span class="ev-button-label">A2</span></a>
+    <a class="ev-button ev-module" href="./" title="A2.2 module"><span>⚓</span><span class="ev-button-label">A2.2</span></a>
+    <a class="ev-homework-jump" href="#homework"><span>✉</span> Homework</a>
+  </div>
+</header>
+
+<nav class="ev-routebar" aria-label="Course navigation">
+  <div class="ev-breadcrumbs">
+    <a href="../">Home</a><span class="ev-slash">/</span>
+    <a href="../A2/">A2</a><span class="ev-slash">/</span>
+    <a href="./">A2.2</a><span class="ev-slash">/</span>
+    <strong>Lesson 2: Growing up</strong>
+  </div>
+  <div class="ev-sequence">
+    <a class="ev-seq-link" href="A2.2_Aula_1.html">← Lesson 1</a>
+    <span class="ev-position">Port 2 of 7</span>
+    <a class="ev-seq-link ev-next" href="A2.2_Aula_3.html">Lesson 3 →</a>
+  </div>
+  <div class="ev-voyage" aria-label="A2.2 lesson route">
+    <a class="ev-stop ev-available" href="A2.2_Aula_1.html" aria-label="Lesson 1">1</a><a class="ev-stop ev-current" href="A2.2_Aula_2.html" aria-current="page" aria-label="Lesson 2">2</a><a class="ev-stop ev-available" href="A2.2_Aula_3.html" aria-label="Lesson 3">3</a><span class="ev-stop ev-future" aria-label="Lesson 4 coming soon">4</span><span class="ev-stop ev-future" aria-label="Lesson 5 coming soon">5</span><span class="ev-stop ev-future" aria-label="Lesson 6 coming soon">6</span><span class="ev-stop ev-future" aria-label="Lesson 7 coming soon">7</span>
+  </div>
+</nav>
+<main><div class="top">ROTA DA TRAVESSIA • A2.2 – TRAJETÓRIA PESSOAL E PROFISSIONAL</div><section class="cover"><label>Student name <input class="answer" data-save="student-name"></label> &nbsp; <label>Class / group <input class="answer" data-save="class-name"></label><h1>Growing up</h1><p class="sub">Childhood memories and the things we did.</p><table class="meta"><tr><th>LESSON</th><th>TIME</th><th>FOCUS</th><th>OUTPUT</th></tr><tr><td>2 of 7</td><td>65–75 min</td><td>Regular Simple Past + did/didn’t + childhood</td><td>Ask about and describe childhood memories</td></tr></table><h2>Aula 2 • Student Book</h2><div class="privacy"><b>PRIVACY</b> — Use real, adapted or fictional information. Share only what you are comfortable sharing.</div><h3>Today I can</h3><ul><li>I can understand simple childhood memories.</li><li>I can use common regular verbs to talk about childhood.</li><li>I can ask simple questions with <b>did</b>.</li><li>I can choose between a <b>BE question</b> and an <b>ACTION question</b>.</li><li>I can talk about a few things I did as a child.</li></ul></section>
 
 <section class="panel"><div class="head"><div class="number">1</div><div><h2>Reconnect • Flashback Friday</h2><p>Remember Maya. Look at an old memory.</p></div><div class="minutes">5–6 min</div></div><img loading="lazy" src="../assets/images/A22_L2_image_01.webp" alt="Maya as a child with cousins and at school"><div class="box"><b>#FlashbackFriday</b><br>This was me in 2011. I was nine. I was in Mexico City with my cousins. We were very happy, and I was very active!</div><h3>A. Remember Maya</h3><ol><li>How old was Maya? <input class="answer short" data-save="a1q1"></li><li>Where was she? <input class="answer short" data-save="a1q2"></li><li>Who was with her? <input class="answer short" data-save="a1q3"></li><li>What was she like? <input class="answer short" data-save="a1q4"></li></ol><h3>B. Look at the pictures</h3><p>What activities can you see? <label><input type="checkbox" data-save="a1play"> play</label> <label><input type="checkbox" data-save="a1study"> study</label> <label><input type="checkbox" data-save="a1visit"> visit</label> <label><input type="checkbox" data-save="a1watch"> watch</label></p><div class="privacy"><b>Last lesson:</b> What was Maya like? &nbsp; <b>Today:</b> What did Maya do?</div></section>
 
@@ -20,12 +260,27 @@
 
 <section class="panel"><div class="head"><div class="number">9</div><div><h2>Exit Ticket + Self-assessment</h2><p>Show what you can do.</p></div><div class="minutes">5 min</div></div><h3>A. Complete</h3><p>1. When I was a child, I <input class="answer short" data-save="a9a1" data-answer="lived"> in Toronto. (live)</p><p>2. I <input class="answer short" data-save="a9a2" data-answer="played"> soccer with my friends. (play)</p><p>3. Where <input class="answer short" data-save="a9a3" data-answer="did"> you live?</p><p>4. What <input class="answer short" data-save="a9a4" data-answer="were"> you like as a child?</p><p>5. Who <input class="answer short" data-save="a9a5" data-answer="was"> your best friend?</p><h3>B. After DID</h3><p>After did, use: <label><input type="radio" name="a9b" value="past" data-save="a9b"> A. past verb</label> <label><input type="radio" name="a9b" value="base" data-save="a9b" data-answer="base"> B. base verb</label></p><h3>C. Meaning check</h3><table><tr><td>1. What were you like?</td><td>a. asks about your personality</td></tr><tr><td>2. What did you like?</td><td>b. asks about things you enjoyed</td></tr></table><h3>D. One memory</h3><textarea data-save="a9d"></textarea><h3>E. Self-assessment • Scale 1–5</h3><div class="privacy">1 = not yet • 2 = a little • 3 = sometimes • 4 = mostly • 5 = yes, I can</div><table><tr><th>Statement</th><th>1</th><th>2</th><th>3</th><th>4</th><th>5</th></tr><tr><td>I can recognize common regular past verbs.</td><td><label><input type="radio" name="sa1" value="1" data-save="sa1-1">1</label></td><td><label><input type="radio" name="sa1" value="2" data-save="sa1-2">2</label></td><td><label><input type="radio" name="sa1" value="3" data-save="sa1-3">3</label></td><td><label><input type="radio" name="sa1" value="4" data-save="sa1-4">4</label></td><td><label><input type="radio" name="sa1" value="5" data-save="sa1-5">5</label></td></tr><tr><td>I can talk about simple childhood activities.</td><td><label><input type="radio" name="sa2" value="1" data-save="sa2-1">1</label></td><td><label><input type="radio" name="sa2" value="2" data-save="sa2-2">2</label></td><td><label><input type="radio" name="sa2" value="3" data-save="sa2-3">3</label></td><td><label><input type="radio" name="sa2" value="4" data-save="sa2-4">4</label></td><td><label><input type="radio" name="sa2" value="5" data-save="sa2-5">5</label></td></tr><tr><td>I can ask a question with did.</td><td><label><input type="radio" name="sa3" value="1" data-save="sa3-1">1</label></td><td><label><input type="radio" name="sa3" value="2" data-save="sa3-2">2</label></td><td><label><input type="radio" name="sa3" value="3" data-save="sa3-3">3</label></td><td><label><input type="radio" name="sa3" value="4" data-save="sa3-4">4</label></td><td><label><input type="radio" name="sa3" value="5" data-save="sa3-5">5</label></td></tr><tr><td>I can choose between a BE question and an ACTION question.</td><td><label><input type="radio" name="sa4" value="1" data-save="sa4-1">1</label></td><td><label><input type="radio" name="sa4" value="2" data-save="sa4-2">2</label></td><td><label><input type="radio" name="sa4" value="3" data-save="sa4-3">3</label></td><td><label><input type="radio" name="sa4" value="4" data-save="sa4-4">4</label></td><td><label><input type="radio" name="sa4" value="5" data-save="sa4-5">5</label></td></tr><tr><td>I can share a few childhood memories.</td><td><label><input type="radio" name="sa5" value="1" data-save="sa5-1">1</label></td><td><label><input type="radio" name="sa5" value="2" data-save="sa5-2">2</label></td><td><label><input type="radio" name="sa5" value="3" data-save="sa5-3">3</label></td><td><label><input type="radio" name="sa5" value="4" data-save="sa5-4">4</label></td><td><label><input type="radio" name="sa5" value="5" data-save="sa5-5">5</label></td></tr></table></section>
 
-<section class="panel"><div class="head"><div class="number">10</div><div><h2>Homework Mode • Simple Past toolkit</h2><p>Review regular past verbs, negatives and questions.</p></div><div class="minutes">after class</div></div><h3>A. Base → past</h3><p>1. live → <input class="answer short" data-save="hwa1" data-answer="lived"></p><p>2. play → <input class="answer short" data-save="hwa2" data-answer="played"></p><p>3. study → <input class="answer short" data-save="hwa3" data-answer="studied"></p><p>4. visit → <input class="answer short" data-save="hwa4" data-answer="visited"></p><p>5. watch → <input class="answer short" data-save="hwa5" data-answer="watched"></p><p>6. help → <input class="answer short" data-save="hwa6" data-answer="helped"></p><p>7. move → <input class="answer short" data-save="hwa7" data-answer="moved"></p><p>8. start → <input class="answer short" data-save="hwa8" data-answer="started"></p><h3>B. Complete the childhood memory</h3><p>When I was a child, I <input class="answer short" data-save="hwb1" data-answer="lived"> (live) in Toronto. I <input class="answer short" data-save="hwb2" data-answer="studied"> (study) at a school near my home. After school, I <input class="answer short" data-save="hwb3" data-answer="played"> (play) basketball with my friends. I <input class="answer short" data-save="hwb4" data-answer="didn’t watch"> (not watch) much TV during the week. On Saturdays, I <input class="answer short" data-save="hwb5" data-answer="visited"> (visit) my grandparents and <input class="answer short" data-save="hwb6" data-answer="helped"> (help) them at home. When I was eleven, my family <input class="answer short" data-save="hwb7" data-answer="moved"> (move) to Chicago, and I <input class="answer short" data-save="hwb8" data-answer="started"> (start) at a new school.</p><h3>C. BE or ACTION?</h3><p>Where ______ you born? <input class="answer short" data-save="hwc1" data-answer="were"></p><p>What ______ you like as a child? <input class="answer short" data-save="hwc2" data-answer="were"></p><p>Where ______ you live? <input class="answer short" data-save="hwc3" data-answer="did"></p><p>What ______ you play after school? <input class="answer short" data-save="hwc4" data-answer="did"></p><p>Who ______ your best friend? <input class="answer short" data-save="hwc5" data-answer="was"></p><p>Who ______ you visit on weekends? <input class="answer short" data-save="hwc6" data-answer="did"></p><p>How old ______ you when you started school? <input class="answer short" data-save="hwc7" data-answer="were"></p><p>______ you watch cartoons? <input class="answer short" data-save="hwc8" data-answer="Did"></p><h3>D. Fix it</h3><ol><li>Did you played soccer? <input class="answer wide" data-save="hwd1" data-answer="Did you play soccer"></li><li>I didn’t watched TV. <input class="answer wide" data-save="hwd2" data-answer="I didn’t watch TV"></li><li>Where did you lived? <input class="answer wide" data-save="hwd3" data-answer="Where did you live"></li><li>She studyed English. <input class="answer wide" data-save="hwd4" data-answer="She studied English"></li><li>My family moveed to Toronto. <input class="answer wide" data-save="hwd5" data-answer="My family moved to Toronto"></li></ol></section>
+<section class="panel" id="homework"><div class="head"><div class="number">10</div><div><h2>Homework Mode • Simple Past toolkit</h2><p>Review regular past verbs, negatives and questions.</p></div><div class="minutes">after class</div></div><h3>A. Base → past</h3><p>1. live → <input class="answer short" data-save="hwa1" data-answer="lived"></p><p>2. play → <input class="answer short" data-save="hwa2" data-answer="played"></p><p>3. study → <input class="answer short" data-save="hwa3" data-answer="studied"></p><p>4. visit → <input class="answer short" data-save="hwa4" data-answer="visited"></p><p>5. watch → <input class="answer short" data-save="hwa5" data-answer="watched"></p><p>6. help → <input class="answer short" data-save="hwa6" data-answer="helped"></p><p>7. move → <input class="answer short" data-save="hwa7" data-answer="moved"></p><p>8. start → <input class="answer short" data-save="hwa8" data-answer="started"></p><h3>B. Complete the childhood memory</h3><p>When I was a child, I <input class="answer short" data-save="hwb1" data-answer="lived"> (live) in Toronto. I <input class="answer short" data-save="hwb2" data-answer="studied"> (study) at a school near my home. After school, I <input class="answer short" data-save="hwb3" data-answer="played"> (play) basketball with my friends. I <input class="answer short" data-save="hwb4" data-answer="didn’t watch"> (not watch) much TV during the week. On Saturdays, I <input class="answer short" data-save="hwb5" data-answer="visited"> (visit) my grandparents and <input class="answer short" data-save="hwb6" data-answer="helped"> (help) them at home. When I was eleven, my family <input class="answer short" data-save="hwb7" data-answer="moved"> (move) to Chicago, and I <input class="answer short" data-save="hwb8" data-answer="started"> (start) at a new school.</p><h3>C. BE or ACTION?</h3><p>Where ______ you born? <input class="answer short" data-save="hwc1" data-answer="were"></p><p>What ______ you like as a child? <input class="answer short" data-save="hwc2" data-answer="were"></p><p>Where ______ you live? <input class="answer short" data-save="hwc3" data-answer="did"></p><p>What ______ you play after school? <input class="answer short" data-save="hwc4" data-answer="did"></p><p>Who ______ your best friend? <input class="answer short" data-save="hwc5" data-answer="was"></p><p>Who ______ you visit on weekends? <input class="answer short" data-save="hwc6" data-answer="did"></p><p>How old ______ you when you started school? <input class="answer short" data-save="hwc7" data-answer="were"></p><p>______ you watch cartoons? <input class="answer short" data-save="hwc8" data-answer="Did"></p><h3>D. Fix it</h3><ol><li>Did you played soccer? <input class="answer wide" data-save="hwd1" data-answer="Did you play soccer"></li><li>I didn’t watched TV. <input class="answer wide" data-save="hwd2" data-answer="I didn’t watch TV"></li><li>Where did you lived? <input class="answer wide" data-save="hwd3" data-answer="Where did you live"></li><li>She studyed English. <input class="answer wide" data-save="hwd4" data-answer="She studied English"></li><li>My family moveed to Toronto. <input class="answer wide" data-save="hwd5" data-answer="My family moved to Toronto"></li></ol></section>
 
 <section class="panel"><div class="head"><div class="number">10</div><div><h2>Homework Mode • Childhood snapshots</h2><p>Listen to three people describing their childhood.</p></div><div class="minutes">after class</div></div><img loading="lazy" src="../assets/images/A22_L2_image_06.webp" alt="Three childhood snapshots"> <div class="audio"><div class="audio-label">AUDIO</div><div class="audio-content"><span class="small">A2.2 Aula 2 - Homework - Childhood snapshots.mp3</span><audio controls preload="metadata" src="../assets/audio/A22_L2_audio_04.mp3"></audio></div></div><h3>E. First listening • Who is who?</h3><p>1. Rachel → <input class="answer short" data-save="hwe1" data-answer="B"> &nbsp; 2. Marcus → <input class="answer short" data-save="hwe2" data-answer="C"> &nbsp; 3. Elena → <input class="answer short" data-save="hwe3" data-answer="A"></p><h3>F. Second listening • Complete the snapshots</h3><table><tr><th></th><th>Rachel</th><th>Marcus</th><th>Elena</th></tr><tr><td>lived in</td><td><input class="answer short" data-save="hwf1a" data-answer="Boston"></td><td><input class="answer short" data-save="hwf1b" data-answer="London"></td><td><input class="answer short" data-save="hwf1c" data-answer="Madrid"></td></tr><tr><td>activity</td><td><input class="answer short" data-save="hwf2a" data-answer="tennis"></td><td><input class="answer short" data-save="hwf2b" data-answer="basketball"></td><td><input class="answer short" data-save="hwf2c" data-answer="volleyball"></td></tr><tr><td>family / person</td><td><input class="answer short" data-save="hwf3a" data-answer="grandparents"></td><td><input class="answer short" data-save="hwf3b" data-answer="brother"></td><td><input class="answer short" data-save="hwf3c" data-answer="cousins"></td></tr><tr><td>one more detail</td><td><input class="answer short" data-save="hwf4a" data-answer="watched movies on Fridays"></td><td><input class="answer short" data-save="hwf4b" data-answer="moved to Toronto at 10"></td><td><input class="answer short" data-save="hwf4c" data-answer="started dance at 12"></td></tr></table><h3>G. Third listening • Catch the verb</h3><p>1. I ______ in Boston. <input class="answer short" data-save="hwg1" data-answer="lived"></p><p>2. I ______ tennis with my friends. <input class="answer short" data-save="hwg2" data-answer="played"></p><p>3. I ______ much TV. <input class="answer short" data-save="hwg3" data-answer="didn’t watch"></p><p>4. We ______ my grandparents. <input class="answer short" data-save="hwg4" data-answer="visited"></p><p>5. I ______ my parents in the garden. <input class="answer short" data-save="hwg5" data-answer="helped"></p><p>6. My family ______ to Toronto. <input class="answer short" data-save="hwg6" data-answer="moved"></p><p>7. I ______ English at school. <input class="answer short" data-save="hwg7" data-answer="studied"></p><p>8. I ______ video games very often. <input class="answer short" data-save="hwg8" data-answer="didn’t play"></p><p>9. I ______ dance classes. <input class="answer short" data-save="hwg9" data-answer="started"></p><h3>H. After listening • Build the question</h3><div class="privacy"><b>Instruction</b><br>Read the answer. Write the question that gets the information in bold. Yes/No question → answer MUST contain Yes or No. WH-question → answer gives the specific information.</div><div class="question"><p>1. Rachel lived in <b>Boston</b>.</p><input class="answer wide" data-save="hw-h1" data-answer="Where did Rachel live?|Where did Rachel live"></div><div class="question"><p>2. Rachel played <b>tennis</b> with her friends.</p><input class="answer wide" data-save="hw-h2" data-answer="What did Rachel play with her friends?|What did Rachel play"></div><div class="question"><p>3. <b>No, she didn’t.</b> She didn’t watch much TV.</p><input class="answer wide" data-save="hw-h3" data-answer="Did Rachel watch much TV?|Did Rachel watch TV"></div><div class="question"><p>4. Marcus was <b>quiet</b> at school.</p><input class="answer wide" data-save="hw-h4" data-answer="What was Marcus like at school?|What was Marcus like"></div><div class="question"><p>5. Marcus played basketball <b>with his brother</b>.</p><input class="answer wide" data-save="hw-h5" data-answer="Who did Marcus play basketball with?|Who did Marcus play with"></div><div class="question"><p>6. Marcus’s family moved <b>to Toronto</b>.</p><input class="answer wide" data-save="hw-h6" data-answer="Where did Marcus’s family move?|Where did Marcus family move"></div><div class="question"><p>7. Elena studied <b>English</b> at school.</p><input class="answer wide" data-save="hw-h7" data-answer="What did Elena study at school?|What did Elena study"></div><div class="question"><p>8. <b>No, she didn’t.</b> Elena didn’t play video games very often.</p><input class="answer wide" data-save="hw-h8" data-answer="Did Elena play video games very often?|Did Elena play video games"></div><div class="question"><p>9. <b>Yes, she was.</b> Elena was very happy in her dance classes.</p><input class="answer wide" data-save="hw-h9" data-answer="Was Elena happy in her dance classes?|Was Elena happy"></div><div class="box"><b>Notice</b><br>BE information → use was / were. &nbsp; Action information → use did + base verb.</div></section>
 
 <section class="panel"><div class="head"><div class="number">10</div><div><h2>Homework Mode • Read and write about childhood</h2><p>Read a memory board and create your own childhood story.</p></div><div class="minutes">after class</div></div><img loading="lazy" src="../assets/images/A22_L2_image_07.webp" alt="Daniel childhood memory board"><div class="box"><b>Daniel’s childhood</b><br>Daniel lived in São Paulo when he was a child. He started school when he was seven. After school, he played soccer with his friends. His grandparents lived in Rio de Janeiro, and Daniel visited them during school vacations. When he was eleven, his family moved to Toronto. He started at a new school there. At first, he was nervous, but his teachers were friendly.</div><h3>J. Read and answer</h3><p>1. Where did Daniel live? <input class="answer wide" data-save="hwj1" data-answer="São Paulo"></p><p>2. How old was he when he started school? <input class="answer wide" data-save="hwj2" data-answer="seven|7"></p><p>3. What did he play? <input class="answer wide" data-save="hwj3" data-answer="soccer"></p><p>4. Who did he visit? <input class="answer wide" data-save="hwj4" data-answer="his grandparents"></p><p>5. Where did his family move? <input class="answer wide" data-save="hwj5" data-answer="Toronto"></p><p>6. What were his teachers like? <input class="answer wide" data-save="hwj6" data-answer="friendly"></p><h3>K. BE or ACTION question?</h3><p>1. What were his teachers like? <input class="answer short" data-save="hwk1" data-answer="BE"></p><p>2. Where did he live? <input class="answer short" data-save="hwk2" data-answer="ACTION"></p><p>3. How old was he? <input class="answer short" data-save="hwk3" data-answer="BE"></p><p>4. What did he play? <input class="answer short" data-save="hwk4" data-answer="ACTION"></p><p>5. Who did he visit? <input class="answer short" data-save="hwk5" data-answer="ACTION"></p><h3>L. My childhood memory map</h3><table><tr><th>Topic</th><th>My information</th></tr><tr><td>place</td><td><input class="answer wide" data-save="hwl1"></td></tr><tr><td>personality</td><td><input class="answer wide" data-save="hwl2"></td></tr><tr><td>school</td><td><input class="answer wide" data-save="hwl3"></td></tr><tr><td>friends</td><td><input class="answer wide" data-save="hwl4"></td></tr><tr><td>activities</td><td><input class="answer wide" data-save="hwl5"></td></tr><tr><td>family</td><td><input class="answer wide" data-save="hwl6"></td></tr><tr><td>important change • optional</td><td><input class="answer wide" data-save="hwl7"></td></tr></table><div class="privacy">Real, adapted or fictional information is okay.</div><h3>M. Write • Growing up</h3><p>Write 6–8 sentences. Use at least one sentence with was/were and at least three regular past verbs.</p><p class="small">Support: When I was a child, I was... / I lived in... / I studied at... / I played... / I watched... / I visited... / I helped... / My family moved... / I started...</p><textarea data-save="hwm" placeholder="Write 6–8 sentences here."></textarea><h3>N. One BE + one ACTION question</h3><p>BE question <input class="answer wide" data-save="hwn1"></p><p>ACTION question <input class="answer wide" data-save="hwn2"></p><h3>O. Self-check</h3><label><input type="checkbox" data-save="hwo1"> I can use common regular verbs in the past.</label><br><label><input type="checkbox" data-save="hwo2"> I can use didn’t + base verb.</label><br><label><input type="checkbox" data-save="hwo3"> I can ask a question with did.</label><br><label><input type="checkbox" data-save="hwo4"> I know that the verb after did is in the base form.</label><br><label><input type="checkbox" data-save="hwo5"> I can choose between a BE question and an ACTION question.</label><br><label><input type="checkbox" data-save="hwo6"> I can understand simple childhood memories.</label><br><label><input type="checkbox" data-save="hwo7"> I can write about a few childhood memories.</label><br></section>
-<div class="actions"><button id="check" type="button">Check Answers</button><button id="send" type="button">Send to Teacher</button><span id="status"></span></div></main><script>
+<div class="actions"><button id="check" type="button">Check Answers</button><button id="send" type="button">Send to Teacher</button><span id="status"></span></div></main>
+
+<footer class="ev-course-footer">
+  <div class="ev-footer-brand">
+    <span class="ev-logo" aria-hidden="true"><span>V</span></span>
+    <div>
+      <strong>English with Victor</strong>
+      <span>A2.2 · Lesson 2: Growing up</span>
+    </div>
+  </div>
+  <nav class="ev-footer-links" aria-label="Footer course navigation">
+    <a class="ev-button" href="A2.2_Aula_1.html">← Lesson 1</a><a class="ev-button ev-module" href="./">⚓ All A2.2 lessons</a><a class="ev-button" href="../A2/">A2 level</a><a class="ev-button ev-home" href="../">⌂ Home</a><a class="ev-button" href="A2.2_Aula_3.html">Lesson 3 →</a>
+  </nav>
+</footer>
+<a class="ev-back-top" href="#lessonTop" aria-label="Back to top">↑</a>
+<script>
 const ENDPOINT='https://script.google.com/macros/s/AKfycbyLOc1slw72q1AE0XyiEGSzgtDMK1hHsiwLfZe9L-6BhjIL_OuGduxMxs4U0RXue3Z6GA/exec'; const PREFIX='a22_aula2_';
 const norm=v=>(v||'').trim().replace(/[?.!]/g,'').replace(/\s+/g,' ').toLowerCase();
 document.querySelectorAll('[data-save]').forEach(el=>{const key=PREFIX+el.dataset.save, raw=localStorage.getItem(key); if(raw!==null){const v=JSON.parse(raw); if(el.type==='checkbox'||el.type==='radio')el.checked=!!v; else el.value=v}; el.addEventListener(el.type==='checkbox'||el.type==='radio'?'change':'input',()=>localStorage.setItem(key,JSON.stringify(el.type==='checkbox'||el.type==='radio'?el.checked:el.value)));});
@@ -154,4 +409,33 @@ function normalizeTeacherPayload(raw){
 }
 
 document.querySelector('#send').onclick=async()=>{const status=document.querySelector('#status');status.textContent='Sending…';try{await fetch(ENDPOINT,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain;charset=utf-8'},body:JSON.stringify(normalizeTeacherPayload({lesson:'A2.2 Aula 2 — Growing up',studentName:values()['student-name']||'',answers:values(),timestamp:new Date().toISOString()}))});status.textContent='Submission sent for processing.';}catch(e){status.textContent='Could not send now. Your work remains saved on this device.';}};
-</script></body></html>
+</script>
+<script id="ev-portal-progress">
+(function(){
+  function filled(el){
+    if(el.disabled) return false;
+    if(el.type==="hidden" || el.type==="button" || el.type==="submit") return false;
+    if(el.type==="checkbox" || el.type==="radio") return !!el.checked;
+    return String(el.value || "").trim().length > 0;
+  }
+  function updateEvProgress(){
+    var root=document.querySelector("main");
+    var bar=document.getElementById("evProgressBar");
+    var txt=document.getElementById("evProgressText");
+    if(!root || !bar || !txt) return;
+    var controls=Array.prototype.slice.call(root.querySelectorAll("input,select,textarea"))
+      .filter(function(el){return el.type!=="hidden" && el.type!=="button" && el.type!=="submit";});
+    var total=controls.length || 1;
+    var done=controls.filter(filled).length;
+    var pct=Math.round((done/total)*100);
+    bar.style.width=pct+"%";
+    txt.textContent=pct+"%";
+  }
+  document.addEventListener("input",updateEvProgress);
+  document.addEventListener("change",updateEvProgress);
+  window.addEventListener("load",updateEvProgress);
+  updateEvProgress();
+})();
+</script>
+
+</body></html>
